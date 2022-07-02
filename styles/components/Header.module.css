@@ -316,10 +316,18 @@
     color: #4B4453B3;
 }
 
+.btnsRight{
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1440px) {
     .container {
         padding-left: 5%;
         padding-right: 5%;
+    }
+    .logo {
+        margin-right: 24px;
     }
 }
 

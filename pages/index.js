@@ -107,7 +107,7 @@ export default function Home({
     useEffect(() => {
         let perc = 0.8
         let mainS = { height: 480 }
-        let slotS = { height: 430 }
+        let slotS = { height: 500 }
         if (width <= 1440) {
             perc = 0.9
             mainS = { height: 480 }
@@ -366,7 +366,8 @@ export default function Home({
                                         <div
                                             style={{
                                                 width: "calc((100% - " + 30 * (Math.trunc(width * percent / (290 + 19)) - 1) + "px)/" + Math.trunc(width * percent / (290 + 19)) + ")",
-                                                flex: "initial"
+                                                flex: "initial",
+                                                height: styleSlotSlider?.height || ""
                                             }}
                                             key={`slot_${slot.id}`}
                                         >

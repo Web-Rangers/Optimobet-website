@@ -77,6 +77,16 @@
     }
 }
 
+@media screen and (max-width: 1366px) {
+    .slideNavPrev {
+        left: calc(4% - 25px - 19px);
+    }
+
+    .slideNavNext {
+        right: calc(4% - 25px - 19px);
+    }
+}
+
 @media screen and (max-width: 425px) {
     .slideNavPrev {
         left: -15px

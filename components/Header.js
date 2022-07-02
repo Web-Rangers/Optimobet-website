@@ -64,16 +64,18 @@ export default function Header() {
                 }
             </nav>
             <Search setBorder={setBordered} />
-            <Language setBorder={setBordered} />
-            {
-                !user?.first_name
-                    ? <Link href="/login">
-                        <a className={styles.login}>
-                            Sign In
-                        </a>
-                    </Link>
-                    : <UserMenu user={user} setBorder={setBordered} />
-            }
+            <div className={styles.btnsRight}>
+                <Language setBorder={setBordered} />
+                {
+                    !user?.first_name
+                        ? <Link href="/login">
+                            <a className={styles.login}>
+                                Sign In
+                            </a>
+                        </Link>
+                        : <UserMenu user={user} setBorder={setBordered} />
+                }
+            </div>            
         </header>
     )
 }

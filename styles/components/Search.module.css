@@ -163,3 +163,10 @@
     border-top: 1px solid #4B44531A;
     cursor: pointer;
 }
+
+@media screen and (max-width: 1440px) {
+    .search {
+        max-width: 260px;
+        margin-right: 24px;
+    }
+}

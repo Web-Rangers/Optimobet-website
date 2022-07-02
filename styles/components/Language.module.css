@@ -79,3 +79,9 @@
     margin-right: 27px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 1440px) {
+    .container {
+        margin-right: 16px;
+    }
+}
