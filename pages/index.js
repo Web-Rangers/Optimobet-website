@@ -116,11 +116,16 @@ export default function Home({
         if (width <= 1366) {
             perc = 0.92
         }
+        if (width <= 1280) {
+            mainS = { height: 440 }
+            slotS = { height: 400 }
+        }
         setStyleMainSlider(mainS)
         setStyleSlotSlider(slotS)
         setPercent(perc)
 
-        const chunkSize = Math.trunc(width * perc / (290 + 19))
+        //const chunkSize = Math.trunc(width * perc / (290 + 19))
+        const chunkSize = 4
         let offset = []
         for (let i = 0; i < freeSlots.length; i += chunkSize) {
             offset.push(freeSlots.slice(i, i + chunkSize))

@@ -141,9 +141,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background: url(/images/main/LandscapeBackground.png);
+    background: url(/images/main/LandscapeBackground.png) no-repeat;
     padding-top: 40px;
     position: relative;
+    background-size: cover;
 }
 
 .gamblingRules::before {
@@ -482,7 +483,7 @@
 .casinoButtons a {
     padding: 15px 40px;
     text-align: left;
-    font: normal normal 500 15px/26px Samsung Sans;
+    font: normal normal 500 15px/16px Samsung Sans;
     letter-spacing: 0px;
     color: #F2F2F2;
     opacity: 1;
@@ -590,7 +591,7 @@
         padding-right: 4%;
     }
     .country{
-        width: calc(33% - 16px);
+        width: calc(33% - 17px);
     }
     .optimoText{
         width: 92%;
@@ -603,5 +604,18 @@
     }
     .countriesContent{
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .sliderBlock>div{
+        height: 440px;
+    }
+    .faqPicture{
+        display: none;
+    }
+    .faqQuestions {
+        width: 92%;
+        margin-right: 4%;
     }
 }
