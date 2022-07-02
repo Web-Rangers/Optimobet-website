@@ -101,6 +101,20 @@
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .sliderBlock>div{
+        height: 350px;
+    }
+    .mainSl .slideNavPrev,
+    .mainSl .slideNavNext {
+        top: calc(50% - 25px );
+    }
+    .mainSl.sliderWrap>*>*:before,
+    .mainSl.sliderWrap>*>*::after {
+        top: calc(50% - 35px);
+    }
+}
+
 @media screen and (max-width: 425px) {
     .slideNavPrev {
         left: -15px

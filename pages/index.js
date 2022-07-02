@@ -120,6 +120,9 @@ export default function Home({
             mainS = { height: 440 }
             slotS = { height: 400 }
         }
+        if (width <= 1024) {
+            mainS = { height: 350 }
+        }
         setStyleMainSlider(mainS)
         setStyleSlotSlider(slotS)
         setPercent(perc)
@@ -264,7 +267,7 @@ export default function Home({
 
                 <div className={styles.sitesGallery}>
                     {
-                        betting.slice(0, 3).map(casino => (
+                        betting.slice(0, width>1024 ? 3 : 4).map(casino => (
                             <SiteCard
                                 {...casino}
                                 key={casino.id}
@@ -276,13 +279,14 @@ export default function Home({
                         {betting[3] && <PromoBlock
                             charactersImage="/images/main/7880-3.png"
                             bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
-                            charactersWidth="60%"
+                            charactersWidth={width>1024 ? "60%" : null}
+                            charactersHeight={width>1024 ? null : "100%"}
                             {...betting[3]}
                             rating={betting[3].reputation}
                         />}
                     </div>
                     {
-                        betting.slice(4, 8).map(casino => (
+                        betting.slice(width>1024 ? 4 : 5, 8).map(casino => (
                             <SiteCard
                                 {...casino}
                                 key={casino.id}
@@ -350,7 +354,7 @@ export default function Home({
                     </div>
                 </div>
 
-                <div className={styles.slotsSlider}>
+                {width>1024 && <div className={styles.slotsSlider}>
                     <div className={styles.headerBlockWrap}>
                         <div className={styles.BlocksHeader}>
                             <span className={styles.promoBlocksSubTitle}>
@@ -386,7 +390,7 @@ export default function Home({
                             ))}
                         </SliderWithControls>
                     }
-                </div>
+                </div>}
 
                 <div className={styles.gamblingRules}>
                     <div className={styles.headerBlockWrap}>

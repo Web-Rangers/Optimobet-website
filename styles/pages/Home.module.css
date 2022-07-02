@@ -79,7 +79,7 @@
 }
 
 .promoInSites {
-    width: 66%;
+    width: calc(66% - 1px);
 }
 
 .moreButtonArea {
@@ -437,7 +437,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 100px 130px 40px;
+    padding: 100px 20px 40px;
     height: 410px;
     max-width: 50%;
 }
@@ -617,5 +617,44 @@
     .faqQuestions {
         width: 92%;
         margin-right: 4%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sliderBlock>div{
+        height: 350px;
+    }
+    .casinoInfo{        
+        height: 350px;
+    }
+    .casinoBg{
+        height: 350px;
+    }
+    .characters {
+        height: 90%;
+        width: 50%;
+    }
+    .casinoInfo{
+        max-width: 50%;
+    }
+    .promoBlocksContent{
+        flex-wrap: wrap;
+        gap: 100px;
+    }
+    .promoBlocksContent>*{
+        flex: initial!important;
+        width: 100%;
+    }
+    .promoInSites{
+        width: 100%;
+    }
+    .rulesList{
+        width: 92%;
+    }
+    .gamblingPicture{
+        display: none;
+    }
+    .faqBlock, .countries {
+        margin-top: 100px;
     }
 }

@@ -11,6 +11,8 @@ export default function CategoryBlock({ name, info, image, bgColor = "", href = 
     useEffect(()=>{
         if (width<=1440)
             setWidthIcon(100)
+        if (width<=1024)
+            setWidthIcon(80)
     },[width])
 
     return (

@@ -9,6 +9,7 @@ export default function PromoBlock({
     bgColor,
     charactersImage,
     charactersWidth,
+    charactersHeight,
     name,
     features,
     claim_bonus_text,
@@ -104,7 +105,7 @@ export default function PromoBlock({
             </div>
             <div
                 className={styles.characters}
-                style={charactersWidth ? { width: charactersWidth || "" } : {}}
+                style={{ width: charactersWidth || "", height: charactersHeight || "" }}
             >
                 {charactersImage && <Image
                     src={charactersImage}

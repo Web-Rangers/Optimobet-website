@@ -123,6 +123,15 @@
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .footerText{
+        width: 100%;
+    }
+    .footBottom{
+        margin-top: 126px;
+    }
+}
+
 @media screen and (max-width: 425px) {
     .cols {
         flex-wrap: wrap;
