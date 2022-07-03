@@ -9,8 +9,27 @@ import APIRequest from '../../functions/requests/APIRequest';
 import useUserInfo from '../../hooks/useUserInfo';
 import { BeatLoader } from 'react-spinners';
 import CasinoCard from '../../components/CasinoCard';
+import useWindowSize from '../../hooks/useWindowSize';
+import Dropdown from '../../components/Dropdown';
 
-const slides = [1, 2, 3, 4, 5]
+const mobileFilters = [
+    {
+        id: '1',
+        value: 'All',
+    },
+    {
+        id: '2',
+        value: 'Best in your country',
+    },
+    {
+        id: '3',
+        value: 'Recently added',
+    },
+    {
+        id: '4',
+        value: 'Best in the world',
+    }
+]
 
 export default function BookmakersPage({ filters }) {
     const [bookmakers, setBookmakers] = useState([]);
@@ -22,6 +41,7 @@ export default function BookmakersPage({ filters }) {
     const loadMoreRef = useRef(null);
     const user = useUserInfo()
     const [loading, setLoading] = useState(false);
+    const { width } = useWindowSize();
 
     const controlVariants = {
         left: {
@@ -256,6 +276,24 @@ export default function BookmakersPage({ filters }) {
                         </div>
                     </div>
                     <div className={styles.casinos}>
+                        {
+                            width <= 425 &&
+                            <div className={styles.mobileFilters}>
+                                <span className={styles.filtersTitle}>
+                                    <Image
+                                        src={'/images/icons/filter.svg'}
+                                        height={20}
+                                        width={20}
+                                    />
+                                    Filters
+                                </span>
+                                <Dropdown
+                                    bordered={false}
+                                    items={mobileFilters}
+                                    onChange={(item) => handleSort(item.value)}
+                                />
+                            </div>
+                        }
                         {
                             filteredItems.map(bookmaker => (
                                 <CasinoCard {...bookmaker} key={bookmaker.id} />
