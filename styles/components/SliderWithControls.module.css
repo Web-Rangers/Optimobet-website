@@ -88,13 +88,15 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .sliderBlock>div{
+    .sliderBlock>div {
         height: 440px;
     }
+
     .mainSl .slideNavPrev,
     .mainSl .slideNavNext {
         top: calc(50% - 25px + 20px);
     }
+
     .mainSl.sliderWrap>*>*:before,
     .mainSl.sliderWrap>*>*::after {
         top: calc(50% - 35px + 20px);
@@ -102,13 +104,15 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .sliderBlock>div{
+    .sliderBlock>div {
         height: 350px;
     }
+
     .mainSl .slideNavPrev,
     .mainSl .slideNavNext {
-        top: calc(50% - 25px );
+        top: calc(50% - 25px);
     }
+
     .mainSl.sliderWrap>*>*:before,
     .mainSl.sliderWrap>*>*::after {
         top: calc(50% - 35px);

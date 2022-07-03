@@ -3,7 +3,7 @@ import Image from 'next/image'
 import useWindowSize from '../../hooks/useWindowSize'
 import Slot from '../../components/Slot'
 import { useState, useEffect } from 'react'
-import { SwiperSlide } from 'swiper/react';
+import { SwiperSlide, Swiper } from 'swiper/react';
 import SliderWithControls from '../../components/SliderWithControls'
 import APIRequest from '../../functions/requests/APIRequest'
 import parse from 'html-react-parser'
@@ -85,7 +85,7 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
             let perc = 0.8
             if (width <= 1440) {
                 perc = 0.9
-            }     
+            }
             if (width <= 1366) {
                 perc = 0.92
             }
@@ -268,26 +268,52 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                         </Link>
                     </div>
                     {offsetSlots && offsetSlots.length > 0 &&
-                        <SliderWithControls>
-                            {offsetSlots.map((item, index) => (
-                                <SwiperSlide className={styles.slotSlide} key={index}>
-                                    {item.map(slot => (
-                                        <div
-                                            style={{
-                                                width: "calc((100% - " + 30 * (Math.trunc(width * percent / (290 + 19)) - 1) + "px)/" + Math.trunc(width * percent / (290 + 19)) + ")",
-                                                flex: "initial"
-                                            }}
-                                            key={`slot_${slot.id}`}
-                                        >
-                                            <Slot
-                                                {...slot}
-                                                provider={providers.filter(prov => prov.id == slot.provider_id)[0]?.name}
-                                            />
-                                        </div>
+                        (
+                            width > 425
+                                ? <SliderWithControls>
+                                    {offsetSlots.map((item, index) => (
+                                        <SwiperSlide className={styles.slotSlide} key={index}>
+                                            {item.map(slot => (
+                                                <div
+                                                    style={{
+                                                        width: "calc((100% - " + 30 * (Math.trunc(width * percent / (290 + 19)) - 1) + "px)/" + Math.trunc(width * percent / (290 + 19)) + ")",
+                                                        flex: "initial"
+                                                    }}
+                                                    key={`slot_${slot.id}`}
+                                                >
+                                                    <Slot
+                                                        {...slot}
+                                                        provider={providers.filter(prov => prov.id == slot.provider_id)[0]?.name}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </SwiperSlide>
                                     ))}
-                                </SwiperSlide>
-                            ))}
-                        </SliderWithControls>
+                                </SliderWithControls>
+                                : <Swiper
+                                    spaceBetween={10}
+                                    slidesPerView={'auto'}
+                                >
+                                    {offsetSlots.map((item, index) => (
+                                        <SwiperSlide className={styles.slotSlide} key={index}>
+                                            {item.map(slot => (
+                                                <div
+                                                    style={{
+                                                        width: "calc((100% - " + 30 * (Math.trunc(width * percent / (290 + 19)) - 1) + "px)/" + Math.trunc(width * percent / (290 + 19)) + ")",
+                                                        flex: "initial"
+                                                    }}
+                                                    key={`slot_${slot.id}`}
+                                                >
+                                                    <Slot
+                                                        {...slot}
+                                                        provider={providers.filter(prov => prov.id == slot.provider_id)[0]?.name}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                        )
                     }
                 </div>
             }
