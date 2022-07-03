@@ -56,7 +56,7 @@ export default function Footer() {
                     </Link>
                 </div>
                 <div className={styles.column}>
-                    <span className={styles.colTitle}>
+                    <span className={`${styles.colTitle} ${styles.hideMobile}`}>
 
                     </span>
                     <Link href={'/casinos'}>
@@ -81,7 +81,7 @@ export default function Footer() {
                     </Link>
                 </div>
                 <div className={styles.column}>
-                    <span className={styles.colTitle}>
+                    <span className={`${styles.colTitle} ${styles.hideMobile}`}>
 
                     </span>
                     <Link href={'/casinos'}>
@@ -106,7 +106,7 @@ export default function Footer() {
                     </Link>
                 </div>
             </div>
-            <div className={styles.cols}>
+            <div className={`${styles.cols} ${styles.bottomCols}`}>
                 <div className={styles.column}>
                     <span className={styles.colTitle}>
                         Play

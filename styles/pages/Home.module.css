@@ -22,8 +22,8 @@
 }
 
 .categoryBlocks {
-    width: 80%;
-    margin: 50px auto 100px auto;
+    width: 100%;
+    padding: 50px 10% 100px 10%;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -507,7 +507,7 @@
         height: 480px;
     }
     .categoryBlocks{
-        width: 90%;
+        padding: 50px 5% 100px 5%;
     }
     .promoBlocks{
         width: 90%;
@@ -564,7 +564,7 @@
         width: 92%!important;
     }
     .categoryBlocks{
-        width: 92%;
+        padding: 50px 4% 100px 4%;
     }
     .promoBlocks{
         width: 92%;
@@ -656,5 +656,85 @@
     }
     .faqBlock, .countries {
         margin-top: 100px;
+    }
+    .categoryBlocks{
+        overflow-x: auto;
+    }
+    .categoryBlocks::-webkit-scrollbar{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sliderBlock>div {
+        height: 570px;
+    }
+    .casinoBg {
+        height: 570px;
+    }
+    .characters {
+        height: 50%;
+        width: 94%;
+        right: 3%;
+    }
+    .characters img{
+        object-position: center bottom!important;
+    }
+    .casinoInfo{
+        padding: 40px;
+        width: 100%;
+        max-width: 100%;
+        height: 50%;
+        top: 0;
+    }
+
+    .sliderBlock{
+        width: 90%!important;
+    }
+    .categoryBlocks{
+        padding: 50px 5% 100px 5%;
+    }
+    .promoBlocks{
+        width: 90%;
+    }
+    .sitesGallery{
+        width: 90%;
+    }
+    .sitesLine{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .slotBlock{
+        width: 90%!important;
+    }
+    .headerBlockWrap{
+        margin-left: 5%;
+    }
+    .faqQuestions{
+        width: 80%;
+        margin-left: 5%;
+    }
+    .countries{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .country{
+        width: calc(33% - 17px);
+    }
+    .optimoText{
+        width: 90%;
+    }
+    .aboutSite{
+        width: 90%;
+    }
+    .rulesList {
+        width: 90%;
+    }
+    .country{
+        width: calc(50% - 16px);
+    }
+
+    .categoryBlocks>*{
+        min-width: 250px;
     }
 }

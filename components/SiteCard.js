@@ -124,6 +124,9 @@ export default function SiteCard({
         if (width<=1440) {
             gc = 4
         }
+        if (width<=900) {
+            gc = 3
+        }
         setGamesCount(gc)
     },[width])
 

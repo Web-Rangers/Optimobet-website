@@ -132,6 +132,42 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .column{
+        width: calc(50% - 30px);
+        margin-right: 14px;
+    }
+    .cols{
+        gap: 16px;
+    }
+    .hideMobile{
+        display: none;
+    }
+    .bottomCols > div{        
+        margin-top: 30px;
+    }
+    .footBottom{
+        margin-top: 0;
+        width: 50%;
+    }
+    .copyWithSocial{
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 60px;
+    }
+    .footerImgContent{
+        gap: 24px;
+    }
+    .footerImg{
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 425px) {
     .cols {
         flex-wrap: wrap;

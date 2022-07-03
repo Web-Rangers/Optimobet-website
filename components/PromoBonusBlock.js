@@ -107,6 +107,7 @@ export default function PromoBonusBlock({
                     src={charactersImage}
                     objectFit='contain'
                     layout='fill'
+                    objectPosition='right bottom'
                 />}
             </div>
         </div>
