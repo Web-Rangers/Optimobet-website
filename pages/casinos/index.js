@@ -45,6 +45,8 @@ export default function CasinosPage({ filters }) {
     const user = useUserInfo();
     const [loading, setLoading] = useState(false);
     const { width } = useWindowSize();
+    const [styleMainSlider, setStyleMainSlider] = useState()
+    const [newCasinos, setNewCasinos] = useState([])
 
     const controlVariants = {
         left: {
@@ -166,6 +168,10 @@ export default function CasinosPage({ filters }) {
             }
         )
 
+        APIRequest('/home-components?type=new_casino')
+            .then(res => setNewCasinos(res))
+            .catch(err => console.log(err))
+        
         APIRequest('/casinos', 'GET')
             .then(res => {
                 setCasinos(res.data)
@@ -178,29 +184,73 @@ export default function CasinosPage({ filters }) {
         return () => observer.disconnect();
     }, [])
 
+    useEffect(() => {
+        let mainS = { height: 500 }
+        if (width <= 1440) {
+            mainS = { height: 480 }
+        }     
+        if (width <= 1280) {
+            mainS = { height: 440 }
+        }
+        if (width <= 1024) {
+            mainS = { height: 350 }
+        }
+        if (width <= 768) {
+            mainS = { height: 570 }
+        }
+        if (width <= 425) {
+            mainS = { height: 520 }
+        }
+        setStyleMainSlider(mainS)
+    }, [width])
+
     return (
         <div className={styles.container}>
             <div>
-                {casinos.length > 0 && <SliderWithControls loop>
-                    {
-                        casinos.slice(0, 10).map(slide => (
-                            <SwiperSlide
-                                key={`slide_${slide.id}`}
-                                className={styles.sliderBlock}
-                            >
-                                <Link href={`/casinos/${slide.id}`}>
-                                    <a>
-                                        <Image
-                                            className={styles.sliderPicture}
-                                            src={`${process.env.IMAGE_URL}/${slide.image_source}`}
-                                            layout='fill'
-                                            objectFit='contain'
-                                        />
-                                    </a>
-                                </Link>
-                            </SwiperSlide>
-                        ))
-                    }
+                {casinos.length > 0 && 
+                <SliderWithControls
+                    styleWrap={styleMainSlider}
+                    main
+                >
+                    {newCasinos.map((casino, index) => (
+                        <SwiperSlide key={casino.id} className={styles.sliderBlock}>
+                            <NewCasino 
+                                {...casino} 
+                                image_source={
+                                    `/images/homePageimgs/${
+                                        index>2 ? 
+                                            ((index % 3 == 0) ? 
+                                                "1" 
+                                                : 
+                                                ((index % 3 == 1) ? 
+                                                    "2" 
+                                                    : 
+                                                    "3"
+                                                ) 
+                                            )
+                                            : 
+                                            (index+1)
+                                    }.png`
+                                } 
+                                image_characters={
+                                    `/images/homePageimgs/c${
+                                        index>2 ? 
+                                            ((index % 3 == 0) ? 
+                                                "1" 
+                                                : 
+                                                ((index % 3 == 1) ? 
+                                                    "2" 
+                                                    : 
+                                                    "3"
+                                                ) 
+                                            )
+                                            : 
+                                            (index+1)
+                                    }.png`
+                                }
+                            />
+                        </SwiperSlide>
+                    ))}
                 </SliderWithControls>}
             </div>
             <div className={styles.contentContainer}>
@@ -332,6 +382,61 @@ export default function CasinosPage({ filters }) {
             </div>
         </div>
     )
+}
+
+function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, image_source, image_characters }) {
+    return (
+        <div className={styles.casino}>
+            <div className={styles.casinoBg}>
+                <Image
+                    //src={`${process.env.IMAGE_URL}/${image_source}`}
+                    src={image_source}
+                    layout='fill'
+                    objectFit='cover'
+                />
+            </div>
+            <div className={styles.characters}>
+                <Image
+                    //src={`${process.env.IMAGE_URL}/${image_characters}`}
+                    src={image_characters}
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='right bottom'
+                />
+            </div>
+            <div className={styles.casinoInfo}>
+                <div className={styles.bonusInfo}>
+
+                    <span className={styles.bonusText}>
+                        {claim_bonus_text || shared_content?.name}
+                    </span>
+                    {features.map(feature => (
+                        <span
+                            key={feature}
+                            className={styles.feature}
+                        >
+                            {feature}
+                        </span>
+                    ))}
+                </div>
+                <div className={styles.casinoButtons}>
+                    <a
+                        href={bonus_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.bonusButton}
+                    >
+                        Get Bonus
+                    </a>
+                    <Link href={`/casinos/${id}`}>
+                        <a className={styles.detailsButton}>
+                            Details
+                        </a>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export async function getStaticProps() {
