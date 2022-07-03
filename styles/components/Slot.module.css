@@ -103,7 +103,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
     .slot {
         min-width: 100%;
         width: 100%;

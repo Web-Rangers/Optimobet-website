@@ -277,7 +277,7 @@ export default function BookmakersPage({ filters }) {
                     </div>
                     <div className={styles.casinos}>
                         {
-                            width <= 425 &&
+                            width <= 430 &&
                             <div className={styles.mobileFilters}>
                                 <span className={styles.filtersTitle}>
                                     <Image

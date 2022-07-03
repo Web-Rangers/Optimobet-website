@@ -269,7 +269,7 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                     </div>
                     {offsetSlots && offsetSlots.length > 0 &&
                         (
-                            width > 425
+                            width > 430
                                 ? <SliderWithControls>
                                     {offsetSlots.map((item, index) => (
                                         <SwiperSlide className={styles.slotSlide} key={index}>

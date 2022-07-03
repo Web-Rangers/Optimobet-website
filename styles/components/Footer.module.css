@@ -124,10 +124,11 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .footerText{
+    .footerText {
         width: 100%;
     }
-    .footBottom{
+
+    .footBottom {
         margin-top: 126px;
     }
 }
@@ -137,38 +138,46 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-    .column{
+
+    .column {
         width: calc(50% - 30px);
         margin-right: 14px;
     }
-    .cols{
+
+    .cols {
         gap: 16px;
     }
-    .hideMobile{
+
+    .hideMobile {
         display: none;
     }
-    .bottomCols > div{        
+
+    .bottomCols>div {
         margin-top: 30px;
     }
-    .footBottom{
+
+    .footBottom {
         margin-top: 0;
         width: 50%;
     }
-    .copyWithSocial{
+
+    .copyWithSocial {
         flex-direction: column-reverse;
         flex-wrap: wrap;
         align-items: flex-start;
         gap: 60px;
     }
-    .footerImgContent{
+
+    .footerImgContent {
         gap: 24px;
     }
-    .footerImg{
+
+    .footerImg {
         width: 50%;
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
     .cols {
         flex-wrap: wrap;
         margin: 0;
@@ -205,14 +214,15 @@
         font: normal normal normal 15px/26px Samsung Sans;
     }
 
-    .socials{
+    .socials {
         margin-left: auto;
     }
 
-    .footerImgContent > *:first-child{
-        width: 100%!important;
+    .footerImgContent>*:first-child {
+        width: 100% !important;
     }
-    .footerImgContent > *:first-child img{
+
+    .footerImgContent>*:first-child img {
         object-fit: contain;
         object-position: left center;
     }

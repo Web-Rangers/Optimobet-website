@@ -172,7 +172,7 @@
     text-transform: uppercase;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
     .casino {
         flex-direction: column;
     }

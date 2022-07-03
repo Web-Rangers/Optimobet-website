@@ -171,7 +171,7 @@ export default function CasinosPage({ filters }) {
         APIRequest('/home-components?type=new_casino')
             .then(res => setNewCasinos(res))
             .catch(err => console.log(err))
-        
+
         APIRequest('/casinos', 'GET')
             .then(res => {
                 setCasinos(res.data)
@@ -188,7 +188,7 @@ export default function CasinosPage({ filters }) {
         let mainS = { height: 500 }
         if (width <= 1440) {
             mainS = { height: 480 }
-        }     
+        }
         if (width <= 1280) {
             mainS = { height: 440 }
         }
@@ -198,7 +198,7 @@ export default function CasinosPage({ filters }) {
         if (width <= 768) {
             mainS = { height: 570 }
         }
-        if (width <= 425) {
+        if (width <= 430) {
             mainS = { height: 520 }
         }
         setStyleMainSlider(mainS)
@@ -207,51 +207,49 @@ export default function CasinosPage({ filters }) {
     return (
         <div className={styles.container}>
             <div>
-                {casinos.length > 0 && 
-                <SliderWithControls
-                    styleWrap={styleMainSlider}
-                    main
-                >
-                    {newCasinos.map((casino, index) => (
-                        <SwiperSlide key={casino.id} className={styles.sliderBlock}>
-                            <NewCasino 
-                                {...casino} 
-                                image_source={
-                                    `/images/homePageimgs/${
-                                        index>2 ? 
-                                            ((index % 3 == 0) ? 
-                                                "1" 
-                                                : 
-                                                ((index % 3 == 1) ? 
-                                                    "2" 
-                                                    : 
+                {casinos.length > 0 &&
+                    <SliderWithControls
+                        styleWrap={styleMainSlider}
+                        main
+                    >
+                        {newCasinos.map((casino, index) => (
+                            <SwiperSlide key={casino.id} className={styles.sliderBlock}>
+                                <NewCasino
+                                    {...casino}
+                                    image_source={
+                                        `/images/homePageimgs/${index > 2 ?
+                                            ((index % 3 == 0) ?
+                                                "1"
+                                                :
+                                                ((index % 3 == 1) ?
+                                                    "2"
+                                                    :
                                                     "3"
-                                                ) 
+                                                )
                                             )
-                                            : 
-                                            (index+1)
-                                    }.png`
-                                } 
-                                image_characters={
-                                    `/images/homePageimgs/c${
-                                        index>2 ? 
-                                            ((index % 3 == 0) ? 
-                                                "1" 
-                                                : 
-                                                ((index % 3 == 1) ? 
-                                                    "2" 
-                                                    : 
+                                            :
+                                            (index + 1)
+                                        }.png`
+                                    }
+                                    image_characters={
+                                        `/images/homePageimgs/c${index > 2 ?
+                                            ((index % 3 == 0) ?
+                                                "1"
+                                                :
+                                                ((index % 3 == 1) ?
+                                                    "2"
+                                                    :
                                                     "3"
-                                                ) 
+                                                )
                                             )
-                                            : 
-                                            (index+1)
-                                    }.png`
-                                }
-                            />
-                        </SwiperSlide>
-                    ))}
-                </SliderWithControls>}
+                                            :
+                                            (index + 1)
+                                        }.png`
+                                    }
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </SliderWithControls>}
             </div>
             <div className={styles.contentContainer}>
                 <AnimatePresence
@@ -352,7 +350,7 @@ export default function CasinosPage({ filters }) {
                     </div>
                     <div className={styles.casinos}>
                         {
-                            width <= 425 &&
+                            width <= 430 &&
                             <div className={styles.mobileFilters}>
                                 <span className={styles.filtersTitle}>
                                     <Image

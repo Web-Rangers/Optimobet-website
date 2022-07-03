@@ -112,7 +112,7 @@ export default function Home({
             perc = 0.9
             mainS = { height: 480 }
             slotS = { height: 430 }
-        }     
+        }
         if (width <= 1366) {
             perc = 0.92
         }
@@ -126,7 +126,7 @@ export default function Home({
         if (width <= 768) {
             mainS = { height: 570 }
         }
-        if (width <= 425) {
+        if (width <= 430) {
             mainS = { height: 520 }
         }
         setStyleMainSlider(mainS)
@@ -174,38 +174,36 @@ export default function Home({
                         >
                             {newCasinos.map((casino, index) => (
                                 <SwiperSlide key={casino.id} className={styles.sliderBlock}>
-                                    <NewCasino 
-                                        {...casino} 
+                                    <NewCasino
+                                        {...casino}
                                         image_source={
-                                            `/images/homePageimgs/${
-                                                index>2 ? 
-                                                    ((index % 3 == 0) ? 
-                                                        "1" 
-                                                        : 
-                                                        ((index % 3 == 1) ? 
-                                                            "2" 
-                                                            : 
-                                                            "3"
-                                                        ) 
+                                            `/images/homePageimgs/${index > 2 ?
+                                                ((index % 3 == 0) ?
+                                                    "1"
+                                                    :
+                                                    ((index % 3 == 1) ?
+                                                        "2"
+                                                        :
+                                                        "3"
                                                     )
-                                                    : 
-                                                    (index+1)
+                                                )
+                                                :
+                                                (index + 1)
                                             }.png`
-                                        } 
+                                        }
                                         image_characters={
-                                            `/images/homePageimgs/c${
-                                                index>2 ? 
-                                                    ((index % 3 == 0) ? 
-                                                        "1" 
-                                                        : 
-                                                        ((index % 3 == 1) ? 
-                                                            "2" 
-                                                            : 
-                                                            "3"
-                                                        ) 
+                                            `/images/homePageimgs/c${index > 2 ?
+                                                ((index % 3 == 0) ?
+                                                    "1"
+                                                    :
+                                                    ((index % 3 == 1) ?
+                                                        "2"
+                                                        :
+                                                        "3"
                                                     )
-                                                    : 
-                                                    (index+1)
+                                                )
+                                                :
+                                                (index + 1)
                                             }.png`
                                         }
                                     />
@@ -273,7 +271,7 @@ export default function Home({
 
                 <div className={styles.sitesGallery}>
                     {
-                        betting.slice(0, width>1024 ? 3 : 4).map(casino => (
+                        betting.slice(0, width > 1024 ? 3 : 4).map(casino => (
                             <SiteCard
                                 {...casino}
                                 key={casino.id}
@@ -285,14 +283,14 @@ export default function Home({
                         {betting[3] && <PromoBlock
                             charactersImage="/images/main/7880-3.png"
                             bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
-                            charactersWidth={width>1024 ? "60%" : null}
-                            charactersHeight={width>1024 ? null : "100%"}
+                            charactersWidth={width > 1024 ? "60%" : null}
+                            charactersHeight={width > 1024 ? null : "100%"}
                             {...betting[3]}
                             rating={betting[3].reputation}
                         />}
                     </div>
                     {
-                        betting.slice(width>1024 ? 4 : 5, 8).map(casino => (
+                        betting.slice(width > 1024 ? 4 : 5, 8).map(casino => (
                             <SiteCard
                                 {...casino}
                                 key={casino.id}
@@ -360,7 +358,7 @@ export default function Home({
                     </div>
                 </div>
 
-                {width>1024 && <div className={styles.slotsSlider}>
+                {width > 1024 && <div className={styles.slotsSlider}>
                     <div className={styles.headerBlockWrap}>
                         <div className={styles.BlocksHeader}>
                             <span className={styles.promoBlocksSubTitle}>

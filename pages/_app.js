@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
 
     return (
         <CookiesProvider>
-            {withHeader && (width <= 435 ? <MobileHeader /> : <Header />)}
+            {withHeader && (width <= 430 ? <MobileHeader /> : <Header />)}
             <div style={{ paddingTop: withHeader ? 86 : 0 }}>
                 <Component {...pageProps} />
             </div>

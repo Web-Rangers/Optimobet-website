@@ -77,9 +77,11 @@ export default function MobileHeader() {
                             >
                                 <Image src="/images/icons/close.svg" width={32} height={32} />
                             </div>
-                            <div className={styles.logo}>
-                                <Image src="/images/logo.svg" width={153} height={36} />
-                            </div>
+                            <Link href="/">
+                                <a className={styles.logo} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    <Image src="/images/logo.svg" width={153} height={36} />
+                                </a>
+                            </Link>
                             <div className={styles.mobileLanguage}>
                                 <Language />
                             </div>
