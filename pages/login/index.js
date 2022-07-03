@@ -49,6 +49,17 @@ export default function Login() {
                 <AnimatePresence>
                     {currentPage}
                 </AnimatePresence>
+                {width <= 425 && <>
+                    <div className={styles.mobileImage}>
+                        <Image
+                            src="/images/signin/2 – 4.png"
+                            width={250}
+                            height={140}
+                        />
+                    </div>
+                    <div className={styles.mobileBg} />
+                </>
+                }
                 <div className={styles.picture}>
                     <div className={styles.landscape}>
                         <Image

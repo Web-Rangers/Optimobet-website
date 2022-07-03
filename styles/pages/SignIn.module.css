@@ -277,7 +277,7 @@
     flex-direction: column;
 }
 
-.loginHeader{
+.loginHeader {
     position: fixed;
     left: 0;
     top: 0;
@@ -290,7 +290,7 @@
     padding: 16px 15px;
 }
 
-.genderPicker{
+.genderPicker {
     display: flex;
     align-items: center;
     font: normal normal bold 24px/26px Samsung Sans;
@@ -298,7 +298,7 @@
     color: #4B4453;
 }
 
-.genderPicker span{
+.genderPicker span {
     border: 1px solid #1A1C2133;
     flex: 1 1;
     padding: 10px;
@@ -308,14 +308,64 @@
     cursor: pointer;
 }
 
-.genderPicker span:first-child{
+.genderPicker span:first-child {
     border-radius: 24px 0px 0px 24px;
 }
 
-.genderPicker span:last-child{
+.genderPicker span:last-child {
     border-radius: 0px 24px 24px 0px;
 }
 
-.selectedGender{
-    border-color: #7F3FFC!important;
+.selectedGender {
+    border-color: #7F3FFC !important;
+}
+
+@media screen and (max-width: 425px) {
+    .picture {
+        display: none;
+    }
+
+    .loginHeader {
+        background-color: white;
+    }
+
+    .container {
+        position: relative;
+        height: fit-content;
+        min-height: 100vh;
+    }
+
+    .formArea {
+        min-width: 0;
+        width: 100%;
+        padding: 24px 16px;
+        margin-bottom: 200px;
+        height: fit-content;
+    }
+
+    .authForm {
+        width: 100%;
+    }
+
+    .social {
+        padding: 16px 0;
+    }
+
+    .mobileImage {
+        position: absolute;
+        bottom: 28px;
+        right: 10px;
+        z-index: 1;
+    }
+
+    .mobileBg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100px;
+        border-top-left-radius: 120%;
+        border-top-right-radius: 120%;
+        background-color: #7F3FFC;
+    }
 }

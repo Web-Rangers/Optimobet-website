@@ -1,4 +1,6 @@
-.container {}
+.container {
+    position: relative;
+}
 
 .slotBlock {
     background: #F2F2F2 0% 0% no-repeat padding-box;
@@ -230,4 +232,39 @@
     border-radius: 24px;
     padding: 15px 40px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+    .slotDemoBlock {
+        flex-direction: column;
+    }
+
+    .slotBlock {
+        padding: 16px;
+    }
+
+    .emptyBlocks {
+        flex-direction: column;
+    }
+
+    .emptyBlocks div {
+        min-height: 63px;
+    }
+
+    .aboutSlot {
+        flex-direction: column;
+    }
+
+    .ourScore {
+        width: 100%;
+    }
+
+    .slotsSliderHeader {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .slotsSlider {
+        padding: 0 16px;
+    }
 }

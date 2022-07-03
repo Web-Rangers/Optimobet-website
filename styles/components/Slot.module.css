@@ -102,3 +102,15 @@
     color: #F2F2F2;
     cursor: pointer;
 }
+
+@media screen and (max-width: 425px) {
+    .slot {
+        min-width: 100%;
+        width: 100%;
+        min-height: 230px;
+    }
+
+    .slot.big .slotInfo {
+        max-width: 172px;
+    }
+}
