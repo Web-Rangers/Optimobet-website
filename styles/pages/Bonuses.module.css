@@ -293,7 +293,7 @@
     }
 
     .slotBlock>div {
-        height: 430px;
+        height: 480px;
     }
 
     .headerBlockWrap {
@@ -574,7 +574,7 @@
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 480px) {
     .sliderBlock>div {
         height: 520px;
     }
@@ -642,7 +642,7 @@
 
 /* Slider end */
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 480px) {
     .filters {
         display: none;
     }

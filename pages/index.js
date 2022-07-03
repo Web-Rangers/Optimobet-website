@@ -111,7 +111,7 @@ export default function Home({
         if (width <= 1440) {
             perc = 0.9
             mainS = { height: 480 }
-            slotS = { height: 430 }
+            slotS = { height: 480 }
         }
         if (width <= 1366) {
             perc = 0.92
@@ -126,7 +126,7 @@ export default function Home({
         if (width <= 768) {
             mainS = { height: 570 }
         }
-        if (width <= 430) {
+        if (width <= 480) {
             mainS = { height: 520 }
         }
         setStyleMainSlider(mainS)

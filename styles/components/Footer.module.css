@@ -177,7 +177,7 @@
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 480px) {
     .cols {
         flex-wrap: wrap;
         margin: 0;

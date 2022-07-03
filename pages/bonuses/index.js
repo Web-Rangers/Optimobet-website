@@ -212,7 +212,7 @@ export default function BonusesPage({ filters }) {
         if (width <= 768) {
             mainS = { height: 570 }
         }
-        if (width <= 430) {
+        if (width <= 480) {
             mainS = { height: 520 }
         }
         setStyleMainSlider(mainS)
@@ -358,7 +358,7 @@ export default function BonusesPage({ filters }) {
                     </div>
                     <div className={styles.casinos}>
                         {
-                            width <= 430 &&
+                            width <= 480 &&
                             <div className={styles.mobileFilters}>
                                 <span className={styles.filtersTitle}>
                                     <Image

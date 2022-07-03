@@ -255,7 +255,7 @@ export default function SlotsPage({ slots, providers }) {
                     </div>
                 </div>
                 {
-                    width <= 430 &&
+                    width <= 480 &&
                     <div className={styles.mobileFilters}>
                         <span className={styles.filtersTitle}>
                             <Image
