@@ -33,7 +33,7 @@ const demo = [
     },
 ]
 
-export default function Dropdown({ items = [...demo], description, onChange, defaultSelected }) {
+export default function Dropdown({ items = [...demo], description, onChange, defaultSelected, bordered = true }) {
     const [current, setCurrent] = useState(items[0])
     const [open, setOpen] = useState(false)
     const dropdownRef = useRef()
@@ -62,7 +62,7 @@ export default function Dropdown({ items = [...demo], description, onChange, def
     }, [])
 
     return (
-        <div className={styles.container} ref={dropdownRef}>
+        <div className={`${styles.container} ${!bordered && styles.noBorder}`} ref={dropdownRef}>
             <div
                 className={styles.header}
                 onClick={() => setOpen(!open)}

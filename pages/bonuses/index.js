@@ -13,13 +13,31 @@ import { BeatLoader } from 'react-spinners'
 import BonusCard from '../../components/BonusCard'
 import useUserInfo from '../../hooks/useUserInfo'
 import useWindowSize from '../../hooks/useWindowSize';
+import Dropdown from '../../components/Dropdown';
 
-const slides = [1, 2, 3, 4, 5]
+const mobileFilters = [
+    {
+        id: '1',
+        value: 'All',
+    },
+    {
+        id: '2',
+        value: 'Best in your country',
+    },
+    {
+        id: '3',
+        value: 'Recently added',
+    },
+    {
+        id: '4',
+        value: 'Best in the world',
+    }
+]
 
 export default function BonusesPage({ filters }) {
     const [bonuses, setBonuses] = useState([]);
     const [sidebarShown, setSidebarShown] = useState(true);
-    const [filter, setFilter] = useState('All');
+    const [sort, setSort] = useState('All');
     const bonusesRef = useRef(bonuses);
     const [filteredItems, setFilteredItems] = useState(bonuses);
     const [page, setPage] = useState(1);
@@ -71,24 +89,32 @@ export default function BonusesPage({ filters }) {
         }
     }
 
-    useEffect(() => {
-        let filteredItemsN = [...bonusesRef.current]
+    function handleSort(filter) {
+        setSort(filter);
+        let newFilteredItems = [...filteredItems];
         switch (filter) {
-            case "Best in your country":
-                user?.country_id && (filteredItemsN = filteredItemsN.filter(bonus => bonus.bonusable?.countries?.find(country => country.id === user.country_id)));
-                filteredItemsN = filteredItemsN.sort((a, b) => (b.best_for_you - a.best_for_you))
+            case 'All':
+                setFilteredItems(bonuses);
                 break;
-            case "Recently added":
-                filteredItemsN = filteredItemsN.sort((a, b) => (new Date(b.created_at) - new Date(a.created_at)))
+            case "BestInCountry":
+                user?.country_id && (newFilteredItems = filteredItems.filter(casino => casino.bonusable.countries.find(country => country.id === user.country_id)));
+                newFilteredItems.sort((a, b) => b.bonusable.rating - a.bonusable.rating);
+                setFilteredItems(newFilteredItems);
                 break;
-            case "Best of the world":
-                filteredItemsN = filteredItemsN.sort((a, b) => (b.best_for_you - a.best_for_you))
+            case "BestInWorld":
+                newFilteredItems.sort((a, b) => b.bonusable.rating - a.bonusable.rating);
+                setFilteredItems(newFilteredItems);
                 break;
-            default:
+            case "Recent":
+                newFilteredItems.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                setFilteredItems(newFilteredItems);
+                break;
+            case 'Recommended':
+                newFilteredItems.sort((a, b) => b.bonusable.reputation - a.bonusable.reputation);
+                setFilteredItems(newFilteredItems);
                 break;
         }
-        setFilteredItems(filteredItemsN)
-    }, [filter])
+    }
 
     function loadMore() {
         setLoading(true);
@@ -224,32 +250,50 @@ export default function BonusesPage({ filters }) {
                         </div>
                         <div className={styles.filterControls}>
                             <div
-                                className={`${styles.filterControlsItem} ${filter === 'All' && styles.active}`}
-                                onClick={() => setFilter('All')}
+                                className={`${styles.filterControlsItem} ${sort === 'All' && styles.active}`}
+                                onClick={() => handleSort('All')}
                             >
                                 All
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${filter === 'Best in your country' && styles.active}`}
-                                onClick={() => setFilter('Best in your country')}
+                                className={`${styles.filterControlsItem} ${sort === 'Best in your country' && styles.active}`}
+                                onClick={() => handleSort('Best in your country')}
                             >
                                 Best in your country
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${filter === 'Recently added' && styles.active}`}
-                                onClick={() => setFilter('Recently added')}
+                                className={`${styles.filterControlsItem} ${sort === 'Recently added' && styles.active}`}
+                                onClick={() => handleSort('Recently added')}
                             >
                                 Recently added
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${filter === 'Best of the world' && styles.active}`}
-                                onClick={() => setFilter('Best of the world')}
+                                className={`${styles.filterControlsItem} ${sort === 'Best of the world' && styles.active}`}
+                                onClick={() => handleSort('Best of the world')}
                             >
                                 Best of the world
                             </div>
                         </div>
                     </div>
                     <div className={styles.casinos}>
+                        {
+                            width <= 425 &&
+                            <div className={styles.mobileFilters}>
+                                <span className={styles.filtersTitle}>
+                                    <Image
+                                        src={'/images/icons/filter.svg'}
+                                        height={20}
+                                        width={20}
+                                    />
+                                    Filters
+                                </span>
+                                <Dropdown
+                                    bordered={false}
+                                    items={mobileFilters}
+                                    onChange={(item) => handleSort(item.value)}
+                                />
+                            </div>
+                        }
                         {
                             filteredItems.map((bonus, index) => (
                                 <BonusCard {...bonus} key={`bonus_${bonus.id}_${index}`} />

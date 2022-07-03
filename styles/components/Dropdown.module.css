@@ -1,41 +1,48 @@
-.container{
+.container {
     position: relative;
     cursor: pointer;
 }
-.header{    
+
+.header {
     display: flex;
     align-items: center;
-    gap: 16px;    
+    gap: 16px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #4B445333;
     border-radius: 30px;
     padding: 12px 27px;
 }
-.icon{
+
+.icon {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.textInfo{
+
+.textInfo {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-.description{
+
+.description {
     font: normal normal normal 12px/14px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453B3;
 }
-.selected{
+
+.selected {
     font: normal normal normal 15px/17px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453;
 }
-.tick{
+
+.tick {
     margin-left: auto;
     display: flex;
 }
-.tick::before{
+
+.tick::before {
     content: "";
     width: 10px;
     height: 10px;
@@ -45,7 +52,8 @@
     transform: rotateZ(45deg);
     margin-top: -2px;
 }
-.itemsContainer{
+
+.itemsContainer {
     width: 100%;
     left: 0px;
     top: 100%;
@@ -56,20 +64,31 @@
     max-height: 300px;
     z-index: 9999;
 }
-.itemsWrap{    
+
+.itemsWrap {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     max-height: 300px;
 }
-.item{
+
+.item {
     display: flex;
     align-items: center;
     gap: 16px;
     padding: 14px 27px;
 }
-.itemText{
+
+.itemText {
     font: normal normal normal 15px/17px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453;
+}
+
+.noBorder * {
+    border: none !important;
+}
+
+.noBorder .icon {
+    display: none;
 }
