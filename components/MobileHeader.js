@@ -42,20 +42,60 @@ const links = [
 
 export default function MobileHeader() {
     const [bordered, setBordered] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const user = useUserInfo();
 
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
+            <div
+                className={styles.burgerMenuButton}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+                <Image src="/images/icons/menu-icon.svg" width={32} height={32} />
+            </div>
             <Search setBorder={setBordered} />
-            {/* {
+            {
                 !user?.first_name
                     ? <Link href="/login">
-                        <a className={styles.login}>
-                            Sign In
+                        <a>
+                            <Image src="/images/icons/user.png" width={32} height={32} />
                         </a>
                     </Link>
                     : <UserMenu user={user} setBorder={setBordered} />
-            } */}
+            }
+            <AnimatePresence initial={false}>
+                {
+                    isMenuOpen && <motion.div
+                        className={styles.burgerMenu}
+                        animate={{ top: ['-100vh', '0vh'] }}
+                        exit={{ top: ['0vh', '-100vh'] }}
+                    >
+                        <div className={styles.menuHeader}>
+                            <div
+                                className={styles.burgerMenuButton}
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            >
+                                <Image src="/images/icons/close.svg" width={32} height={32} />
+                            </div>
+                            <div className={styles.logo}>
+                                <Image src="/images/logo.svg" width={153} height={36} />
+                            </div>
+                            <div className={styles.mobileLanguage}>
+                                <Language />
+                            </div>
+                        </div>
+                        <div className={styles.menuNavigation}>
+                            {
+                                links.map(({ href, name }) => (
+                                    <div onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                        <MenuLink href={href} name={name} key={name} />
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </motion.div>
+                }
+            </AnimatePresence>
         </header>
     )
 }
