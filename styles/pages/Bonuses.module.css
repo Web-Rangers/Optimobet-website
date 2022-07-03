@@ -48,23 +48,6 @@
     min-height: 100vh;
 }
 
-/* Slider */
-
-.sliderBlock {
-    width: 80% !important;
-}
-
-.sliderBlock>div {
-    height: 500px;
-    display: flex;
-    align-items: flex-end;
-}
-
-.sliderPicture {
-    width: 100%;
-    background-color: #4B4453;
-}
-
 /* Controls */
 .controls {
     display: flex;
@@ -161,6 +144,420 @@
     display: flex;
     justify-content: center;
 }
+
+/* Slider */
+
+.mainSlider {
+    width: 100%;
+}
+
+.sliderBlock {
+    width: 80% !important;
+}
+
+.sliderBlock>div {
+    height: 500px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.sliderPicture {
+    width: 100%;
+}
+
+.casino {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.casinoBg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 410px;
+    background-color: #4B4453;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.characters{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.casinoInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 130px 40px;
+    height: 410px;
+    max-width: 50%;
+}
+
+.bonusInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.bonusText {
+    text-align: left;
+    font: normal normal bold 34px/44px Samsung Sans;
+    letter-spacing: 0px;
+    color: #F2F2F2;
+    opacity: 1;
+}
+
+.feature {
+    text-align: left;
+    font: normal normal medium 15px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #F2F2F2CC;
+    opacity: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    align-items: center;
+}
+
+.feature:before {
+    content: url(/images/icons/circle-check-white.svg);
+    height: 18px;
+    width: 18px;
+}
+
+.casinoButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.casinoButtons a {
+    padding: 15px 40px;
+    text-align: left;
+    font: normal normal 500 15px/16px Samsung Sans;
+    letter-spacing: 0px;
+    color: #F2F2F2;
+    opacity: 1;
+    border-radius: 24px;
+}
+
+.bonusButton {
+    background-color: #7F3FFC;
+}
+
+.detailsButton {
+    border: 1px solid #F2F2F266;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 1440px) {
+    .sliderBlock{
+        width: 90%!important;
+    }
+    .sliderBlock>div{
+        height: 480px;
+    }
+    .categoryBlocks{
+        padding: 50px 5% 100px 5%;
+    }
+    .promoBlocks{
+        width: 90%;
+    }
+    .sitesGallery{
+        width: 90%;
+    }
+    .sitesLine{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .slotBlock{
+        width: 90%!important;
+    }
+    .slotBlock>div{
+        height: 430px;
+    }
+    .headerBlockWrap{
+        margin-left: 5%;
+    }
+    .faqQuestions{
+        width: 70%;
+        margin-left: 5%;
+    }
+    .countries{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .country{
+        width: 300px;
+    }
+    .optimoText{
+        width: 90%;
+    }
+    .aboutSite{
+        width: 90%;
+    }
+    .casinoInfo{
+        padding-left: 40px;
+    }
+    .characters{
+        width: 60%;
+    }
+    .gamblingPicture{
+        width: 32%;
+    }
+    .rulesList{
+        width: 44%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .sliderBlock{
+        width: 92%!important;
+    }
+    .categoryBlocks{
+        padding: 50px 4% 100px 4%;
+    }
+    .promoBlocks{
+        width: 92%;
+    }
+    .sitesGallery{
+        width: 92%;
+    }
+    .sitesLine{
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    .slotBlock{
+        width: 92%!important;
+    }
+    .headerBlockWrap{
+        margin-left: 4%;
+    }
+    .faqQuestions{
+        width: 80%;
+        margin-left: 4%;
+    }
+    .countries{
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    .country{
+        width: calc(33% - 17px);
+    }
+    .optimoText{
+        width: 92%;
+    }
+    .aboutSite{
+        width: 92%;
+    }
+    .gamblingPicture{
+        bottom: -60px;
+    }
+    .countriesContent{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .sliderBlock>div{
+        height: 440px;
+    }
+    .faqPicture{
+        display: none;
+    }
+    .faqQuestions {
+        width: 92%;
+        margin-right: 4%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sliderBlock>div{
+        height: 350px;
+    }
+    .casinoInfo{        
+        height: 350px;
+    }
+    .casinoBg{
+        height: 350px;
+    }
+    .characters {
+        height: 90%;
+        width: 50%;
+    }
+    .casinoInfo{
+        max-width: 50%;
+        padding: 40px;
+    }
+    .promoBlocksContent{
+        flex-wrap: wrap;
+        gap: 100px;
+    }
+    .promoBlocksContent>*{
+        flex: initial!important;
+        width: 100%;
+    }
+    .promoInSites{
+        width: 100%;
+    }
+    .rulesList{
+        width: 92%;
+    }
+    .gamblingPicture{
+        display: none;
+    }
+    .faqBlock, .countries {
+        margin-top: 100px;
+    }
+    .categoryBlocks{
+        overflow-x: auto;
+    }
+    .categoryBlocks::-webkit-scrollbar{
+        display: none;
+    }
+    .categoryBlocks{
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sliderBlock>div {
+        height: 570px;
+    }
+    .casinoBg {
+        height: 570px;
+    }
+    .characters {
+        height: 50%;
+        width: 94%;
+        right: 3%;
+    }
+    .characters img{
+        object-position: center bottom!important;
+    }
+    .casinoInfo{
+        padding: 40px;
+        width: 100%;
+        max-width: 100%;
+        height: 50%;
+        top: 0;
+    }
+
+    .sliderBlock{
+        width: 90%!important;
+    }
+    .categoryBlocks{
+        padding: 50px 5% 100px 5%;
+    }
+    .promoBlocks{
+        width: 90%;
+    }
+    .sitesGallery{
+        width: 90%;
+    }
+    .sitesLine{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .slotBlock{
+        width: 90%!important;
+    }
+    .headerBlockWrap{
+        margin-left: 5%;
+    }
+    .faqQuestions{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .countries{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .country{
+        width: calc(33% - 17px);
+    }
+    .optimoText{
+        width: 90%;
+    }
+    .aboutSite{
+        width: 90%;
+    }
+    .rulesList {
+        width: 90%;
+    }
+    .country{
+        width: calc(50% - 16px);
+    }
+
+    .categoryBlocks>*{
+        min-width: 240px;
+    }
+    .categoryBlocks{
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sliderBlock>div{
+        height: 520px;
+    }
+    .casinoBg{
+        height: 520px;
+    }
+    .casinoInfo{
+        padding: 32px 20px;
+        height: 60%;
+    }
+    .characters{
+        height: 40%;
+    }
+    .casinoButtons{
+        flex-direction: column;
+        gap: 16px;
+    }
+    .casinoButtons>a{
+        text-align: center;
+    }
+    .categoryBlocks>*{
+        min-width: 200px;
+    }
+    .categoryBlocks{
+        padding-bottom: 50px;
+    }
+    .promoBlocksContent, .sitesGallery{
+        gap: 12px;
+    }
+    .promoBlocks{
+        margin-bottom: 12px;
+    }
+    .sitesLine, .aboutSite{
+        margin-bottom: 50px;
+    }
+    .gamblingRules, .faqBlock, .countries, .optimoText, .aboutSite{
+        margin-top: 50px;
+    }
+    .country{
+        width: 100%;
+    }
+    .countriesContent{
+        gap: 12px;
+    }
+}
+
+/* Slider end */
 
 @media screen and (max-width: 425px) {
     .filters {

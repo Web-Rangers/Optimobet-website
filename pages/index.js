@@ -106,7 +106,7 @@ export default function Home({
 
     useEffect(() => {
         let perc = 0.8
-        let mainS = { height: 480 }
+        let mainS = { height: 500 }
         let slotS = { height: 500 }
         if (width <= 1440) {
             perc = 0.9
