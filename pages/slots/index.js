@@ -12,8 +12,24 @@ import Slot from '../../components/Slot';
 import { ReactSVG } from 'react-svg';
 import useWindowSize from '../../hooks/useWindowSize';
 import APIRequest from '../../functions/requests/APIRequest';
+import Dropdown from '../../components/Dropdown';
 
 const sliderTemp = [1, 2, 3, 4, 5]
+
+const mobileFilters = [
+    {
+        id: '1',
+        value: 'New',
+    },
+    {
+        id: '2',
+        value: 'Popular',
+    },
+    {
+        id: '3',
+        value: 'Promotions',
+    },
+]
 
 export default function SlotsPage({ slots, providers }) {
     const [sidebarShown, setSidebarShown] = useState(true)
@@ -91,7 +107,6 @@ export default function SlotsPage({ slots, providers }) {
     }, [providerFilter, filter])
 
     function renderSlots(sidebarShown, pageC) {
-        // breaks the layout when first slot is big
         let column = 1;
         let row = 1;
         const maxColumns = sidebarShown ? 3 : 4;
@@ -239,6 +254,24 @@ export default function SlotsPage({ slots, providers }) {
                         </div>
                     </div>
                 </div>
+                {
+                    width <= 425 &&
+                    <div className={styles.mobileFilters}>
+                        <span className={styles.filtersTitle}>
+                            <Image
+                                src={'/images/icons/filter.svg'}
+                                height={20}
+                                width={20}
+                            />
+                            Filters
+                        </span>
+                        <Dropdown
+                            bordered={false}
+                            items={mobileFilters}
+                            onChange={(item) => setFilter(item.value)}
+                        />
+                    </div>
+                }
                 <div
                     style={sidebarShown ? { gridTemplateColumns: 'repeat(3, 1fr)' } : { gridTemplateColumns: 'repeat(4, 1fr)' }}
                     className={styles.slots}
