@@ -10,7 +10,7 @@ import useWindowSize from '../hooks/useWindowSize'
 export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id }) {
     const [modal, setModal] = useState(false)
     const { width } = useWindowSize();
-    const gameCount = useRef(width <= 425 ? 5 : 3);
+    const gameCount = useRef(width <= 480 ? 5 : 3);
 
     return (
         <div className={styles.casino}>

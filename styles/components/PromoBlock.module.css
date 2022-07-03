@@ -120,22 +120,26 @@
     bottom: 0;
 }
 
-@media screen and (max-width: 425px) {
-    .promoContent{
+@media screen and (max-width: 480px) {
+    .promoContent {
         padding: 21px;
         width: 100%;
     }
-    .promoBonusButton{
+
+    .promoBonusButton {
         margin-top: 50px;
         margin-bottom: 50px;
     }
-    .promoBonusApply{
+
+    .promoBonusApply {
         display: none;
     }
-    .promoContentInfo{
+
+    .promoContentInfo {
         height: 50%;
     }
-    .characters{
-        height: 186px!important;
+
+    .characters {
+        height: 186px !important;
     }
 }
