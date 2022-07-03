@@ -35,7 +35,7 @@ export default function CheckboxFilter({ items, title, collapsible = false, init
 
     function handleClear() {
         setActive(null)
-        onChange(null)
+        onChange && onChange(null)
     }
 
     function handleChange(item) {

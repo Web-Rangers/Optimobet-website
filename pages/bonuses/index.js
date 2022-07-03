@@ -91,6 +91,36 @@ export default function BonusesPage({ filters }) {
         }
     }
 
+    function handleFilterByCategory(item, filterName) {
+        if (item === null) {
+            setFilteredItems(bonusesRef.current);
+            return
+        }
+        switch (filterName) {
+            case 'Games':
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.games.find(game => game.id === item.id)));
+                break;
+            case 'Website Language':
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.website_language.find(lang => lang.id === item.id)));
+                break;
+            case 'Support Language':
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.support_language.find(lang => lang.id === item.id)));
+                break;
+            case 'Payment Methods':
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.payment_methods.find(payment => payment.id === item.id)));
+                break;
+            case 'Countries':
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.countries.find(country => country.id === item.id)));
+                break;
+            case 'Providers':
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.providers.find(provider => provider.id === item.id)));
+                break;
+            default:
+                setFilteredItems(bonusesRef.current);
+                break;
+        }
+    }
+
     function handleSort(filter) {
         setSort(filter);
         let newFilteredItems = [...filteredItems];
@@ -262,6 +292,7 @@ export default function BonusesPage({ filters }) {
                                     title={filter.name}
                                     items={filter.items}
                                     initialOpen={index === 0}
+                                    onChange={(item) => handleFilterByCategory(item, filter.name)}
                                     collapsible
                                 />
                             ))
@@ -418,10 +449,58 @@ function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, 
 
 export async function getStaticProps() {
     // const bonuses = await APIRequest('/bonuses', 'GET')
+    const languages = await APIRequest('/nolimit/languages', 'GET')
+    const games = await APIRequest('/nolimit/games', 'GET')
+    const payments = await APIRequest('/nolimit/payment-methods', 'GET')
+    const countries = await APIRequest('/nolimit/countries', 'GET')
+    const providers = await APIRequest('/nolimit/providers', 'GET')
 
     return {
         props: {
             // bonuses: bonuses.data
+            filters: [
+                {
+                    name: 'Popular filters',
+                    items: [
+                        {
+                            id: 1,
+                            name: 'No Deposit Bonus',
+                        },
+                        {
+                            id: 2,
+                            name: 'Deposit Bonus',
+                        },
+                        {
+                            id: 3,
+                            name: 'Mobile Devices Supported'
+                        }
+                    ],
+                },
+                {
+                    name: 'Countries',
+                    items: countries
+                },
+                {
+                    name: 'Games',
+                    items: games
+                },
+                {
+                    name: 'Providers',
+                    items: providers
+                },
+                {
+                    name: 'Payment Methods',
+                    items: payments
+                },
+                {
+                    name: 'Website Language',
+                    items: languages
+                },
+                {
+                    name: 'Support Language',
+                    items: languages
+                },
+            ]
         },
         revalidate: 10,
     }
