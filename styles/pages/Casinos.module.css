@@ -151,6 +151,12 @@
     gap: 24px;
 }
 
+.mobileFilters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .loader {
     display: flex;
     justify-content: center;

@@ -19,7 +19,7 @@
     background-color: #ffffff;
 }
 
-.filtersBlocks{
+.filtersBlocks {
     position: sticky;
     top: 82px;
 }
@@ -92,12 +92,12 @@
     z-index: 2;
 }
 
-.light > * {
+.light>* {
     width: 24px;
     height: 24px;
 }
 
-.dark > * {
+.dark>* {
     width: 24px;
     height: 24px;
 }
@@ -151,4 +151,26 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+    .filters {
+        display: none;
+    }
+
+    .controls {
+        display: none;
+    }
+
+    .contentContainer {
+        margin: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .content {
+        margin: 0 !important;
+        width: 100% !important;
+        padding: 0 16px;
+    }
 }
