@@ -340,4 +340,8 @@
         width: 100% !important;
         padding: 0 16px;
     }
+
+    .sliderBlock {
+        width: 88% !important;
+    }
 }

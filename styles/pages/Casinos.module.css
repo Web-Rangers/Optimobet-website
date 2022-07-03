@@ -155,3 +155,29 @@
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width: 425px) {
+    .filters {
+        display: none;
+    }
+
+    .controls {
+        display: none;
+    }
+
+    .contentContainer {
+        margin: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .content {
+        margin: 0 !important;
+        width: 100% !important;
+        padding: 0 16px;
+    }
+
+    .sliderBlock {
+        width: 88% !important;
+    }
+}
