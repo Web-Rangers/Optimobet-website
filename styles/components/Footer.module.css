@@ -186,19 +186,34 @@
     .footerImg {
         position: relative;
         height: 314px;
-        width: 100%;
+        width: 110%;
+        margin-left: -5%;
     }
 
     .footBottom {
         width: 100%;
-    }
-
-    .copyWithSocial {
         gap: 0;
     }
 
-    .copyright {
-        width: 50%;
+    .copyWithSocial {
+        gap: 28px;
+        margin-top: -28px;
     }
 
+    .copyright {
+        width: 100%;
+        font: normal normal normal 15px/26px Samsung Sans;
+    }
+
+    .socials{
+        margin-left: auto;
+    }
+
+    .footerImgContent > *:first-child{
+        width: 100%!important;
+    }
+    .footerImgContent > *:first-child img{
+        object-fit: contain;
+        object-position: left center;
+    }
 }

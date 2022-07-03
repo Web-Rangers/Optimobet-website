@@ -119,3 +119,23 @@
     right: 0;
     bottom: 0;
 }
+
+@media screen and (max-width: 425px) {
+    .promoContent{
+        padding: 21px;
+        width: 100%;
+    }
+    .promoBonusButton{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .promoBonusApply{
+        display: none;
+    }
+    .promoContentInfo{
+        height: 50%;
+    }
+    .characters{
+        height: 186px!important;
+    }
+}

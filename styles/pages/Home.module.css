@@ -663,6 +663,9 @@
     .categoryBlocks::-webkit-scrollbar{
         display: none;
     }
+    .categoryBlocks{
+        gap: 20px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -736,6 +739,56 @@
     }
 
     .categoryBlocks>*{
-        min-width: 250px;
+        min-width: 240px;
+    }
+    .categoryBlocks{
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sliderBlock>div{
+        height: 520px;
+    }
+    .casinoBg{
+        height: 520px;
+    }
+    .casinoInfo{
+        padding: 32px 20px;
+        height: 60%;
+    }
+    .characters{
+        height: 40%;
+    }
+    .casinoButtons{
+        flex-direction: column;
+        gap: 16px;
+    }
+    .casinoButtons>a{
+        text-align: center;
+    }
+    .categoryBlocks>*{
+        min-width: 200px;
+    }
+    .categoryBlocks{
+        padding-bottom: 50px;
+    }
+    .promoBlocksContent, .sitesGallery{
+        gap: 12px;
+    }
+    .promoBlocks{
+        margin-bottom: 12px;
+    }
+    .sitesLine, .aboutSite{
+        margin-bottom: 50px;
+    }
+    .gamblingRules, .faqBlock, .countries, .optimoText, .aboutSite{
+        margin-top: 50px;
+    }
+    .country{
+        width: 100%;
+    }
+    .countriesContent{
+        gap: 12px;
     }
 }

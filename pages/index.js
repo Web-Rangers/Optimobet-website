@@ -126,6 +126,9 @@ export default function Home({
         if (width <= 768) {
             mainS = { height: 570 }
         }
+        if (width <= 425) {
+            mainS = { height: 520 }
+        }
         setStyleMainSlider(mainS)
         setStyleSlotSlider(slotS)
         setPercent(perc)
