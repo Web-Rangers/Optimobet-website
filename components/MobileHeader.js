@@ -145,7 +145,7 @@ function UserMenu({ user, setBorder }) {
                     onClick={toggleOpen}
                     className={styles.userAvatar}
                 >
-                    <Image src="/images/icons/user.png" width={32} height={32} />
+                    <Image src="/images/icons/user.svg" width={32} height={32} />
                 </div>
                 <AnimatePresence initial={false}>
                     {
