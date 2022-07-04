@@ -4,10 +4,12 @@ export default async function APIRequest(
     body,
     token
 ) {
+    const country = typeof localStorage !== 'undefined' && JSON.parse(localStorage.getItem('user')).country_id;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
     token && headers.append('Authorization', `Bearer ${token}`)
+    country && headers.append('X-Country', country)
     const options = {
         method,
         headers,

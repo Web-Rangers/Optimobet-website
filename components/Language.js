@@ -5,24 +5,28 @@ import Dropdown from './Dropdown'
 import { motion, AnimatePresence } from 'framer-motion'
 import APIRequest from '../functions/requests/APIRequest'
 import useUserInfo from '../hooks/useUserInfo'
+import { useRouter } from 'next/router'
 
 export default function Language({ setBorder }) {
     const [open, setOpen] = useState(false)
     const [countries, setCountries] = useState()
     const user = useUserInfo();
-    const country_id = useRef(1)
+    const country_id = useRef('GE')
+    const router = useRouter();
 
     const apply = () => {
         const newUser = { ...user };
         newUser.country_id = country_id.current;
         localStorage.setItem('user', JSON.stringify(newUser));
+        router.reload();
         setOpen(false)
     }
 
     const reset = () => {
         const newUser = { ...user };
-        newUser.country_id = 1;
+        newUser.country_id = undefined;
         localStorage.setItem('user', JSON.stringify(newUser));
+        router.reload();
         setOpen(false)
     }
 
@@ -49,11 +53,11 @@ export default function Language({ setBorder }) {
                 <span className={styles.separator} />
                 <div className={styles.userCountry}>
                     <Image
-                        src={`${process.env.IMAGE_URL}/${countries?.find(country => country.id === user?.country_id)?.flag_source}`}
+                        src={`${process.env.IMAGE_URL}/${countries?.find(country => country.code === user?.country_id)?.flag_source}`}
                         width={27}
                         height={20}
                         objectFit="contain"
-                        alt={countries?.find(country => country.id === user?.country_id)?.name}
+                        alt={countries?.find(country => country.code === user?.country_id)?.name}
                     />
                 </div>
             </div>
@@ -73,7 +77,7 @@ export default function Language({ setBorder }) {
                         <Dropdown
                             defaultSelected={user?.country_id}
                             onChange={(item) => country_id.current = item.id}
-                            items={countries.map(country => ({ id: country.id, value: country.name, icon: country.flag_source }))}
+                            items={countries.map(country => ({ id: country.code, value: country.name, icon: country.flag_source }))}
                             description={"Your Country"}
                         />
                         <div className={styles.applyOrReset}>
