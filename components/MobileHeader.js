@@ -145,7 +145,7 @@ function UserMenu({ user, setBorder }) {
                     onClick={toggleOpen}
                     className={styles.userAvatar}
                 >
-                    {user.first_name?.slice(0, 1).toUpperCase()}{user.last_name?.slice(0, 1).toUpperCase()}
+                    <Image src="/images/icons/user.png" width={32} height={32} />
                 </div>
                 <AnimatePresence initial={false}>
                     {
@@ -156,9 +156,14 @@ function UserMenu({ user, setBorder }) {
                                 transition={{ duration: 0.3 }}
                                 className={styles.userMenu}
                             >
-                                <span className={styles.userName}>
-                                    {user.first_name} {user.last_name}
-                                </span>
+                                <div className={styles.userInfo}>
+                                    <div className={styles.userAvatar}>
+                                        {user.first_name.slice(0, 1).toUpperCase()}{user.last_name.slice(0, 1).toUpperCase()}
+                                    </div>
+                                    <span className={styles.userName}>
+                                        {user.first_name} {user.last_name}
+                                    </span>
+                                </div>
                                 {/* <Link href={'/favorite-games'}>
                                     <a className={styles.userMenuItem}>
                                         <div>
