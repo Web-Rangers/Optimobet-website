@@ -116,31 +116,33 @@ export default function SiteCard({
     const { width } = useWindowSize()
     const [gamesCount, setGamesCount] = useState(6)
 
-    useEffect(()=>{
+    useEffect(() => {
         let gc = 6
-        if (width<=1600) {
+        if (width <= 1600) {
             gc = 5
         }
-        if (width<=1440) {
+        if (width <= 1440) {
             gc = 4
         }
-        if (width<=900) {
+        if (width <= 900) {
             gc = 3
         }
         setGamesCount(gc)
-    },[width])
+    }, [width])
 
     return (
         <div
             className={`${styles.siteCard} ${styles[reputation]}`}
         >
             <div className={styles.cardHeader}>
-                <Image
-                    src={`${process.env.IMAGE_URL}${image_source}`}
-                    objectFit='cover'
-                    width={100}
-                    height={50}
-                />
+                <div className={styles.headerImage}>
+                    <Image
+                        src={`${process.env.IMAGE_URL}${image_source}`}
+                        objectFit='contain'
+                        layout='fill'
+                        objectPosition={'left center'}
+                    />
+                </div>
                 <div className={styles.reputation}>
                     <span>
                         {reputationName} reputation
@@ -185,7 +187,7 @@ export default function SiteCard({
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout="fill"
-                                        objectFit='contain'
+                                        objectFit='scale-down'
                                         alt={game.name}
                                     />
                                 </div>
@@ -205,20 +207,20 @@ export default function SiteCard({
                     >
                         Get Bonus
                     </a>
-                    <span 
+                    <span
                         className={styles.bonusApply}
                         onClick={() => {
                             setModal(!modal)
                         }}
                     >
-                        {terms_and_conditions && 
+                        {terms_and_conditions &&
                             <AnimatePresence>
-                                {modal && 
+                                {modal &&
                                     <TermsModal
                                         setModalState={setModal}
                                         rules={terms_and_conditions}
                                     />
-                                }                                
+                                }
                             </AnimatePresence>
                         }
                         T{'&'}C Apply
