@@ -39,7 +39,7 @@
 }
 
 .bonusTitle {
-    font: normal normal bold 16px/18px Samsung Sans;
+    font: normal normal bold 22px/24px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453;
 }
@@ -80,4 +80,26 @@
     color: #FFFFFF;
     cursor: pointer;
     position: relative;
+}
+
+@media screen and (max-width: 480px) {
+    .bonusBlock{
+        flex-direction: column;
+    }
+    .bonusData{
+        width: 100%;
+        border-radius: 16px 16px 0px 0px;
+        padding: 32px 16px 16px 16px;
+    }
+    .getBonusArea{
+        width: 100%;
+        padding: 15px;
+        border-radius: 0px 0px 16px 16px;
+    }
+    .getBonusArea *{
+        margin-top: 0!important;
+    }
+    .bonusOptions{
+        flex-wrap: wrap;
+    }
 }

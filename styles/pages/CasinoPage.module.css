@@ -92,10 +92,10 @@
 
 .bonuses span:before {
     background-image: url(/images/icons/circle-check.svg);
-    background-size: 14px;
+    background-size: 18px;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     content: "";
     flex-shrink: 0;
 }
@@ -329,4 +329,122 @@
     height: 100px;
     background: #F2F2F2 0% 0% no-repeat padding-box;
     border-radius: 16px;
+}
+
+.paymentTable th, .paymentTable td{
+    padding-right: 24px;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .casinoContentCard{
+        padding-top: 0px;
+        border: none;
+    }
+    .casinoLogo {
+        width: 100%;
+        height: 120px;
+        background: #00C69C;
+        position: relative;
+    }
+    .coloredBlocks{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .fixedButtons{
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        z-index: 999;
+        width: 100%;
+        display: flex;
+        font: normal normal 500 15px/18px Samsung Sans;
+    }
+    .visitMobile{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #F2F2F2;
+        padding: 15px;
+        background: #7F3FFC;
+    }
+    .tcMobile{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4B445380;
+        padding: 15px;
+        background: #edeced;
+    }
+    .bigInfoBlock{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #4B445333;
+        border-radius: 16px;
+        padding: 24px;
+        gap: 24px;
+    }
+    .bigInfoBlock > div{
+        max-width: initial;
+        min-width: initial;
+        width: 100%;
+        padding: 0px;
+        border: none;
+    }
+    .textWrapper{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .textWrapper .casinoText{
+        gap: 32px;
+    }
+    .bonusesBlocks{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .paymentTableWrap{    
+        padding-left: 5%;
+        padding-right: 5%;
+        overflow-x: auto;
+    }
+    .paymentTableWrap::-webkit-scrollbar{
+        display: none;
+    }
+    .paymentTableHeader{        
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .paymentTable{
+        width: max-content;
+    }
+    .providersSlider{
+        display: flex;
+        gap: 30px;    
+        padding-left: 5%;
+        padding-right: 5%;
+        overflow-x: auto;
+    }
+    .providersHeader{
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-bottom: 0;
+    }
+    .paymentTableBlock{
+        gap: 32px;
+    }
+    .providersSlider::-webkit-scrollbar{
+        display: none;
+    }
+    .providers {
+        margin-bottom: 50px;
+    }
 }
