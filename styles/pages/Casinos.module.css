@@ -701,3 +701,16 @@
         gap: 25px;
     }
 }
+
+.mobileFilters>div:not(:first-child) {
+    min-width: 224px;
+}
+
+.mobileFilters>div:not(:first-child)>div {
+    justify-content: flex-end;
+    align-items: initial;
+}
+
+.mobileFilters>div:not(:first-child)>div>div {
+    margin-left: initial;
+}
