@@ -51,7 +51,7 @@ export default function MobileHeader() {
                 className={styles.burgerMenuButton}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-                <Image src="/images/icons/menu-icon.svg" width={32} height={32} />
+                <Image src="/images/icons/menu.svg" width={32} height={32} />
             </div>
             <Search setBorder={setBordered} />
             {
