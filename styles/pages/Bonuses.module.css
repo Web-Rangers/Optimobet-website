@@ -655,7 +655,7 @@
 
 /* Slider end */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .filters {
         display: none;
     }
@@ -678,5 +678,9 @@
 
     .sliderBlock {
         width: 88% !important;
+    }
+
+    .casinoInfo {
+        gap: 25px;
     }
 }

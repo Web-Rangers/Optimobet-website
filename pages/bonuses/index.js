@@ -330,7 +330,7 @@ export default function BonusesPage({ filters }) {
                     </div>
                     <div className={styles.casinos}>
                         {
-                            width <= 480 &&
+                            width <= 768 &&
                             <div className={styles.mobileFilters}>
                                 <span className={styles.filtersTitle}>
                                     <Image

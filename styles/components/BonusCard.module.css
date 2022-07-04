@@ -1,6 +1,7 @@
 /* Casino */
 
 .casino {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 24px;
@@ -12,7 +13,6 @@
 .casinoImage {
     position: relative;
     width: 20%;
-    height: 100%;
     /* background-color: #ccc; */
     border-radius: 16px 0px 0px 16px;
     overflow: hidden;
@@ -202,5 +202,21 @@
         width: 100%;
         flex-direction: row-reverse;
         justify-content: flex-end;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .casinoImage {
+        width: 35%;
+    }
+
+    .casinoInfo {
+        width: 65%;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .casinoColumn.right {
+        align-items: flex-start;
     }
 }
