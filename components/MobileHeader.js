@@ -145,7 +145,7 @@ function UserMenu({ user, setBorder }) {
                     onClick={toggleOpen}
                     className={styles.userAvatar}
                 >
-                    {user.first_name?.slice(0, 1).toUpperCase()}{user.last_name?.slice(0, 1).toUpperCase()}
+                    <Image src="/images/icons/user.png" width={32} height={32} />
                 </div>
                 <AnimatePresence initial={false}>
                     {
@@ -156,9 +156,14 @@ function UserMenu({ user, setBorder }) {
                                 transition={{ duration: 0.3 }}
                                 className={styles.userMenu}
                             >
-                                <span className={styles.userName}>
-                                    {user.first_name} {user.last_name}
-                                </span>
+                                <div className={styles.userInfo}>
+                                    <div className={styles.userAvatar}>
+                                        {user.first_name.slice(0, 1).toUpperCase()}{user.last_name.slice(0, 1).toUpperCase()}
+                                    </div>
+                                    <span className={styles.userName}>
+                                        {user.first_name} {user.last_name}
+                                    </span>
+                                </div>
                                 {/* <Link href={'/favorite-games'}>
                                     <a className={styles.userMenuItem}>
                                         <div>
@@ -293,16 +298,19 @@ function EditModal({ user, onClose }) {
         className={styles.modal}
     >
         <div className={styles.modalBody}>
-            <div
-                onClick={onClose}
-                className={styles.close}
-            >
-                <Image
-                    src={'/images/icons/close.svg'}
-                    alt="close"
-                    width={24}
-                    height={24}
-                />
+            <div className={styles.modalHeader}>
+                <span className={styles.modalFormTitle}> Edit Information </span>
+                <div
+                    onClick={onClose}
+                    className={styles.close}
+                >
+                    <Image
+                        src={'/images/icons/close.svg'}
+                        alt="close"
+                        width={24}
+                        height={24}
+                    />
+                </div>
             </div>
             <div className={styles.modalImage}>
                 <Image
@@ -313,7 +321,6 @@ function EditModal({ user, onClose }) {
                 />
             </div>
             <form className={styles.modalForm} onSubmit={handleSubmit}>
-                <span className={styles.modalFormTitle}> Edit Information </span>
                 <div className={styles.modalFormRow}>
                     <TextField label="First name" type="text" name='first_name' defaultValue={user.first_name} />
                     <TextField label="Last Name" type="text" name='last_name' defaultValue={user.last_name} />
@@ -389,16 +396,19 @@ function PasswordModal({ onClose }) {
         className={styles.modal}
     >
         <div className={styles.modalBody}>
-            <div
-                onClick={onClose}
-                className={styles.close}
-            >
-                <Image
-                    src={'/images/icons/close.svg'}
-                    alt="close"
-                    width={24}
-                    height={24}
-                />
+            <div className={styles.modalHeader}>
+                <span className={styles.modalFormTitle}> Change Password </span>
+                <div
+                    onClick={onClose}
+                    className={styles.close}
+                >
+                    <Image
+                        src={'/images/icons/close.svg'}
+                        alt="close"
+                        width={24}
+                        height={24}
+                    />
+                </div>
             </div>
             <div className={styles.modalImage}>
                 <Image
@@ -410,14 +420,13 @@ function PasswordModal({ onClose }) {
                 <div className={styles.modalImageOverlap}>
                     <Image
                         src="/images/phoenix.png"
-                        height={367}
-                        width={230}
+                        height={165}
+                        width={104}
                         alt="phoenix"
                     />
                 </div>
             </div>
             <form className={styles.modalForm} onSubmit={handleSubmit}>
-                <span className={styles.modalFormTitle}> Change Password </span>
                 <span className={styles.modalFormSubtitle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                 <PasswordField type="password" name='password' placeholder='Old password' />
                 <PasswordField type="password" onChange={checkPassword} name='new_password' placeholder='New password' />
