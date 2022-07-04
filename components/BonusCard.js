@@ -7,14 +7,14 @@ import Stars from './Stars'
 import TermsModal from './TermsModal'
 import useWindowSize from '../hooks/useWindowSize'
 
-export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id }) {
+export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id, bg_color }) {
     const [modal, setModal] = useState(false)
     const { width } = useWindowSize();
     const gameCount = useRef(width <= 480 ? 5 : 3);
 
     return (
         <div className={styles.casino}>
-            <div className={styles.casinoImage}>
+            <div className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
                 <Image
                     src={`${process.env.IMAGE_URL}/${bonusable.image_source}`}
                     layout='fill'

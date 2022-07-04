@@ -21,6 +21,7 @@ export default function CasinoCard({
     id,
     terms_and_conditions,
     image_source,
+    bg_color
 }) {
     const [modal, setModal] = useState(false)
     const { width } = useWindowSize()
@@ -28,7 +29,7 @@ export default function CasinoCard({
     return (
         <div className={styles.casino}>
             <Link href={`/casinos/${id}`}>
-                <a className={styles.casinoImage}>
+                <a className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
                     <Image
                         src={`${process.env.IMAGE_URL}/${image_source}`}
                         layout='fill'
