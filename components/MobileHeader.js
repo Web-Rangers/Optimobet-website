@@ -63,7 +63,7 @@ export default function MobileHeader() {
                 !user?.first_name
                     ? <Link href="/login">
                         <a>
-                            <Image src="/images/icons/user.png" width={32} height={32} />
+                            <Image src="/images/icons/user.svg" width={32} height={32} />
                         </a>
                     </Link>
                     : <UserMenu user={user} setBorder={setBordered} />

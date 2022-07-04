@@ -156,6 +156,7 @@
     letter-spacing: 0px;
     color: #4B445380;
     cursor: pointer;
+    width: max-content;
 }
 
 .casinoButton.highlighted {
@@ -169,6 +170,7 @@
     color: #4B445380;
     position: relative;
     cursor: pointer;
+    width: max-content;
 }
 
 .grayNums {
@@ -186,11 +188,17 @@
         width: 65%;
         flex-direction: column;
         gap: 25px;
+        width: 100%;
     }
 
     .casinoColumn.right {
         align-items: flex-start;
     }
+
+    .casinoGames {
+        flex-shrink: 0;
+    }
+
 }
 
 @media screen and (max-width: 480px) {

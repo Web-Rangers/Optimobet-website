@@ -204,6 +204,7 @@
     .casinoInfo {
         flex-direction: column;
         gap: 24px;
+        width: 100%;
     }
 
     .casinoColumn {
@@ -218,5 +219,9 @@
         width: 100%;
         flex-direction: row-reverse;
         justify-content: flex-end;
+    }
+
+    .casinoGames {
+        flex-shrink: 0;
     }
 }

@@ -154,20 +154,6 @@ export default function BonusesPage({ filters }) {
             .then(res => {
                 setPage(page++);
                 let newDataF = [...res.data]
-                switch (filter) {
-                    case "Best in your country":
-                        user?.country_id && (newDataF = newDataF.filter(bonus => bonus.bonusable?.countries?.find(country => country.id === user.country_id)));
-                        newDataF = newDataF.sort((a, b) => (b.best_for_you - a.best_for_you))
-                        break;
-                    case "Recently added":
-                        newDataF = newDataF.sort((a, b) => (new Date(b.created_at) - new Date(a.created_at)))
-                        break;
-                    case "Best of the world":
-                        newDataF = newDataF.sort((a, b) => (b.best_for_you - a.best_for_you))
-                        break;
-                    default:
-                        break;
-                }
                 setFilteredItems([...bonusesRef.current, ...newDataF]);
                 bonusesRef.current = [...bonusesRef.current, ...res.data]
                 setLoading(false);
