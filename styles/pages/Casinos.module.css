@@ -200,13 +200,13 @@
     overflow: hidden;
 }
 
-.casinoBg::after{
+.casinoBg::after {
     content: "";
     position: absolute;
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(90deg, rgba(18,17,17,0.6) 0%, rgba(18,17,17,0.3) 50%, rgba(18,17,17,0) 100%);
+    background: linear-gradient(90deg, rgba(18, 17, 17, 0.6) 0%, rgba(18, 17, 17, 0.3) 50%, rgba(18, 17, 17, 0) 100%);
 }
 
 .characters {
@@ -599,8 +599,8 @@
         gap: 16px;
     }
 
-    .casinoBg::after{
-        background: linear-gradient(180deg, rgba(18,17,17,0.6) 0%, rgba(18,17,17,0.3) 50%, rgba(18,17,17,0) 100%);
+    .casinoBg::after {
+        background: linear-gradient(180deg, rgba(18, 17, 17, 0.6) 0%, rgba(18, 17, 17, 0.3) 50%, rgba(18, 17, 17, 0) 100%);
     }
 }
 
@@ -672,7 +672,7 @@
 
 /* Slider end */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .filters {
         display: none;
     }
@@ -695,5 +695,9 @@
 
     .sliderBlock {
         width: 88% !important;
+    }
+
+    .casinoInfo {
+        gap: 25px;
     }
 }
