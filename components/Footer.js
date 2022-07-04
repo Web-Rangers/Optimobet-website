@@ -141,7 +141,7 @@ export default function Footer() {
                             Who we are
                         </a>
                     </Link>
-                    <Link href={'#'}>
+                    <Link href={'/contact'}>
                         <a>
                             Contact support
                         </a>
