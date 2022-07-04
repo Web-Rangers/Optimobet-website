@@ -125,7 +125,10 @@ function MenuLink({ href, name }) {
 
     useEffect(() => {
         const _isActive = router.pathname.split('/').includes(href.split('/')[1]);
+        if (href!="/")
         setIsActive(_isActive);
+        if (href == "/" && router.asPath=="/")
+        setIsActive(true);
     }, [router.pathname])
 
     return (
