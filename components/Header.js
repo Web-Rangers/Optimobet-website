@@ -12,6 +12,7 @@ import APIRequest from '../functions/requests/APIRequest'
 import { useCookies } from 'react-cookie'
 import PasswordField from './PasswordField'
 import TextField from './TextField'
+import useWindowSize from '../hooks/useWindowSize'
 
 const links = [
     {
@@ -41,12 +42,14 @@ const links = [
 ]
 
 export default function Header() {
+    const { width, height } = useWindowSize()
     const [bordered, setBordered] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const user = useUserInfo();
 
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
-            <Link href={'/'}>
+            {width>768 && <Link href={'/'}>
                 <a className={styles.logo}>
                     <Image
                         src="/images/logo.svg"
@@ -55,14 +58,50 @@ export default function Header() {
                         height={36}
                     />
                 </a>
-            </Link>
-            <nav className={styles.navigation}>
-                {
-                    links.map(link => (
-                        <MenuLink key={link.name} {...link} />
-                    ))
-                }
-            </nav>
+            </Link>}
+            {width > 1024 ? 
+                <nav className={styles.navigation}>
+                    {
+                        links.map(link => (
+                            <MenuLink key={link.name} {...link} />
+                        ))
+                    }
+                </nav>
+                :
+                <div 
+                    className={styles.hideMenuBtn}
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    <Image
+                        src="/images/icons/menu.svg"
+                        width={24}
+                        height={24}
+                    />
+                    Menu
+                </div>
+            }
+            {
+                <motion.div
+                    className={styles.expandedMenu}
+                    animate={isMenuOpen ? {height:"auto"} : {height:0}}
+                    transition={{duration:0.2,ease:"easeInOut"}}
+                >
+                    <div className={styles.expandedMenuNav}>
+                        {width<=768 && 
+                            <div>
+                                <MenuLink href={"/"} name={"Home"} key={"Home"} />
+                            </div>
+                        }
+                        {
+                            links.map(({ href, name }) => (
+                                <div onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    <MenuLink href={href} name={name} key={name} />
+                                </div>
+                            ))
+                        }
+                    </div>
+                </motion.div>
+            }
             <Search setBorder={setBordered} />
             <div className={styles.btnsRight}>
                 <Language setBorder={setBordered} />

@@ -357,6 +357,43 @@
     margin: 0;
 }
 
+/* Menu to expand */
+
+.hideMenuBtn{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font: normal normal 500 18px/20px Samsung Sans;
+    letter-spacing: 0px;
+    color: #4B4453;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.expandedMenu{
+    display: flex;
+    overflow: hidden;
+    top: 85px;
+    left: 0;
+    position: absolute;
+    background: #FFFFFF;
+    width: 100%;
+}
+.expandedMenuNav{
+    display: flex;
+    align-items: center;
+    gap: 30px;    
+    padding: 10px 4% 30px 4%;
+}
+@media screen and (max-width: 480px) {
+    .expandedMenu{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+/* end of Menu to expand */
+
 @media screen and (max-width: 1440px) {
     .container {
         padding-left: 5%;
