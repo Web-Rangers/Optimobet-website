@@ -396,16 +396,19 @@ function PasswordModal({ onClose }) {
         className={styles.modal}
     >
         <div className={styles.modalBody}>
-            <div
-                onClick={onClose}
-                className={styles.close}
-            >
-                <Image
-                    src={'/images/icons/close.svg'}
-                    alt="close"
-                    width={24}
-                    height={24}
-                />
+            <div className={styles.modalHeader}>
+                <span className={styles.modalFormTitle}> Change Password </span>
+                <div
+                    onClick={onClose}
+                    className={styles.close}
+                >
+                    <Image
+                        src={'/images/icons/close.svg'}
+                        alt="close"
+                        width={24}
+                        height={24}
+                    />
+                </div>
             </div>
             <div className={styles.modalImage}>
                 <Image
@@ -417,14 +420,13 @@ function PasswordModal({ onClose }) {
                 <div className={styles.modalImageOverlap}>
                     <Image
                         src="/images/phoenix.png"
-                        height={367}
-                        width={230}
+                        height={165}
+                        width={104}
                         alt="phoenix"
                     />
                 </div>
             </div>
             <form className={styles.modalForm} onSubmit={handleSubmit}>
-                <span className={styles.modalFormTitle}> Change Password </span>
                 <span className={styles.modalFormSubtitle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                 <PasswordField type="password" name='password' placeholder='Old password' />
                 <PasswordField type="password" onChange={checkPassword} name='new_password' placeholder='New password' />
