@@ -29,7 +29,7 @@ const links = [
     },
     {
         href: '/slots',
-        name: 'Gambling'
+        name: 'Free games'
     },
     // {
     //     href: '/complaints',

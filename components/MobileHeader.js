@@ -12,23 +12,28 @@ import APIRequest from '../functions/requests/APIRequest'
 import { useCookies } from 'react-cookie'
 import PasswordField from './PasswordField'
 import TextField from './TextField'
+import { ReactSVG } from 'react-svg'
 
 const links = [
     {
         href: '/casinos',
-        name: 'Online Casinos'
+        name: 'Online Casinos',
+        svg: 'casinos'
     },
     {
         href: '/bonuses',
-        name: 'Bonuses'
+        name: 'Bonuses',
+        svg: 'bonuses'
     },
     {
         href: '/bookmakers',
-        name: 'Bookmakers'
+        name: 'Bookmakers',
+        svg: 'bookmakers'
     },
     {
         href: '/slots',
-        name: 'Gambling'
+        name: 'Free games',
+        svg: 'slots'
     },
     // {
     //     href: '/complaints',
@@ -88,9 +93,9 @@ export default function MobileHeader() {
                         </div>
                         <div className={styles.menuNavigation}>
                             {
-                                links.map(({ href, name }) => (
+                                links.map(({ href, name, svg }) => (
                                     <div onClick={() => setIsMenuOpen(!isMenuOpen)} key={name}>
-                                        <MenuLink href={href} name={name} key={name} />
+                                        <MenuLink href={href} name={name} svg={svg} key={name} />
                                     </div>
                                 ))
                             }
@@ -102,7 +107,7 @@ export default function MobileHeader() {
     )
 }
 
-function MenuLink({ href, name }) {
+function MenuLink({ href, name, svg }) {
     const router = useRouter();
     const [isActive, setIsActive] = useState(false);
 
@@ -113,7 +118,12 @@ function MenuLink({ href, name }) {
 
     return (
         <Link href={href}>
-            <a className={`${styles.link} ${isActive && styles.active}`}>
+            <a className={`${styles.link} ${styles.mobiLink} ${isActive && styles.active}`}>
+                <ReactSVG
+                    src={`/images/icons/header/${svg}.svg`}
+                    width={24}
+                    height={24}
+                />
                 {name}
             </a>
         </Link>

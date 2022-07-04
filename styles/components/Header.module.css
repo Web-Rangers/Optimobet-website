@@ -422,8 +422,31 @@
     }
 
     .link {
-        font-size: 24px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
+
+    .link path[fill]:not([fill = "none"]){
+        fill: rgba(75, 68, 83, 0.5);
+    }
+
+    .link path[fill = "none"]{
+        stroke: rgba(75, 68, 83, 0.5);
+    }
+
+    .mobiLink.active path[fill]:not([fill = "none"]){
+        fill: #7F3FFC;
+    }
+
+    .mobiLink.active path[fill = "none"], .mobiLink.active circle, .mobiLink.active rect, .mobiLink.active line{
+        stroke: #7F3FFC;
+    }
+
+    .mobiLink.active::after{
+        left: 34px;
+    } 
 
     .userMenu {
         padding: 16px;
