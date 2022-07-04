@@ -145,11 +145,11 @@
 
 @media screen and (max-width: 768px) {
     .mainSl .slideNavPrev {
-        left: calc(7% - 30px - 15px);
+        left: calc(6% - 30px - 15px);
     }
 
     .mainSl .slideNavNext {
-        right: calc(7% - 30px - 15px);
+        right: calc(6% - 30px - 15px);
     }
 }
 
