@@ -183,7 +183,7 @@ export default function BonusesPage({ filters }) {
             }
         )
 
-        APIRequest('/home-components?type=new_casino')
+        APIRequest('/sliders?page=bonus')
             .then(res => setNewCasinos(res))
             .catch(err => console.log(err))
 
@@ -230,36 +230,8 @@ export default function BonusesPage({ filters }) {
                             <SwiperSlide key={casino.id} className={styles.sliderBlock}>
                                 <NewCasino
                                     {...casino}
-                                    image_source={
-                                        `/images/homePageimgs/${index > 2 ?
-                                            ((index % 3 == 0) ?
-                                                "1"
-                                                :
-                                                ((index % 3 == 1) ?
-                                                    "2"
-                                                    :
-                                                    "3"
-                                                )
-                                            )
-                                            :
-                                            (index + 1)
-                                        }.png`
-                                    }
-                                    image_characters={
-                                        `/images/homePageimgs/c${index > 2 ?
-                                            ((index % 3 == 0) ?
-                                                "1"
-                                                :
-                                                ((index % 3 == 1) ?
-                                                    "2"
-                                                    :
-                                                    "3"
-                                                )
-                                            )
-                                            :
-                                            (index + 1)
-                                        }.png`
-                                    }
+                                    image_source={`${process.env.IMAGE_URL}/${casino.image_bg_source}`}
+                                    image_characters={`${process.env.IMAGE_URL}/${casino.image_source}`}
                                 />
                             </SwiperSlide>
                         ))}
@@ -390,7 +362,7 @@ export default function BonusesPage({ filters }) {
     )
 }
 
-function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, image_source, image_characters }) {
+function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, image_source, image_characters, bonus_link, details_link, title }) {
     return (
         <div className={styles.casino}>
             <div className={styles.casinoBg}>
@@ -416,7 +388,7 @@ function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, 
                     <span className={styles.bonusText}>
                         {claim_bonus_text || shared_content?.name}
                     </span>
-                    {features.map(feature => (
+                    {features?.map(feature => (
                         <span
                             key={feature}
                             className={styles.feature}
@@ -427,18 +399,28 @@ function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, 
                 </div>
                 <div className={styles.casinoButtons}>
                     <a
-                        href={bonus_url}
+                        href={bonus_url || bonus_link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.bonusButton}
                     >
                         Get Bonus
                     </a>
-                    <Link href={`/casinos/${id}`}>
-                        <a className={styles.detailsButton}>
+                    {bonus_url
+                        ? <Link href={`/casinos/${id}`}>
+                            <a className={styles.detailsButton}>
+                                Details
+                            </a>
+                        </Link>
+                        : <a
+                            className={styles.detailsButton}
+                            href={details_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             Details
                         </a>
-                    </Link>
+                    }
                 </div>
             </div>
         </div>
