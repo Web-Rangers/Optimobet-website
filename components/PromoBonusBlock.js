@@ -61,12 +61,14 @@ export default function PromoBonusBlock({
                             <span className={styles.promoCountry}>
                                 {bonusable?.countries[0]?.name}
                             </span>
-                            <Image
-                                src={`${process.env.IMAGE_URL}/${bonusable?.image_source}`}
-                                objectFit='contain'
-                                width={80}
-                                height={32}
-                            />
+                            <div className={styles.headerImage}>
+                                <Image
+                                    src={`${process.env.IMAGE_URL}${bonusable?.image_source}`}
+                                    objectFit='contain'
+                                    layout='fill'
+                                    objectPosition={'left center'}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className={styles.promoBonusInfo}>

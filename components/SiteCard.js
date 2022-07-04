@@ -135,12 +135,14 @@ export default function SiteCard({
             className={`${styles.siteCard} ${styles[reputation]}`}
         >
             <div className={styles.cardHeader}>
-                <Image
-                    src={`${process.env.IMAGE_URL}${image_source}`}
-                    objectFit='contain'
-                    width={100}
-                    height={50}
-                />
+                <div className={styles.headerImage}>
+                    <Image
+                        src={`${process.env.IMAGE_URL}${image_source}`}
+                        objectFit='contain'
+                        layout='fill'
+                        objectPosition={'left center'}
+                    />
+                </div>
                 <div className={styles.reputation}>
                     <span>
                         {reputationName} reputation
@@ -185,7 +187,7 @@ export default function SiteCard({
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout="fill"
-                                        objectFit='contain'
+                                        objectFit='scale-down'
                                         alt={game.name}
                                     />
                                 </div>
