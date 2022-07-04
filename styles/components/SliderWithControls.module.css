@@ -110,21 +110,52 @@
 
     .mainSl .slideNavPrev,
     .mainSl .slideNavNext {
-        top: calc(50% - 25px);
+        top: calc(50% - 20px);
     }
 
-    .mainSl.sliderWrap>*>*:before,
-    .mainSl.sliderWrap>*>*::after {
-        top: calc(50% - 35px);
+    .mainSl .slideNavPrev {
+        left: calc(5% - 30px - 19px);
+    }
+    
+    .mainSl .slideNavNext {
+        right: calc(5% - 30px - 19px);
+    }
+
+    .slideNavPrev,
+    .slideNavNext {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mainSl.sliderWrap>*>*::before,
+    .mainSl.sliderWrap>*>*::after {        
+        width: 60px;
+        height: 60px;
+        top: calc(50% - 30px);
+    }
+
+    .mainSl.sliderWrap>*>*::before{
+        left: -49px;
+    }
+    .mainSl.sliderWrap>*>*::after{
+        right: -49px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainSl .slideNavPrev {
+        left: calc(6% - 30px - 15px);
+    }    
+    .mainSl .slideNavNext {
+        right: calc(6% - 30px - 15px);
     }
 }
 
 @media screen and (max-width: 480px) {
-    .slideNavPrev {
-        left: -15px
+    .mainSl .slideNavPrev {
+        left: -12px
     }
-
-    .slideNavNext {
-        right: -15px;
+    .mainSl .slideNavNext {
+        right: -12px;
     }
 }
