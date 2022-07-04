@@ -298,16 +298,19 @@ function EditModal({ user, onClose }) {
         className={styles.modal}
     >
         <div className={styles.modalBody}>
-            <div
-                onClick={onClose}
-                className={styles.close}
-            >
-                <Image
-                    src={'/images/icons/close.svg'}
-                    alt="close"
-                    width={24}
-                    height={24}
-                />
+            <div className={styles.modalHeader}>
+                <span className={styles.modalFormTitle}> Edit Information </span>
+                <div
+                    onClick={onClose}
+                    className={styles.close}
+                >
+                    <Image
+                        src={'/images/icons/close.svg'}
+                        alt="close"
+                        width={24}
+                        height={24}
+                    />
+                </div>
             </div>
             <div className={styles.modalImage}>
                 <Image
@@ -318,7 +321,6 @@ function EditModal({ user, onClose }) {
                 />
             </div>
             <form className={styles.modalForm} onSubmit={handleSubmit}>
-                <span className={styles.modalFormTitle}> Edit Information </span>
                 <div className={styles.modalFormRow}>
                     <TextField label="First name" type="text" name='first_name' defaultValue={user.first_name} />
                     <TextField label="Last Name" type="text" name='last_name' defaultValue={user.last_name} />
