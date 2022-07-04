@@ -49,7 +49,7 @@ export default function Header() {
 
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
-            {width>768 && <Link href={'/'}>
+            {width > 768 && <Link href={'/'}>
                 <a className={styles.logo}>
                     <Image
                         src="/images/logo.svg"
@@ -59,7 +59,7 @@ export default function Header() {
                     />
                 </a>
             </Link>}
-            {width > 1024 ? 
+            {width > 1024 ?
                 <nav className={styles.navigation}>
                     {
                         links.map(link => (
@@ -68,7 +68,7 @@ export default function Header() {
                     }
                 </nav>
                 :
-                <div 
+                <div
                     className={styles.hideMenuBtn}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
@@ -83,18 +83,18 @@ export default function Header() {
             {
                 <motion.div
                     className={styles.expandedMenu}
-                    animate={isMenuOpen ? {height:"auto"} : {height:0}}
-                    transition={{duration:0.2,ease:"easeInOut"}}
+                    animate={isMenuOpen ? { height: "auto" } : { height: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
                     <div className={styles.expandedMenuNav}>
-                        {width<=768 && 
+                        {width <= 768 &&
                             <div>
                                 <MenuLink href={"/"} name={"Home"} key={"Home"} />
                             </div>
                         }
                         {
                             links.map(({ href, name }) => (
-                                <div onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                <div onClick={() => setIsMenuOpen(!isMenuOpen)} key={name}>
                                     <MenuLink href={href} name={name} key={name} />
                                 </div>
                             ))
@@ -114,7 +114,7 @@ export default function Header() {
                         </Link>
                         : <UserMenu user={user} setBorder={setBordered} />
                 }
-            </div>            
+            </div>
         </header>
     )
 }

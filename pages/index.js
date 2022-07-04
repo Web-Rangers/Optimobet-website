@@ -531,7 +531,7 @@ export default function Home({
                     <div className={styles.countriesContent}>
                         {
                             countries.slice(0, 11).map(country => (
-                                <div className={styles.country}>
+                                <div className={styles.country} key={country.id}>
                                     <span className={styles.countryName}>
                                         {country.name}
                                     </span>

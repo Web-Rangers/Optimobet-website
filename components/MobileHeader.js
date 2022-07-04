@@ -89,7 +89,7 @@ export default function MobileHeader() {
                         <div className={styles.menuNavigation}>
                             {
                                 links.map(({ href, name }) => (
-                                    <div onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    <div onClick={() => setIsMenuOpen(!isMenuOpen)} key={name}>
                                         <MenuLink href={href} name={name} key={name} />
                                     </div>
                                 ))
