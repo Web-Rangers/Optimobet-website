@@ -378,7 +378,7 @@ function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, 
                 <div className={styles.bonusInfo}>
 
                     <span className={styles.bonusText}>
-                        {claim_bonus_text || shared_content?.name}
+                        {title || shared_content?.name}
                     </span>
                     {features?.map(feature => (
                         <span
