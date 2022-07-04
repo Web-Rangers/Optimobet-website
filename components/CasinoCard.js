@@ -40,7 +40,11 @@ export default function CasinoCard({
             <div className={styles.casinoInfo}>
                 <div className={styles.casinoColumn}>
                     <div className={styles.casinoName}>
-                        <span className={styles.casinoNameText}>{shared_content.name}</span>
+                        <Link href={`/casinos/${id}`}>
+                            <a>
+                                <span className={styles.casinoNameText}>{shared_content.name}</span>
+                            </a>                            
+                        </Link>
                         <div className={styles.casinoRating}>
                             <Stars points={rating} />
                         </div>
