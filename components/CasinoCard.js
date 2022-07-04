@@ -110,19 +110,19 @@ export default function CasinoCard({
                     </span>
                     <div className={styles.casinoGames}>
                         {
-                            games.slice(0, width>480 ? 5 : 3).map(game => (
+                            games.slice(0, width > 480 ? 5 : 3).map(game => (
                                 <div className={styles.casinoGame} key={game.id} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout='fill'
-                                        objectFit='contain'
+                                        objectFit='scale-down'
                                         alt={game.name}
                                     />
                                 </div>
                             ))
                         }
-                        {games.length > width>480 ? 5 : 3 && <div className={styles.casinoGame} >
-                            +{games.length - width>480 ? 5 : 3}
+                        {games.length > width > 480 ? 5 : 3 && <div className={styles.casinoGame} >
+                            +{games.length - width > 480 ? 5 : 3}
                         </div>}
                     </div>
                 </div>

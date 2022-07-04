@@ -60,7 +60,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout='fill'
-                                        objectFit='cover'
+                                        objectFit='scale-down'
                                         alt={game}
                                     />
                                 </div>
