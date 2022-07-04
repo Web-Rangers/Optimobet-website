@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.heading {
+    text-align: left;
+    font: normal normal bold 34px/44px Samsung Sans;
+    letter-spacing: 0px;
+    color: #4B4453;
+    opacity: 1;
+}
+
+.text {
+    text-align: left;
+    font: normal normal normal 15px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #4B4453B3;
+    opacity: 1;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: fit-content;
+}
+
+.info {
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #4B44531A;
+    gap: 12px;
+}
+
+.infoColumns {
+    display: flex;
+    flex-direction: row;
+}
+
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.infoColumn h3 {
+    text-align: left;
+    font: normal normal normal 15px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #4B4453B3;
+    opacity: 1;
+}
+
+.infoColumn span {
+    text-align: left;
+    font: normal normal 500 16px Samsung Sans;
+    letter-spacing: 0px;
+    color: #4B4453;
+    opacity: 1;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 40px;
+        padding: 0 16px;
+    }
+
+    .infoBlock {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .infoColumns {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
