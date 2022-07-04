@@ -172,6 +172,22 @@
     text-transform: uppercase;
 }
 
+@media screen and (max-width: 768px) {
+    .casinoImage {
+        width: 35%;
+    }
+
+    .casinoInfo {
+        width: 65%;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .casinoColumn.right {
+        align-items: flex-start;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .casino {
         flex-direction: column;
@@ -202,21 +218,5 @@
         width: 100%;
         flex-direction: row-reverse;
         justify-content: flex-end;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .casinoImage {
-        width: 35%;
-    }
-
-    .casinoInfo {
-        width: 65%;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .casinoColumn.right {
-        align-items: flex-start;
     }
 }

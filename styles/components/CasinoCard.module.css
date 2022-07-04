@@ -177,6 +177,22 @@
     padding: 0px 8px;
 }
 
+@media screen and (max-width: 768px) {
+    .casinoImage {
+        width: 35%;
+    }
+
+    .casinoInfo {
+        width: 65%;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .casinoColumn.right {
+        align-items: flex-start;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .casino {
         flex-direction: column;
@@ -218,21 +234,5 @@
     .casinoGame {
         width: 50px;
         height: 50px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .casinoImage {
-        width: 35%;
-    }
-
-    .casinoInfo {
-        width: 65%;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .casinoColumn.right {
-        align-items: flex-start;
     }
 }
