@@ -84,28 +84,29 @@ export default function BonusBlock({
                 </div>
             </div>
             <div className={styles.getBonusArea}>
-                <a 
+                <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className={styles.getBonusButton}
-                    style={{marginTop:"38px"}}
+                    style={{ marginTop: "38px" }}
                     href={claim_bonus_url || bonus_url || url}
                 >
                     Get Bonus
                 </a>
-                <span 
+                <span
                     className={styles.tcButton}
                     onClick={() => {
                         setModal(!modal)
                     }}
                 >
-                    {terms_and_condition && 
+                    {terms_and_condition &&
                         <AnimatePresence>
-                            {modal && 
+                            {modal &&
                                 <TermsModal
                                     setModalState={setModal}
                                     rules={terms_and_condition}
                                 />
-                            }                                
+                            }
                         </AnimatePresence>
                     }
                     T&C Apply
