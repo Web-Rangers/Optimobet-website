@@ -18,13 +18,13 @@ export default function CasinoPage({ casino }) {
 
     return (
         <>
-            {width > 480 ? 
+            {width > 480 ?
                 <div className={styles.container}>
                     <div className={styles.sideCol}>
                         <div className={styles.sticky}>
                             <div className={styles.casinoCard}>
                                 <div className={styles.casinoHeaderCard}>
-                                    <div className={styles.casinoHeaderLogo}>
+                                    <div className={styles.casinoHeaderLogo} style={{ backgroundColor: casino.bg_color }}>
                                         <Image
                                             src={`${process.env.IMAGE_URL}/${casino?.image_source}`}
                                             alt={casino?.shared_content?.name}
@@ -59,20 +59,20 @@ export default function CasinoPage({ casino }) {
                                         >
                                             Visit website
                                         </a>
-                                        <span 
+                                        <span
                                             className={styles.bonusApply}
                                             onClick={() => {
                                                 setModal(!modal)
                                             }}
                                         >
-                                            {casino?.terms_and_conditions && 
+                                            {casino?.terms_and_conditions &&
                                                 <AnimatePresence>
-                                                    {modal && 
+                                                    {modal &&
                                                         <TermsModal
                                                             setModalState={setModal}
                                                             rules={casino?.terms_and_conditions}
                                                         />
-                                                    }                                
+                                                    }
                                                 </AnimatePresence>
                                             }
                                             T{'&'}C Apply
@@ -145,7 +145,7 @@ export default function CasinoPage({ casino }) {
                             />
                         </div>
                         <div className={styles.casinoText}>
-                            {casino?.description && 
+                            {casino?.description &&
                                 <div className={styles.casinoTextBlock}>
                                     <span className={styles.blockTitle}>
                                         About casino
@@ -155,7 +155,7 @@ export default function CasinoPage({ casino }) {
                                     </span>
                                 </div>
                             }
-                            {casino?.verdict && 
+                            {casino?.verdict &&
                                 <div className={styles.casinoTextBlock}>
                                     <span className={styles.blockTitle}>
                                         Verdict
@@ -288,7 +288,7 @@ export default function CasinoPage({ casino }) {
                                     </span>
                                 ))}
                             </div>
-                        </div>                        
+                        </div>
                         <div className={styles.fixedButtons}>
                             <a
                                 href={casino?.website}
@@ -298,20 +298,20 @@ export default function CasinoPage({ casino }) {
                             >
                                 Visit website
                             </a>
-                            <span 
+                            <span
                                 className={styles.tcMobile}
                                 onClick={() => {
                                     setModal(!modal)
                                 }}
                             >
-                                {casino?.terms_and_conditions && 
+                                {casino?.terms_and_conditions &&
                                     <AnimatePresence>
-                                        {modal && 
+                                        {modal &&
                                             <TermsModal
                                                 setModalState={setModal}
                                                 rules={casino?.terms_and_conditions}
                                             />
-                                        }                                
+                                        }
                                     </AnimatePresence>
                                 }
                                 T{'&'}C Apply
@@ -364,7 +364,7 @@ export default function CasinoPage({ casino }) {
                     </div>
                     <div className={styles.textWrapper}>
                         <div className={styles.casinoText}>
-                            {casino?.description && 
+                            {casino?.description &&
                                 <div className={styles.casinoTextBlock}>
                                     <span className={styles.blockTitle}>
                                         About casino
@@ -374,7 +374,7 @@ export default function CasinoPage({ casino }) {
                                     </span>
                                 </div>
                             }
-                            {casino?.verdict && 
+                            {casino?.verdict &&
                                 <div className={styles.casinoTextBlock}>
                                     <span className={styles.blockTitle}>
                                         Verdict
@@ -385,7 +385,7 @@ export default function CasinoPage({ casino }) {
                                 </div>
                             }
                         </div>
-                    </div>                    
+                    </div>
                     <div className={styles.bonusesBlocks}>
                         {casino?.bonuses?.map(bonus => (
                             <BonusBlock key={bonus.id} {...bonus} />
