@@ -817,6 +817,10 @@
     .categoryBlocks {
         gap: 16px;
     }
+
+    .casinoBg::after{
+        background: linear-gradient(180deg, rgba(18,17,17,0.6) 0%, rgba(18,17,17,0.3) 50%, rgba(18,17,17,0) 100%);
+    }
 }
 
 @media screen and (max-width: 480px) {
