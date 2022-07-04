@@ -12,7 +12,7 @@ import { useState } from 'react';
 import useWindowSize from '../../hooks/useWindowSize';
 
 export default function CasinoPage({ casino }) {
-    console.log(casino)
+    // console.log(casino)
     const [modal, setModal] = useState(false)
     const { width } = useWindowSize()
 
