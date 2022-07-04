@@ -58,7 +58,7 @@ export default function Search({ setBorder }) {
         <div className={styles.search}>
             <input
                 type="text"
-                placeholder="Search"
+                placeholder="Search string"
                 onChange={debounce(searchText, 1000)}
                 ref={searchRef}
             />
