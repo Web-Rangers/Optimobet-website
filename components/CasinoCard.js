@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Stars from './Stars'
 import TermsModal from './TermsModal'
+import useWindowSize from '../hooks/useWindowSize'
 
 export default function CasinoCard({
     claim_bonus_url,
@@ -22,6 +23,7 @@ export default function CasinoCard({
     image_source,
 }) {
     const [modal, setModal] = useState(false)
+    const { width } = useWindowSize()
 
     return (
         <div className={styles.casino}>
@@ -56,12 +58,59 @@ export default function CasinoCard({
                             ))
                         }
                     </div>
+                    {width <= 480 &&
+                        <div className={styles.casinoLanguages}>
+                            <div className={styles.languageContainer}>
+                                <span className={styles.languageTitle}>Website</span>
+                                <div className={styles.languageContent}>
+                                    {
+                                        website_language.slice(0, 2).map(lang => (
+                                            <div className={styles.language} key={`${id}_website_${lang.id}`} >
+                                                <Image
+                                                    src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
+                                                    alt={lang.name}
+                                                    height={20}
+                                                    width={27}
+                                                    objectFit='contain'
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                    {website_language.length > 2 && <div className={styles.language}>
+                                        +{website_language.length - 2}
+                                    </div>}
+                                </div>
+                            </div>
+                            <div className={styles.languageContainer}>
+                                <span className={styles.languageTitle}>Live chat</span>
+                                <div className={styles.languageContent}>
+                                    {
+                                        support_language.slice(0, 2).map(lang => (
+                                            <div className={styles.language} key={`${id}_support_${lang.id}`} >
+                                                <Image
+                                                    src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
+                                                    alt={lang.name}
+                                                    height={20}
+                                                    width={27}
+                                                    objectFit='contain'
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                    {support_language.length > 2 && <div className={styles.language}>
+                                        +{support_language.length - 2}
+                                    </div>}
+
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <span className={styles.subtitle}>
                         Available games
                     </span>
                     <div className={styles.casinoGames}>
                         {
-                            games.slice(0, 5).map(game => (
+                            games.slice(0, width>480 ? 5 : 3).map(game => (
                                 <div className={styles.casinoGame} key={game.id} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
@@ -72,13 +121,13 @@ export default function CasinoCard({
                                 </div>
                             ))
                         }
-                        {games.length > 5 && <div className={styles.casinoGame} >
-                            +{games.length - 5}
+                        {games.length > width>480 ? 5 : 3 && <div className={styles.casinoGame} >
+                            +{games.length - width>480 ? 5 : 3}
                         </div>}
                     </div>
                 </div>
                 <div className={`${styles.casinoColumn} ${styles.right}`}>
-                    <div className={styles.casinoLanguages}>
+                    {width > 480 && <div className={styles.casinoLanguages}>
                         <div className={styles.languageContainer}>
                             <span className={styles.languageTitle}>Website</span>
                             <div className={styles.languageContent}>
@@ -122,7 +171,7 @@ export default function CasinoCard({
 
                             </div>
                         </div>
-                    </div>
+                    </div>}
                     <div className={styles.casinoButtons}>
                         <div
                             className={styles.tcButton}
