@@ -377,7 +377,7 @@ export default function Home({
                             <span className={styles.promoBlocksSubTitle}>
                                 second name
                             </span>
-                            <span className={styles.promoBlocksTitle} style={{textTransform:"default"}}>
+                            <span className={styles.promoBlocksTitle} style={{textTransform:"initial"}}>
                                 How to start gambling
                             </span>
                         </div>
@@ -499,7 +499,7 @@ export default function Home({
                         <span className={styles.promoBlocksSubTitle}>
                             OVERALL {casinosCount} CASINOS
                         </span>
-                        <span className={styles.promoBlocksTitle} style={{textTransform:"default"}}>
+                        <span className={styles.promoBlocksTitle} style={{textTransform:"initial"}}>
                             We have casinos in these countries
                         </span>
                     </div>
@@ -542,7 +542,7 @@ export default function Home({
                         <span className={styles.promoBlocksSubTitle}>
                             second name
                         </span>
-                        <span className={styles.promoBlocksTitle} style={{textTransform:"default"}}>
+                        <span className={styles.promoBlocksTitle} style={{textTransform:"initial"}}>
                             How to opt the best site for gambling
                         </span>
                     </div>

@@ -889,4 +889,14 @@
     .countriesContent {
         gap: 12px;
     }
+    
+    .rulesList li {
+        font: normal normal bold 16px/19px Samsung Sans;
+    }
+    .promoBlocksSubTitle{
+        font: normal normal 500 13px/16px Samsung Sans;
+    }
+    .promoBlocksTitle{
+        font: normal normal bold 20px/23px Samsung Sans;
+    }
 }
