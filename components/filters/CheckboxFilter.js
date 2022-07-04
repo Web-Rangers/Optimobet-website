@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/components/CheckboxFilter.module.css'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function CheckboxFilter({ items, title, collapsible = false, initialOpen = true, onChange }) {
     const [active, setActive] = useState()
@@ -29,7 +30,7 @@ export default function CheckboxFilter({ items, title, collapsible = false, init
             rotate: 90,
         },
         closed: {
-            rotate: -90,
+            rotate: 0,
         }
     }
 
@@ -59,7 +60,11 @@ export default function CheckboxFilter({ items, title, collapsible = false, init
                         variants={chevronVariants}
                         animate={isOpen ? 'open' : 'closed'}
                     >
-                        {'>'}
+                        <Image
+                            src="/images/icons/chevron-down.svg"
+                            width={24}
+                            height={24}
+                        />
                     </motion.span>
                 }
             </div>}

@@ -217,6 +217,7 @@
     font: normal normal bold 15px/26px Samsung Sans;
     letter-spacing: 0px;
     color: #F2F2F2;
+    flex-shrink: 0;
 }
 
 .gamblingPicture {
@@ -887,9 +888,5 @@
 
     .countriesContent {
         gap: 12px;
-    }
-
-    .rulesList li {
-        font-size: 16px;
     }
 }

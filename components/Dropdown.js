@@ -11,26 +11,26 @@ const demo = [
         id: 2,
         value: "Russian"
     },
-    {
-        id: 3,
-        value: "Georgian"
-    },
-    {
-        id: 4,
-        value: "German"
-    },
-    {
-        id: 5,
-        value: "French"
-    },
+    // {
+    //     id: 3,
+    //     value: "Georgian"
+    // },
+    // {
+    //     id: 4,
+    //     value: "German"
+    // },
+    // {
+    //     id: 5,
+    //     value: "French"
+    // },
     {
         id: 6,
         value: "Spanish"
     },
-    {
-        id: 7,
-        value: "Italian"
-    },
+    // {
+    //     id: 7,
+    //     value: "Italian"
+    // },
 ]
 
 export default function Dropdown({ items = [...demo], description, onChange, defaultSelected, bordered = true }) {

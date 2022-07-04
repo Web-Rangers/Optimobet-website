@@ -77,7 +77,7 @@ export default function CasinoCard({
                                             </div>
                                         ))
                                     }
-                                    {website_language.length > 2 && <div className={styles.language}>
+                                    {website_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
                                         +{website_language.length - 2}
                                     </div>}
                                 </div>
@@ -98,7 +98,7 @@ export default function CasinoCard({
                                             </div>
                                         ))
                                     }
-                                    {support_language.length > 2 && <div className={styles.language}>
+                                    {support_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
                                         +{support_language.length - 2}
                                     </div>}
 
@@ -145,7 +145,7 @@ export default function CasinoCard({
                                         </div>
                                     ))
                                 }
-                                {website_language.length > 2 && <div className={styles.language}>
+                                {website_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
                                     +{website_language.length - 2}
                                 </div>}
                             </div>
@@ -166,7 +166,7 @@ export default function CasinoCard({
                                         </div>
                                     ))
                                 }
-                                {support_language.length > 2 && <div className={styles.language}>
+                                {support_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
                                     +{support_language.length - 2}
                                 </div>}
 

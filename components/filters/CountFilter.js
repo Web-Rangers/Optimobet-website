@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../../styles/components/CountFilter.module.css'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function CountFilter({ items, title, collapsible = false, initialOpen = true, onChange, initialActive }) {
     const [active, setActive] = useState(initialActive)
@@ -40,7 +41,7 @@ export default function CountFilter({ items, title, collapsible = false, initial
             rotate: 90,
         },
         closed: {
-            rotate: -90,
+            rotate: 0,
         }
     }
 
@@ -65,7 +66,11 @@ export default function CountFilter({ items, title, collapsible = false, initial
                         variants={chevronVariants}
                         animate={isOpen ? 'open' : 'closed'}
                     >
-                        {'>'}
+                        <Image
+                            src="/images/icons/chevron-down.svg"
+                            width={24}
+                            height={24}
+                        />
                     </motion.span>
                 }
             </div>}

@@ -232,10 +232,10 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                     <div />
                 </div>
                 <div className={styles.aboutSlot}>
-                    <span className={styles.slotDescription}>
+                    {slot.description && slot.description!="" && <span className={styles.slotDescription}>
                         {parse(slot.description ?? "-")}
-                    </span>
-                    <div className={styles.ourScore}>
+                    </span>}
+                    {slot.verdict && slot.verdict!="" && <div className={styles.ourScore}>
                         <div className={styles.ourScoreHeader}>
                             <span className={styles.scoreHeaderText}>
                                 Our Score
@@ -247,7 +247,7 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                         <span className={styles.ourScoreText}>
                             {parse(slot.verdict ?? "-")}
                         </span>
-                    </div>
+                    </div>}
                 </div>
             </div>
             {slot.provider_id &&
