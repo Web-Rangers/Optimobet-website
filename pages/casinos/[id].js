@@ -54,20 +54,20 @@ export default function CasinoPage({ casino }) {
                                 >
                                     Visit website
                                 </a>
-                                <span 
+                                <span
                                     className={styles.bonusApply}
                                     onClick={() => {
                                         setModal(!modal)
                                     }}
                                 >
-                                    {casino.terms_and_conditions && 
+                                    {casino.terms_and_conditions &&
                                         <AnimatePresence>
-                                            {modal && 
+                                            {modal &&
                                                 <TermsModal
                                                     setModalState={setModal}
                                                     rules={casino.terms_and_conditions}
                                                 />
-                                            }                                
+                                            }
                                         </AnimatePresence>
                                     }
                                     T{'&'}C Apply
@@ -158,7 +158,7 @@ export default function CasinoPage({ casino }) {
                     </div>
                 </div>
                 <div className={styles.bonusesBlocks}>
-                    {casino.bonuses.map(bonus => (
+                    {casino.bonuses?.map(bonus => (
                         <BonusBlock key={bonus.id} {...bonus} />
                     ))}
                 </div>
