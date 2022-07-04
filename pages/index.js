@@ -362,7 +362,6 @@ export default function Home({
                                         >
                                             <Slot
                                                 {...slot}
-                                                provider={providers.filter(prov => prov.id == slot.provider_id)[0].name || ""}
                                             />
                                         </div>
                                     ))}

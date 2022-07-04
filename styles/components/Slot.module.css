@@ -19,6 +19,15 @@
     bottom: 32px;
 }
 
+.provider {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: calc(100% - 128px);
+    height: 80px;
+    z-index: 5;
+}
+
 .pictureArea::after {
     content: "";
     background: transparent linear-gradient(180deg, #4B445300 0%, #4B445380 100%);

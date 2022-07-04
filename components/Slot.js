@@ -30,6 +30,14 @@ export default function Slot({ name, provider, score, big, id, style, image_sour
                     setHover(false)
                 }}
             >
+                <div className={styles.provider}>
+                    <Image
+                        src={`${process.env.IMAGE_URL}/${provider?.image_source}`}
+                        layout="fill"
+                        objectFit='contain'
+                        objectPosition={'left center'}
+                    />
+                </div>
                 <div className={styles.pictureArea}>
                     <Image
                         src={`${process.env.IMAGE_URL}/${image_source}`}
@@ -45,7 +53,7 @@ export default function Slot({ name, provider, score, big, id, style, image_sour
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
                     <span className={styles.slotName}>{name}</span>
-                    <span className={styles.slotProvider}>{provider}</span>
+                    <span className={styles.slotProvider}>{provider?.name}</span>
                 </motion.div>
                 <AnimatePresence>
                     {hover && !big &&
