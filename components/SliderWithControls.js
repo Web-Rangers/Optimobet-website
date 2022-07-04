@@ -6,9 +6,11 @@ import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from 'next/image';
+import useWindowSize from '../hooks/useWindowSize'
 
 // children = [<SwiperSlide>content</SwiperSlide>,...] 
-export default function SliderWithControls({ children = [], loop = false, styleWrap = {}, main = false }) {
+export default function SliderWithControls({ children = [], loop = false, styleWrap = {}, main = false }) {    
+    const { width, height } = useWindowSize()
     const navigationPrevRef = useRef(null)
     const navigationNextRef = useRef(null)
 
@@ -36,14 +38,14 @@ export default function SliderWithControls({ children = [], loop = false, styleW
             {children}
             <div ref={navigationPrevRef} className={styles.slideNavPrev}>
                 <Image
-                    src="/images/icons/sliderLeft.svg"
+                    src={width>480 ? "/images/icons/sliderLeft.svg" : "/images/icons/SliderLeftMobile.svg"}
                     width={50}
                     height={50}
                 />
             </div>
             <div ref={navigationNextRef} className={styles.slideNavNext}>
                 <Image
-                    src="/images/icons/sliderRight.svg"
+                    src={width>480 ? "/images/icons/sliderRight.svg" : "/images/icons/SliderRightMobile.svg"}
                     width={50}
                     height={50}
                 />

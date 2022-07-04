@@ -153,9 +153,9 @@
 
 @media screen and (max-width: 480px) {
     .mainSl .slideNavPrev {
-        left: -12px
+        left: -10px
     }
     .mainSl .slideNavNext {
-        right: -12px;
+        right: -10px;
     }
 }

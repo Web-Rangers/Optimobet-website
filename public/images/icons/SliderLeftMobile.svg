@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="40.003" viewBox="0 0 24 40.003">
+  <g id="Group_1193" data-name="Group 1193" transform="translate(-22.004 -10.852)">
+    <path id="Subtraction_116" data-name="Subtraction 116" d="M-21063,6582.854a20.15,20.15,0,0,1-4-.4v-39.2a20.143,20.143,0,0,1,4-.4,19.865,19.865,0,0,1,14.141,5.858,19.872,19.872,0,0,1,5.859,14.144,19.872,19.872,0,0,1-5.859,14.144A19.865,19.865,0,0,1-21063,6582.854Z" transform="translate(21089 -6532)" fill="#7f3ffc"/>
+    <g id="chevron-down" transform="translate(41.604 21.253) rotate(90)">
+      <path id="Path_690" data-name="Path 690" d="M0,0H19.2V19.2H0Z" transform="translate(0)" fill="none"/>
+      <path id="Path_691" data-name="Path 691" d="M0,0,4.8,4.8,9.6,0" transform="translate(4.8 7.2)" fill="none" stroke="#f2f2f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>
