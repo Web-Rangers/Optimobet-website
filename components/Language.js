@@ -16,7 +16,7 @@ export default function Language({ setBorder }) {
 
     const apply = () => {
         const newUser = { ...user };
-        newUser.country_id = country_id.current;
+        newUser.country_code = country_id.current;
         localStorage.setItem('user', JSON.stringify(newUser));
         router.reload();
         setOpen(false)
@@ -24,7 +24,7 @@ export default function Language({ setBorder }) {
 
     const reset = () => {
         const newUser = { ...user };
-        newUser.country_id = undefined;
+        newUser.country_code = undefined;
         localStorage.setItem('user', JSON.stringify(newUser));
         router.reload();
         setOpen(false)
@@ -53,11 +53,11 @@ export default function Language({ setBorder }) {
                 <span className={styles.separator} />
                 <div className={styles.userCountry}>
                     <Image
-                        src={`${process.env.IMAGE_URL}/${countries?.find(country => country.code === user?.country_id)?.flag_source}`}
+                        src={`${process.env.IMAGE_URL}/${countries?.find(country => country.code === user?.country_code)?.flag_source}`}
                         width={27}
                         height={20}
                         objectFit="contain"
-                        alt={countries?.find(country => country.code === user?.country_id)?.name}
+                        alt={countries?.find(country => country.code === user?.country_code)?.name}
                     />
                 </div>
             </div>
@@ -75,9 +75,9 @@ export default function Language({ setBorder }) {
                         </span>
                         <Dropdown description={"Website Language"} />
                         <Dropdown
-                            defaultSelected={user?.country_id}
-                            onChange={(item) => country_id.current = item.id}
-                            items={countries.map(country => ({ id: country.code, value: country.name, icon: country.flag_source }))}
+                            defaultSelected={countries?.find(country => country.code === user?.country_code)?.id}
+                            onChange={(item) => country_id.current = countries.find(country => country.id === item.id)?.code}
+                            items={countries?.map(country => ({ id: country.id, value: country.name, icon: country.flag_source }))}
                             description={"Your Country"}
                         />
                         <div className={styles.applyOrReset}>
