@@ -14,6 +14,8 @@ export default function BonusBlock({
     maximum_cashout,
     bonus_expiration,
     url,
+    claim_bonus_url,
+    bonus_url,
     terms_and_condition
 }) {
     const [modal, setModal] = useState(false)
@@ -82,12 +84,14 @@ export default function BonusBlock({
                 </div>
             </div>
             <div className={styles.getBonusArea}>
-                <button 
+                <a 
+                    target="_blank"
                     className={styles.getBonusButton}
                     style={{marginTop:"38px"}}
+                    href={claim_bonus_url || bonus_url || url}
                 >
                     Get Bonus
-                </button>
+                </a>
                 <span 
                     className={styles.tcButton}
                     onClick={() => {

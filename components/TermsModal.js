@@ -11,6 +11,9 @@ export default function TermsModal({ rules, setModalState }) {
     const [leftOffset, setLeftOffset] = useState({})
 
     useEffect(()=>{
+        if (width<=750)            
+        setLeftOffset({width:width, right:0})
+        else
         if (blockRef.current.getBoundingClientRect().left<0) {
             setLeftOffset({width:750+blockRef.current.getBoundingClientRect().left})
         }
