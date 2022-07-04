@@ -100,25 +100,25 @@ export default function CasinoPage({ casino }) {
                         iconSrc="/images/icons/casino/current-location.svg"
                         infoTitle="IP Address From"
                         infoText={casino.countries[0]?.name}
-                        dataImages={[`${process.env.IMAGE_URL}/${casino.countries[0].flag_source}`]}
+                        dataImages={[`${process.env.IMAGE_URL}/${casino.countries[0]?.flag_source}`]}
                     />
                     <InfoBlock
                         iconSrc="/images/icons/casino/users.svg"
                         infoTitle="Support From"
                         infoText={casino.support_language[0]?.name}
-                        dataImages={casino.support_language.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
+                        dataImages={casino.support_language?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
                     />
                     <InfoBlock
                         iconSrc="/images/icons/casino/language.svg"
                         infoTitle="Website Language"
                         infoText={casino.website_language[0]?.name}
-                        dataImages={casino.website_language.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
+                        dataImages={casino.website_language?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
                     />
                     <InfoBlock
                         iconSrc="/images/icons/casino/messages.svg"
                         infoTitle="Live Chat"
                         infoText={casino.live_language[0]?.name}
-                        dataImages={casino.live_language.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
+                        dataImages={casino.live_language?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
                     />
                     <InfoBlock
                         iconSrc="/images/icons/casino/user.svg"
@@ -130,7 +130,7 @@ export default function CasinoPage({ casino }) {
                         iconSrc="/images/icons/casino/shield.svg"
                         infoTitle="VPN"
                         infoText={casino.countries.find(c => c.isPinned == 0)?.name}
-                        dataImages={[`${process.env.IMAGE_URL}/${casino.countries.find(c => c.isPinned == 0)?.flag_source}`]}
+                        dataImages={[`${process.env.IMAGE_URL}/${casino.countries?.find(c => c.isPinned == 0)?.flag_source}`]}
                     />
                     <InfoBlock
                         iconSrc="/images/icons/casino/license.svg"

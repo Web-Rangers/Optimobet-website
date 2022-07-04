@@ -63,7 +63,7 @@ export default function PromoBonusBlock({
                             </span>
                             <Image
                                 src={`${process.env.IMAGE_URL}/${bonusable?.image_source}`}
-                                objectFit='cover'
+                                objectFit='contain'
                                 width={80}
                                 height={32}
                             />
