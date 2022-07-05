@@ -515,9 +515,8 @@ export default function SearchResults({ providers }) {
                                     className={styles.casinos}
                                 >
                                     {
-                                        casinos.map(casino => {
-                                            console.log(casino)
-                                            return <CasinoCard 
+                                        casinos.map(casino => (
+                                            <CasinoCard 
                                                 {...casino.casino} 
                                                 shared_content={{...casino}} 
                                                 games={casino?.casino?.games}
@@ -525,7 +524,7 @@ export default function SearchResults({ providers }) {
                                                 support_language={casino?.casino?.support_language}
                                                 key={`${casino.name}-${casino.id}`} 
                                             />
-})
+                                        ))
                                     }
                                 </motion.div>
                                 <div 
