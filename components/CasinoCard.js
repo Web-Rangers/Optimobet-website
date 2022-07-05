@@ -51,7 +51,7 @@ export default function CasinoCard({
                     </div>
                     <div className={styles.casinoTags}>
                         {
-                            features.map(tag => (
+                            features?.map(tag => (
                                 <div className={styles.casinoTag} key={tag}>
                                     <Image
                                         src="/images/icons/circle-check.svg"
@@ -69,7 +69,7 @@ export default function CasinoCard({
                                 <span className={styles.languageTitle}>Website</span>
                                 <div className={styles.languageContent}>
                                     {
-                                        website_language.slice(0, 2).map(lang => (
+                                        website_language?.slice(0, 2)?.map(lang => (
                                             <div className={styles.language} key={`${id}_website_${lang.id}`} >
                                                 <Image
                                                     src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
@@ -90,7 +90,7 @@ export default function CasinoCard({
                                 <span className={styles.languageTitle}>Live chat</span>
                                 <div className={styles.languageContent}>
                                     {
-                                        support_language.slice(0, 2).map(lang => (
+                                        support_language?.slice(0, 2)?.map(lang => (
                                             <div className={styles.language} key={`${id}_support_${lang.id}`} >
                                                 <Image
                                                     src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
@@ -115,7 +115,7 @@ export default function CasinoCard({
                     </span>
                     <div className={styles.casinoGames}>
                         {
-                            games.slice(0, width > 480 ? 5 : 3).map(game => (
+                            games?.slice(0, width > 480 ? 5 : 3)?.map(game => (
                                 <div className={styles.casinoGame} key={game.id} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
@@ -126,8 +126,8 @@ export default function CasinoCard({
                                 </div>
                             ))
                         }
-                        {games.length > width > 480 ? 5 : 3 && <div className={styles.casinoGame} >
-                            +{games.length - width > 480 ? 5 : 3}
+                        {games?.length > width > 480 ? 5 : 3 && <div className={styles.casinoGame} >
+                            +{games?.length - width > 480 ? 5 : 3}
                         </div>}
                     </div>
                 </div>
@@ -137,7 +137,7 @@ export default function CasinoCard({
                             <span className={styles.languageTitle}>Website</span>
                             <div className={styles.languageContent}>
                                 {
-                                    website_language.slice(0, 2).map(lang => (
+                                    website_language?.slice(0, 2)?.map(lang => (
                                         <div className={styles.language} key={`${id}_website_${lang.id}`} >
                                             <Image
                                                 src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
@@ -149,8 +149,8 @@ export default function CasinoCard({
                                         </div>
                                     ))
                                 }
-                                {website_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
-                                    +{website_language.length - 2}
+                                {website_language?.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
+                                    +{website_language?.length - 2}
                                 </div>}
                             </div>
                         </div>
@@ -158,7 +158,7 @@ export default function CasinoCard({
                             <span className={styles.languageTitle}>Live chat</span>
                             <div className={styles.languageContent}>
                                 {
-                                    support_language.slice(0, 2).map(lang => (
+                                    support_language?.slice(0, 2)?.map(lang => (
                                         <div className={styles.language} key={`${id}_support_${lang.id}`} >
                                             <Image
                                                 src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
@@ -170,8 +170,8 @@ export default function CasinoCard({
                                         </div>
                                     ))
                                 }
-                                {support_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
-                                    +{support_language.length - 2}
+                                {support_language?.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
+                                    +{support_language?.length - 2}
                                 </div>}
 
                             </div>
