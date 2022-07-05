@@ -30,7 +30,11 @@ const mobileFilters = [
     },
     {
         id: '4',
-        value: 'Best in the world',
+        value: 'Highly recommended',
+    },
+    {
+        id: '5',
+        value: 'Best of the world',
     }
 ]
 
@@ -128,20 +132,20 @@ export default function CasinosPage({ filters }) {
             case 'All':
                 setFilteredItems(casinosRef.current);
                 break;
-            case "BestInCountry":
+            case "Best in your country":
                 user?.country_id && (newFilteredItems = filteredItems.filter(casino => casino.countries.find(country => country.id === user.country_id)));
                 newFilteredItems.sort((a, b) => b.rating - a.rating);
                 setFilteredItems(newFilteredItems);
                 break;
-            case "BestInWorld":
+            case "Best of the world":
                 newFilteredItems.sort((a, b) => b.rating - a.rating);
                 setFilteredItems(newFilteredItems);
                 break;
-            case "Recent":
+            case "Recently added":
                 newFilteredItems.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 setFilteredItems(newFilteredItems);
                 break;
-            case 'Recommended':
+            case "Highly recommended":
                 newFilteredItems.sort((a, b) => b.reputation - a.reputation);
                 setFilteredItems(newFilteredItems);
                 break;
@@ -295,26 +299,26 @@ export default function CasinosPage({ filters }) {
                                 All
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${sort === 'BestInCountry' && styles.active}`}
-                                onClick={() => handleSort('BestInCountry')}
+                                className={`${styles.filterControlsItem} ${sort === 'Best in your country' && styles.active}`}
+                                onClick={() => handleSort('Best in your country')}
                             >
                                 Best in your country
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${sort === 'Recent' && styles.active}`}
-                                onClick={() => handleSort('Recent')}
+                                className={`${styles.filterControlsItem} ${sort === 'Recently added' && styles.active}`}
+                                onClick={() => handleSort('Recently added')}
                             >
                                 Recently added
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${sort === 'Recommended' && styles.active}`}
-                                onClick={() => handleSort('Recommended')}
+                                className={`${styles.filterControlsItem} ${sort === 'Highly recommended' && styles.active}`}
+                                onClick={() => handleSort('Highly recommended')}
                             >
                                 Highly recommended
                             </div>
                             <div
-                                className={`${styles.filterControlsItem} ${sort === 'BestInWorld' && styles.active}`}
-                                onClick={() => handleSort('BestInWorld')}
+                                className={`${styles.filterControlsItem} ${sort === 'Best of the world' && styles.active}`}
+                                onClick={() => handleSort('Best of the world')}
                             >
                                 Best of the world
                             </div>
