@@ -9,11 +9,11 @@ export default function CategoryBlock({ name, info, image, bgColor = "", href = 
     const [widthIcon, setWidthIcon] = useState(140)
 
     useEffect(()=>{
-        let iconsize = 140
+        let iconsize = 180
         if (width<=1440)
-            iconsize = 100
+            iconsize = 140
         if (width<=1024)
-            iconsize = 80
+            iconsize = 120
         setWidthIcon(iconsize)
     },[width])
 

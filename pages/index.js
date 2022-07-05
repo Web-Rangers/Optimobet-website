@@ -193,14 +193,14 @@ export default function Home({
                         name="Betting"
                         info={`${bookmakersCount} Bookmakers`}
                         image="/images/icons/cat-1.png"
-                        bgColor="#7F3FFC4D"
+                        bgColor="#00C69C4D"
                         href='/bookmakers'
                     />
                     <CategoryBlock
                         name="Casino"
                         info={`${casinosCount} Online casinos`}
                         image="/images/icons/cat-2.png"
-                        bgColor="#FFC4484D"
+                        bgColor="#7F3FFC4D"
                         href='/casinos'
                     />
                     <CategoryBlock
@@ -214,7 +214,7 @@ export default function Home({
                         name="Bonus"
                         info={`${bonusesCount} Bonuses`}
                         image="/images/icons/cat-4.png"
-                        bgColor="#00C69C4D"
+                        bgColor="#FFC4484D"
                         href='/bonuses'
                     />
                 </div>
