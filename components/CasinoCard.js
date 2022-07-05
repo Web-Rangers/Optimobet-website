@@ -126,8 +126,8 @@ export default function CasinoCard({
                                 </div>
                             ))
                         }
-                        {games?.length > width > 480 ? 5 : 3 && <div className={styles.casinoGame} >
-                            +{games?.length - width > 480 ? 5 : 3}
+                        {games?.length > (width > 480 ? 5 : 3) && <div className={styles.casinoGame} >
+                            +{games?.length - (width > 480 ? 5 : 3)}
                         </div>}
                     </div>
                 </div>

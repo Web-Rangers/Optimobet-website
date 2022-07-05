@@ -150,7 +150,7 @@ export default function SearchResults({ providers }) {
 
     useEffect(()=>{
         if (router.query.text)
-            APIRequest(`/search?q=${router.query.text}`, 'GET')
+            APIRequest(`/search/result?q=${router.query.text}`, 'GET')
             .then(data => {
                 setCategoriesOnSearch(
                     [
@@ -515,8 +515,9 @@ export default function SearchResults({ providers }) {
                                     className={styles.casinos}
                                 >
                                     {
-                                        casinos.map(casino => (
-                                            <CasinoCard 
+                                        casinos.map(casino => {
+                                            console.log(casino)
+                                            return <CasinoCard 
                                                 {...casino.casino} 
                                                 shared_content={{...casino}} 
                                                 games={casino?.casino?.games}
@@ -524,7 +525,7 @@ export default function SearchResults({ providers }) {
                                                 support_language={casino?.casino?.support_language}
                                                 key={`${casino.name}-${casino.id}`} 
                                             />
-                                        ))
+})
                                     }
                                 </motion.div>
                                 <div 
