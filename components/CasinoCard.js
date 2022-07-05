@@ -52,7 +52,7 @@ export default function CasinoCard({
                     <div className={styles.casinoTags}>
                         {
                             features?.map(tag => (
-                                <div className={styles.casinoTag} key={tag}>
+                                <div className={styles.casinoTag} key={`${tag}-${id}`}>
                                     <Image
                                         src="/images/icons/circle-check.svg"
                                         height={24}
@@ -116,7 +116,7 @@ export default function CasinoCard({
                     <div className={styles.casinoGames}>
                         {
                             games?.slice(0, width > 480 ? 5 : 3)?.map(game => (
-                                <div className={styles.casinoGame} key={game.id} >
+                                <div className={styles.casinoGame} key={`${game.id}-${id}`} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout='fill'

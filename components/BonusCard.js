@@ -39,7 +39,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                     <div className={styles.casinoTags}>
                         {
                             bonusable?.features?.map(tag => (
-                                <div className={styles.casinoTag} key={tag}>
+                                <div className={styles.casinoTag} key={`${tag}-${id}`}>
                                     <Image
                                         src="/images/icons/circle-check.svg"
                                         height={18}
@@ -55,8 +55,8 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                     </span>
                     <div className={styles.casinoGames}>
                         {
-                            bonusable.games.slice(0, gameCount.current).map(game => (
-                                <div className={styles.casinoGame} key={game} >
+                            bonusable?.games?.slice(0, gameCount.current)?.map(game => (
+                                <div className={styles.casinoGame} key={`${game}-${id}`} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout='fill'
@@ -77,7 +77,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                             <span className={styles.languageTitle}>Website</span>
                             <div className={styles.languageContent}>
                                 {
-                                    bonusable.website_language.slice(0, 2).map(lang => (
+                                    bonusable?.website_language?.slice(0, 2)?.map(lang => (
                                         <div className={styles.language} key={`${id}_website_${lang.id}`} >
                                             <Image
                                                 src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
@@ -98,7 +98,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                             <span className={styles.languageTitle}>Live chat</span>
                             <div className={styles.languageContent}>
                                 {
-                                    bonusable.support_language.slice(0, 2).map(lang => (
+                                    bonusable?.support_language?.slice(0, 2)?.map(lang => (
                                         <div className={styles.language} key={`${id}_support_${lang.id}`} >
                                             <Image
                                                 src={`${process.env.IMAGE_URL}/${lang.flag_source}`}
