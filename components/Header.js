@@ -146,6 +146,7 @@ function UserMenu({ user, setBorder }) {
     const [passwordModal, setPasswordModal] = useState(false);
     const [cookie, setCookie, removeCookie] = useCookies(['token']);
     const router = useRouter();
+    const blockRef = useRef()
 
     function handleLogout() {
         localStorage.removeItem('user');
@@ -158,9 +159,22 @@ function UserMenu({ user, setBorder }) {
         setBorder(!isOpen);
     }
 
+    useEffect(() => {
+        if (window)
+            window.addEventListener('click', closeIfNotDropdown)
+        return () => {
+            window.removeEventListener('click', closeIfNotDropdown)
+        }
+    }, [])
+
+    const closeIfNotDropdown = (e) => {
+        if ((e.target != blockRef.current) && (!blockRef.current.contains(e.target)))
+            setIsOpen(false)
+    }
+
     return (
         <>
-            <div className={styles.user}>
+            <div className={styles.user} ref={blockRef}>
                 <div
                     onClick={toggleOpen}
                     className={styles.userAvatar}
