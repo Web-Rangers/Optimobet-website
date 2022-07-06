@@ -351,9 +351,13 @@ export default function CasinosPage({ filters }) {
                             </div>
                         }
                         {
-                            filteredItems.map(casino => (
-                                <CasinoCard {...casino} key={casino.name} />
-                            ))
+                            casinos.length > 0
+                                ? filteredItems.map(casino => (
+                                    <CasinoCard {...casino} key={casino.name} />
+                                ))
+                                : <div className='preloader'>
+                                    <BeatLoader color='#7F3FFC' />
+                                </div>
                         }
                         {filteredItems.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
                             <BeatLoader loading={loading} color='#7F3FFC' />

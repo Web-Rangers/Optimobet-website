@@ -15,6 +15,7 @@ import Slot from '../components/Slot'
 import APIRequest from '../functions/requests/APIRequest';
 import Link from 'next/link';
 import PromoBonusBlock from '../components/PromoBonusBlock';
+import { BeatLoader } from 'react-spinners';
 
 const _slots = [
     {
@@ -178,7 +179,7 @@ export default function Home({
 
             <main className={styles.main}>
                 <div className={styles.mainSlider}>
-                    {newCasinos.length > 0 &&
+                    {newCasinos.length > 0 ?
                         <SliderWithControls
                             styleWrap={styleMainSlider}
                             main
@@ -193,7 +194,11 @@ export default function Home({
                                     />
                                 </SwiperSlide>
                             ))}
-                        </SliderWithControls>}
+                        </SliderWithControls>
+                        : <div className='preloader'>
+                            <BeatLoader color='#7F3FFC' />
+                        </div>
+                    }
                 </div>
 
                 <div className={styles.categoryBlocks}>
@@ -237,19 +242,28 @@ export default function Home({
                         </span>
                     </div>
                     <div className={styles.promoBlocksContent}>
-                        {exclusiveBetting[0] && <PromoBlock
-                            charactersImage="/images/main/7880-1.png"
-                            bgColor="#7F3FFC"
-                            {...exclusiveBetting[0]}
-                            rating={exclusiveBetting[0].reputation}
-
-                        />}
-                        {exclusiveBetting[1] && <PromoBlock
-                            charactersImage="/images/main/7880-2.png"
-                            bgColor="#4B4453"
-                            {...exclusiveBetting[1]}
-                            rating={exclusiveBetting[1].reputation}
-                        />}
+                        {exclusiveBetting[0]
+                            ? <PromoBlock
+                                charactersImage="/images/main/7880-1.png"
+                                bgColor="#7F3FFC"
+                                {...exclusiveBetting[0]}
+                                rating={exclusiveBetting[0].reputation}
+                            />
+                            : <div className='preloader'>
+                                <BeatLoader color='#7F3FFC' />
+                            </div>
+                        }
+                        {exclusiveBetting[1]
+                            ? <PromoBlock
+                                charactersImage="/images/main/7880-2.png"
+                                bgColor="#4B4453"
+                                {...exclusiveBetting[1]}
+                                rating={exclusiveBetting[1].reputation}
+                            />
+                            : <div className='preloader'>
+                                <BeatLoader color='#7F3FFC' />
+                            </div>
+                        }
                     </div>
                 </div>
 
@@ -264,14 +278,19 @@ export default function Home({
                         ))
                     }
                     <div className={styles.promoInSites}>
-                        {betting[3] && <PromoBlock
-                            charactersImage="/images/main/7880-3.png"
-                            bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
-                            charactersWidth={width > 1024 ? "60%" : null}
-                            charactersHeight={width > 1024 ? null : "100%"}
-                            {...betting[3]}
-                            rating={betting[3].reputation}
-                        />}
+                        {betting[3]
+                            ? <PromoBlock
+                                charactersImage="/images/main/7880-3.png"
+                                bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
+                                charactersWidth={width > 1024 ? "60%" : null}
+                                charactersHeight={width > 1024 ? null : "100%"}
+                                {...betting[3]}
+                                rating={betting[3].reputation}
+                            />
+                            : <div className='preloader'>
+                                <BeatLoader color='#7F3FFC' />
+                            </div>
+                        }
                     </div>
                     {
                         betting.slice(width > 1024 ? 4 : 5, 8).map(casino => (
