@@ -85,6 +85,15 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
         }
     }
 
+    const mobileButtonVariants = {
+        shown: {
+            backgroundColor: '#7F3FFC',
+        },
+        hidden: {
+            backgroundColor: '#FFFFFF',
+        }
+    }
+
     useEffect(() => {
         let slotsF = [...slots]
         if (providerFilter.id != 0) {
@@ -110,7 +119,7 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
     function renderSlots(sidebarShown, pageC) {
         let column = 1;
         let row = 1;
-        const maxColumns = sidebarShown ? 3 : 4;
+        const maxColumns = sidebarShown ? 3 : width <= 768 ? 3 : 4;
         return slotsFiltered.slice(0, pageC * 30).map((item, index) => {
             const slot = <Slot
                 {...item}
@@ -143,6 +152,13 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
         observer.observe(loadMoreRef.current);
         return () => observer.disconnect();
     }, [])
+
+    useEffect(() => {
+        if (width <= 768) {
+            setSidebarShown(false);
+        }
+
+    }, [width])
 
     return (
         <div className={styles.container}>
@@ -196,7 +212,7 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                                                 alt="slide"
                                                 layout="fill"
                                                 objectFit='cover'
-                                                style={{borderRadius:"16px"}}
+                                                style={{ borderRadius: "16px" }}
                                             />
                                             <div className={styles.logoImg}>
                                                 <Image
@@ -267,7 +283,7 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                     </div>
                 </div>
                 {
-                    width <= 480 &&
+                    width <= 768 &&
                     <div className={styles.mobileFilters}>
                         <span className={styles.filtersTitle}>
                             <Image
@@ -285,11 +301,33 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                     </div>
                 }
                 <div
-                    style={sidebarShown ? { gridTemplateColumns: 'repeat(3, 1fr)' } : { gridTemplateColumns: 'repeat(4, 1fr)' }}
+                    style={sidebarShown && width > 768 ? { gridTemplateColumns: 'repeat(3, 1fr)' } : { gridTemplateColumns: 'repeat(4, 1fr)' }}
                     className={styles.slots}
                 >
                     {renderSlots(sidebarShown, page)}
                     <div ref={loadMoreRef} />
+                    {
+                        width <= 768 &&
+                        <motion.div
+                            variants={mobileButtonVariants}
+                            animate={sidebarShown ? 'shown' : 'hidden'}
+                            className={styles.mobileFilterButton}
+                            onClick={() => setSidebarShown(!sidebarShown)}
+                        >
+                            {
+                                sidebarShown
+                                    ? `Filter (${slotsFiltered.length})`
+                                    : <span className={styles.filtersTitle}>
+                                        <Image
+                                            src={'/images/icons/filter.svg'}
+                                            height={20}
+                                            width={20}
+                                        />
+                                        Filters
+                                    </span>
+                            }
+                        </motion.div>
+                    }
                 </div>
             </motion.div>
         </div>
