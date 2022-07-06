@@ -375,9 +375,10 @@ export default function Home({
                     {offsetSlots && offsetSlots.length > 0 &&
                         <SliderWithControls
                             styleWrap={styleSlotSlider}
+                            loop
                         >
                             {offsetSlots.map((item, index) => (
-                                <SwiperSlide className={styles.slotBlock} key={index}>
+                                <SwiperSlide className={styles.slotBlock} key={index} >
                                     {item.map(slot => (
                                         <div
                                             style={{
