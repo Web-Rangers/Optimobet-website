@@ -164,13 +164,7 @@ export default function CasinosPage({ filters }) {
     }
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    loadMore();
-                }
-            }
-        )
+
 
         APIRequest('/sliders?page=home')
             .then(res => setNewCasinos(res))
@@ -181,11 +175,9 @@ export default function CasinosPage({ filters }) {
                 setCasinos(res.data)
                 casinosRef.current = res.data;
                 setFilteredItems(res.data);
-                observer.observe(loadMoreRef.current);
             })
             .catch(err => console.log(err))
 
-        return () => observer.disconnect();
     }, [])
 
     useEffect(() => {
@@ -207,6 +199,20 @@ export default function CasinosPage({ filters }) {
         }
         setStyleMainSlider(mainS)
     }, [width])
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMore();
+                }
+            }
+        )
+
+        casinos.length > 5 && observer.observe(loadMoreRef.current);
+
+        return () => observer.disconnect();
+    }, [casinos])
 
     return (
         <div className={styles.container}>

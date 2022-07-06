@@ -159,6 +159,16 @@ export default function BookmakersPage({ filters }) {
     }
 
     useEffect(() => {
+        APIRequest('/bookmakers', 'GET')
+            .then(res => {
+                setBookmakers(res.data);
+                bookmakersRef.current = res.data;
+                setFilteredItems(res.data);
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+    useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting) {
@@ -166,19 +176,11 @@ export default function BookmakersPage({ filters }) {
                 }
             }
         )
-        APIRequest('/bookmakers', 'GET')
-            .then(res => {
-                setBookmakers(res.data);
-                bookmakersRef.current = res.data;
-                setFilteredItems(res.data);
-                observer.observe(loadMoreRef.current);
-            })
-            .catch(err => console.log(err))
 
-
+        bookmakers.length > 5 && observer.observe(loadMoreRef.current);
 
         return () => observer.disconnect();
-    }, [])
+    }, [bookmakers])
 
     return (
         <div className={styles.container}>
