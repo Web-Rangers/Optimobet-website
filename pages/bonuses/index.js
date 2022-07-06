@@ -349,9 +349,13 @@ export default function BonusesPage({ filters }) {
                             </div>
                         }
                         {
-                            filteredItems.map((bonus, index) => (
-                                <BonusCard {...bonus} key={`bonus_${bonus.id}_${index}`} />
-                            ))
+                            bonuses.length > 0
+                                ? filteredItems.map((bonus, index) => (
+                                    <BonusCard {...bonus} key={`bonus_${bonus.id}_${index}`} />
+                                ))
+                                : <div className='preloader'>
+                                    <BeatLoader color='#7F3FFC' />
+                                </div>
                         }
                         {filteredItems.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
                             <BeatLoader loading={loading} color='#7F3FFC' />

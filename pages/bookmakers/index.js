@@ -301,9 +301,13 @@ export default function BookmakersPage({ filters }) {
                             </div>
                         }
                         {
-                            filteredItems.map(bookmaker => (
-                                <CasinoCard {...bookmaker} key={bookmaker.id} />
-                            ))
+                            bookmakers.length > 0
+                                ? filteredItems.map(bookmaker => (
+                                    <CasinoCard {...bookmaker} key={bookmaker.id} />
+                                ))
+                                : <div className='preloader'>
+                                    <BeatLoader color='#7F3FFC' />
+                                </div>
                         }
                         {filteredItems.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
                             <BeatLoader loading={loading} color='#7F3FFC' />
