@@ -56,7 +56,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                     <div className={styles.casinoGames}>
                         {
                             bonusable?.games?.slice(0, gameCount.current)?.map(game => (
-                                <div className={styles.casinoGame} key={`${game.id}-${id}`} >
+                                <div className={styles.casinoGame} key={`${game.id}-${id}`} title={game.name} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout='fill'

@@ -214,6 +214,7 @@ export default function CasinosPage({ filters }) {
                 {casinos.length > 0 &&
                     <SliderWithControls
                         styleWrap={styleMainSlider}
+                        loop
                         main
                     >
                         {newCasinos.map((casino, index) => (

@@ -214,6 +214,7 @@ export default function BonusesPage({ filters }) {
                 {bonuses.length > 0 &&
                     <SliderWithControls
                         styleWrap={styleMainSlider}
+                        loop
                         main
                     >
                         {newCasinos.map((casino, index) => (

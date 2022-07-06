@@ -182,6 +182,7 @@ export default function Home({
                         <SliderWithControls
                             styleWrap={styleMainSlider}
                             main
+                            loop
                         >
                             {slides.map((casino, index) => (
                                 <SwiperSlide key={casino.id} className={styles.sliderBlock}>

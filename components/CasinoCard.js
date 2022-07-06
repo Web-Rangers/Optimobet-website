@@ -43,7 +43,7 @@ export default function CasinoCard({
                         <Link href={`/casinos/${id}`}>
                             <a>
                                 <span className={styles.casinoNameText}>{shared_content.name}</span>
-                            </a>                            
+                            </a>
                         </Link>
                         <div className={styles.casinoRating}>
                             <Stars points={rating} />
@@ -116,7 +116,7 @@ export default function CasinoCard({
                     <div className={styles.casinoGames}>
                         {
                             games?.slice(0, width > 480 ? 5 : 3)?.map(game => (
-                                <div className={styles.casinoGame} key={`${game.id}-${id}`} >
+                                <div className={styles.casinoGame} key={`${game.id}-${id}`} title={game.name} >
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout='fill'
