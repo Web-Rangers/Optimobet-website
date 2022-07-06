@@ -13,6 +13,7 @@ import { ReactSVG } from 'react-svg';
 import useWindowSize from '../../hooks/useWindowSize';
 import APIRequest from '../../functions/requests/APIRequest';
 import Dropdown from '../../components/Dropdown';
+import Link from 'next/link';
 
 const sliderTemp = [1, 2, 3, 4, 5]
 
@@ -188,22 +189,24 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                         {
                             sliderContent?.map(item => (
                                 <SwiperSlide key={`slide_${item.id}`}>
-                                    <div className={styles.slide} >
-                                        <Image
-                                            src={`${process.env.IMAGE_URL}/${item.image_bg_source}`}
-                                            alt="slide"
-                                            layout="fill"
-                                            objectFit='cover'
-                                            style={{borderRadius:"16px"}}
-                                        />
-                                        <div className={styles.logoImg}>
+                                    <Link href={item.details_link}>
+                                        <div className={styles.slide}>
                                             <Image
-                                                src={`${process.env.IMAGE_URL}/${item.image_source}`}
+                                                src={`${process.env.IMAGE_URL}/${item.image_bg_source}`}
+                                                alt="slide"
                                                 layout="fill"
-                                                objectFit='contain'
+                                                objectFit='cover'
+                                                style={{borderRadius:"16px"}}
                                             />
+                                            <div className={styles.logoImg}>
+                                                <Image
+                                                    src={`${process.env.IMAGE_URL}/${item.image_source}`}
+                                                    layout="fill"
+                                                    objectFit='contain'
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </SwiperSlide>
                             ))
                         }

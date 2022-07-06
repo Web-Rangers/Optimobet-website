@@ -43,6 +43,7 @@
     height: 410px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .logoImg{
