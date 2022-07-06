@@ -10,6 +10,7 @@ import Slot from '../../components/Slot'
 import CasinoCard from '../../components/CasinoCard'
 import APIRequest from '../../functions/requests/APIRequest'
 import useUserInfo from '../../hooks/useUserInfo'
+import { BeatLoader } from 'react-spinners';
 
 const filters = [
     {
@@ -147,11 +148,13 @@ export default function SearchResults({ providers }) {
     const [bookmakersShowMore, setBookmakersShowMore] = useState(false)
     const [slotsShowMore, setSlotsShowMore] = useState(false)
     const user = useUserInfo()
+    const [preloader, setPreloader] = useState(true)
 
     useEffect(()=>{
         if (router.query.text)
             APIRequest(`/search/result?q=${router.query.text}`, 'GET')
             .then(data => {
+                setPreloader(false)
                 setCategoriesOnSearch(
                     [
                         {
@@ -190,6 +193,7 @@ export default function SearchResults({ providers }) {
                 setSlots(slotsRef.current.slice(0,6))
             })
             .catch(err => {
+                setPreloader(false)
                 console.error(err)
             })
     },[router.query])
@@ -360,420 +364,417 @@ export default function SearchResults({ providers }) {
                     Search Results for: "<span>{router.query.text}</span>"
                 </h1>
             </div>
-            <div className={styles.contentContainer}>
-                <AnimatePresence
-                    initial={false}
+            {preloader ? 
+                <div 
+                    style={{
+                        display:"flex", 
+                        justifyContent:"center", 
+                        alignItems:"center", 
+                        height:"50vh", 
+                        width:"100%"
+                    }}
                 >
-                    {sidebarShown && <motion.div
-                        variants={sidebarVariants}
-                        animate="shown"
-                        exit="hidden"
-                        className={styles.filters}
+                    <BeatLoader loading={true} color='#7F3FFC' />
+                </div>                
+                :
+                <div className={styles.contentContainer}>
+                    <AnimatePresence
+                        initial={false}
                     >
-                        <div className={styles.sticky}>
-                            <div className={styles.filterHeader}>
-                                <Image
-                                    src={'/images/icons/filter.svg'}
-                                    height={20}
-                                    width={20}
-                                />
-                                FILTER
-                            </div>
-                            <CategoryFilter
-                                currentCategory={selectedCat}
-                                categories={categoriesOnSearch}
-                                selectCategory={selectCategoryForFilters}
-                            />
-                            {/* <motion.div
-                                initial={'closed'}
-                                variants={filterVariants}
-                                animate={selectedCat > 0 ? 'open' : 'closed'}
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
-                                className={styles.filterContainer}
-                            >
-                                {filters.map((filter, index) => (
-                                    <CheckboxFilter
-                                        key={filter.name}
-                                        title={filter.name}
-                                        items={filter.items}
-                                        initialOpen={false}
-                                        collapsible
+                        {sidebarShown && <motion.div
+                            variants={sidebarVariants}
+                            animate="shown"
+                            exit="hidden"
+                            className={styles.filters}
+                        >
+                            <div className={styles.sticky}>
+                                <div className={styles.filterHeader}>
+                                    <Image
+                                        src={'/images/icons/filter.svg'}
+                                        height={20}
+                                        width={20}
                                     />
-                                ))}
-                            </motion.div> */}
-                        </div>
-                    </motion.div>}
-                </AnimatePresence>
-                <motion.div
-                    variants={contentVariants}
-                    animate={sidebarShown ? 'narrow' : 'wide'}
-                    className={styles.content}
-                >
-                    <AnimatePresence initial={false}>
-                        <LayoutGroup>                        
-                        {categoriesOnSearch && casinos && casinos.length>0 && (categoriesOnSearch[selectedCat].name == "casinos" || selectedCat == 0) &&
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                            >
-                                <div style={{ position: "relative" }}>
-                                    <AnimatePresence initial={false}>
-                                        {selectedCat == 0 && casinos.length>0 &&
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className={styles.categoryHeaderResults}
-                                                style={{ position: "absolute" }}
-                                            >
-                                                <span className={styles.secondName}>
-                                                    Second name
-                                                </span>
-                                                <span className={styles.mainName}>
-                                                    Online casinos
-                                                </span>
-                                            </motion.div>
-                                        }
-                                    </AnimatePresence>
-                                    <AnimatePresence>
-                                        {selectedCat != 0 &&
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className={styles.controls}
-                                                style={{ position: "absolute", width: "100%" }}
-                                            >
-                                                <div
-                                                    className={styles.sidebarControls}
-                                                    onClick={() => setSidebarShown(!sidebarShown)}
-                                                >
-                                                    <motion.div
-                                                        variants={controlVariants}
-                                                        animate={sidebarShown ? 'left' : 'right'}
-                                                        className={styles.sidebarControlsSlide}
-                                                    />
-                                                    <div className={styles.sidebarControlsItem}>
-                                                        <ReactSVG
-                                                            src='/images/icons/layout-sidebar.svg'
-                                                            className={sidebarShown ? styles.light : styles.dark}
-                                                            height={24}
-                                                            width={24}
-                                                        />
-                                                    </div>
-                                                    <div className={styles.sidebarControlsItem}>
-                                                        <ReactSVG
-                                                            src='/images/icons/layout-sidebar-left-collapse.svg'
-                                                            className={sidebarShown ? styles.dark : styles.light}
-                                                            height={24}
-                                                            width={24}
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className={styles.filterControls}>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterCasino === 'All' && styles.active}`}
-                                                        onClick={() => setFilterCasino('All')}
-                                                    >
-                                                        All
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterCasino === 'Best in your country' && styles.active}`}
-                                                        onClick={() => setFilterCasino('Best in your country')}
-                                                    >
-                                                        Best in your country
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterCasino === 'Recently added' && styles.active}`}
-                                                        onClick={() => setFilterCasino('Recently added')}
-                                                    >
-                                                        Recently added
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterCasino === 'Highly recommended' && styles.active}`}
-                                                        onClick={() => setFilterCasino('Highly recommended')}
-                                                    >
-                                                        Highly recommended
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterCasino === 'Best of the world' && styles.active}`}
-                                                        onClick={() => setFilterCasino('Best of the world')}
-                                                    >
-                                                        Best of the world
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        }
-                                    </AnimatePresence>
+                                    FILTER
                                 </div>
-                                <motion.div
-                                    variants={resultCasinosVariants}
-                                    initial={"title"}
-                                    animate={selectedCat == 0 ? "title" : "controls"}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={styles.casinos}
-                                >
-                                    {
-                                        casinos.map(casino => (
-                                            <CasinoCard 
-                                                {...casino.casino} 
-                                                shared_content={{...casino}} 
-                                                games={casino?.casino?.games}
-                                                website_language={casino?.casino?.website_language}
-                                                support_language={casino?.casino?.support_language}
-                                                key={`${casino.name}-${casino.id}`} 
-                                            />
-                                        ))
-                                    }
-                                </motion.div>
-                                <div 
-                                    className={styles.showMore}
-                                    style={(casinos.length==casinosRef.current.length || casinosShowMore) ? {display:"none"} : {}}
-                                    onClick={()=>setCasinosShowMore(true)}
-                                >
-                                    Show more
-                                </div>
-                            </motion.div>
-                        }
-                        {categoriesOnSearch && bookmakers && bookmakers.length>0 && (categoriesOnSearch[selectedCat].name == "bookmakers" || selectedCat == 0) &&
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                            >
-                                <div style={{ position: "relative" }}>
-                                    <AnimatePresence initial={false}>
-                                        {selectedCat == 0 && bookmakers.length>0 &&
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className={styles.categoryHeaderResults}
-                                                style={{ position: "absolute" }}
-                                            >
-                                                <span className={styles.secondName}>
-                                                    Second name
-                                                </span>
-                                                <span className={styles.mainName}>
-                                                    Bookmakers
-                                                </span>
-                                            </motion.div>
-                                        }
-                                    </AnimatePresence>
-                                    <AnimatePresence>
-                                        {selectedCat != 0 &&
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className={styles.controls}
-                                                style={{ position: "absolute", width: "100%" }}
-                                            >
-                                                <div
-                                                    className={styles.sidebarControls}
-                                                    onClick={() => setSidebarShown(!sidebarShown)}
-                                                >
-                                                    <motion.div
-                                                        variants={controlVariants}
-                                                        animate={sidebarShown ? 'left' : 'right'}
-                                                        className={styles.sidebarControlsSlide}
-                                                    />
-                                                    <div className={styles.sidebarControlsItem}>
-                                                        <ReactSVG
-                                                            src='/images/icons/layout-sidebar.svg'
-                                                            className={sidebarShown ? styles.light : styles.dark}
-                                                            height={24}
-                                                            width={24}
-                                                        />
-                                                    </div>
-                                                    <div className={styles.sidebarControlsItem}>
-                                                        <ReactSVG
-                                                            src='/images/icons/layout-sidebar-left-collapse.svg'
-                                                            className={sidebarShown ? styles.dark : styles.light}
-                                                            height={24}
-                                                            width={24}
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className={styles.filterControls}>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterBookmakers === 'All' && styles.active}`}
-                                                        onClick={() => setFilterBookmakers('All')}
-                                                    >
-                                                        All
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterBookmakers === 'Best in your country' && styles.active}`}
-                                                        onClick={() => setFilterBookmakers('Best in your country')}
-                                                    >
-                                                        Best in your country
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterBookmakers === 'Recently added' && styles.active}`}
-                                                        onClick={() => setFilterBookmakers('Recently added')}
-                                                    >
-                                                        Recently added
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterBookmakers === 'Highly recommended' && styles.active}`}
-                                                        onClick={() => setFilterBookmakers('Highly recommended')}
-                                                    >
-                                                        Highly recommended
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterBookmakers === 'Best of the world' && styles.active}`}
-                                                        onClick={() => setFilterBookmakers('Best of the world')}
-                                                    >
-                                                        Best of the world
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        }
-                                    </AnimatePresence>
-                                </div>
-                                <motion.div
-                                    variants={resultCasinosVariants}
-                                    initial={"title"}
-                                    animate={selectedCat == 0 ? "title" : "controls"}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={styles.casinos}
-                                >
-                                    {
-                                        bookmakers.map(casino => (
-                                            <CasinoCard 
-                                                {...casino.casino} 
-                                                shared_content={{...casino}} 
-                                                games={casino?.casino?.games}
-                                                website_language={casino?.casino?.website_language}
-                                                support_language={casino?.casino?.support_language}
-                                                key={`${casino.name}-${casino.id}`} 
-                                            />
-                                        ))
-                                    }
-                                </motion.div>
-                                <div 
-                                    className={styles.showMore}
-                                    style={(bookmakers.length==bookmakersRef.current.length || bookmakersShowMore) ? {display:"none"} : {}}
-                                    onClick={()=>setBookmakersShowMore(true)}
-                                >
-                                    Show more
-                                </div>
-                            </motion.div>
-                        }
-                        {categoriesOnSearch && (categoriesOnSearch[selectedCat].name == "slots" || selectedCat == 0) &&
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                            >
-                                <div style={{ position: "relative" }}>
-                                    <AnimatePresence initial={false}>
-                                        {selectedCat == 0 && slots.length>0 &&
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className={styles.categoryHeaderResults}
-                                                style={{ position: "absolute" }}
-                                            >
-                                                <span className={styles.secondName}>
-                                                    Second name
-                                                </span>
-                                                <span className={styles.mainName}>
-                                                    Slots
-                                                </span>
-                                            </motion.div>
-                                        }
-                                    </AnimatePresence>
-                                    <AnimatePresence>
-                                        {selectedCat != 0 &&
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                className={styles.controls}
-                                                style={{ position: "absolute", width: "100%" }}
-                                            >
-                                                <div
-                                                    className={styles.sidebarControls}
-                                                    onClick={() => setSidebarShown(!sidebarShown)}
-                                                >
-                                                    <motion.div
-                                                        variants={controlVariants}
-                                                        animate={sidebarShown ? 'left' : 'right'}
-                                                        className={styles.sidebarControlsSlide}
-                                                    />
-                                                    <div className={styles.sidebarControlsItem}>
-                                                        <ReactSVG
-                                                            src='/images/icons/layout-sidebar.svg'
-                                                            className={sidebarShown ? styles.light : styles.dark}
-                                                            height={24}
-                                                            width={24}
-                                                        />
-                                                    </div>
-                                                    <div className={styles.sidebarControlsItem}>
-                                                        <ReactSVG
-                                                            src='/images/icons/layout-sidebar-left-collapse.svg'
-                                                            className={sidebarShown ? styles.dark : styles.light}
-                                                            height={24}
-                                                            width={24}
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className={styles.filterControls}>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterSlots === 'All' && styles.active}`}
-                                                        onClick={() => setFilterSlots('All')}
-                                                    >
-                                                        All
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterSlots === 'New' && styles.active}`}
-                                                        onClick={() => setFilterSlots('New')}
-                                                    >
-                                                        New
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterSlots === 'Popular' && styles.active}`}
-                                                        onClick={() => setFilterSlots('Popular')}
-                                                    >
-                                                        Popular
-                                                    </div>
-                                                    <div
-                                                        className={`${styles.filterControlsItem} ${filterSlots === 'Promotions' && styles.active}`}
-                                                        onClick={() => setFilterSlots('Promotions')}
-                                                    >
-                                                        Promotions
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        }
-                                    </AnimatePresence>
-                                </div>
-                                <motion.div
-                                    variants={resultCasinosVariants}
-                                    initial={"title"}
-                                    animate={selectedCat == 0 ? "title" : "controls"}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    style={!sidebarShown ? { gridTemplateColumns: "repeat(4, 1fr)" } : {}}
-                                    className={styles.slots}
-                                >
-                                    {slots && renderSlots(sidebarShown)}
-                                </motion.div>
-                                <div 
-                                    className={styles.showMore}
-                                    style={(slots.length==slotsRef.current.length || slotsShowMore) ? {display:"none"} : {}}
-                                    onClick={()=>setSlotsShowMore(true)}
-                                >
-                                    Show more
-                                </div>
-                            </motion.div>
-                        }
-                        </LayoutGroup>
+                                <CategoryFilter
+                                    currentCategory={selectedCat}
+                                    categories={categoriesOnSearch}
+                                    selectCategory={selectCategoryForFilters}
+                                />
+                            </div>
+                        </motion.div>}
                     </AnimatePresence>
-                </motion.div>
-            </div>
+                    <motion.div
+                        variants={contentVariants}
+                        animate={sidebarShown ? 'narrow' : 'wide'}
+                        className={styles.content}
+                    >
+                        <AnimatePresence initial={false}>
+                            <LayoutGroup>                        
+                            {categoriesOnSearch && casinos && casinos.length>0 && (categoriesOnSearch[selectedCat].name == "casinos" || selectedCat == 0) &&
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                >
+                                    <div style={{ position: "relative" }}>
+                                        <AnimatePresence initial={false}>
+                                            {selectedCat == 0 && casinos.length>0 &&
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={styles.categoryHeaderResults}
+                                                    style={{ position: "absolute" }}
+                                                >
+                                                    <span className={styles.secondName}>
+                                                        Second name
+                                                    </span>
+                                                    <span className={styles.mainName}>
+                                                        Online casinos
+                                                    </span>
+                                                </motion.div>
+                                            }
+                                        </AnimatePresence>
+                                        <AnimatePresence>
+                                            {selectedCat != 0 &&
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={styles.controls}
+                                                    style={{ position: "absolute", width: "100%" }}
+                                                >
+                                                    <div
+                                                        className={styles.sidebarControls}
+                                                        onClick={() => setSidebarShown(!sidebarShown)}
+                                                    >
+                                                        <motion.div
+                                                            variants={controlVariants}
+                                                            animate={sidebarShown ? 'left' : 'right'}
+                                                            className={styles.sidebarControlsSlide}
+                                                        />
+                                                        <div className={styles.sidebarControlsItem}>
+                                                            <ReactSVG
+                                                                src='/images/icons/layout-sidebar.svg'
+                                                                className={sidebarShown ? styles.light : styles.dark}
+                                                                height={24}
+                                                                width={24}
+                                                            />
+                                                        </div>
+                                                        <div className={styles.sidebarControlsItem}>
+                                                            <ReactSVG
+                                                                src='/images/icons/layout-sidebar-left-collapse.svg'
+                                                                className={sidebarShown ? styles.dark : styles.light}
+                                                                height={24}
+                                                                width={24}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.filterControls}>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterCasino === 'All' && styles.active}`}
+                                                            onClick={() => setFilterCasino('All')}
+                                                        >
+                                                            All
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterCasino === 'Best in your country' && styles.active}`}
+                                                            onClick={() => setFilterCasino('Best in your country')}
+                                                        >
+                                                            Best in your country
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterCasino === 'Recently added' && styles.active}`}
+                                                            onClick={() => setFilterCasino('Recently added')}
+                                                        >
+                                                            Recently added
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterCasino === 'Highly recommended' && styles.active}`}
+                                                            onClick={() => setFilterCasino('Highly recommended')}
+                                                        >
+                                                            Highly recommended
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterCasino === 'Best of the world' && styles.active}`}
+                                                            onClick={() => setFilterCasino('Best of the world')}
+                                                        >
+                                                            Best of the world
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            }
+                                        </AnimatePresence>
+                                    </div>
+                                    <motion.div
+                                        variants={resultCasinosVariants}
+                                        initial={"title"}
+                                        animate={selectedCat == 0 ? "title" : "controls"}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        className={styles.casinos}
+                                    >
+                                        {
+                                            casinos.map(casino => (
+                                                <CasinoCard 
+                                                    {...casino.casino} 
+                                                    shared_content={{...casino}} 
+                                                    games={casino?.casino?.games}
+                                                    website_language={casino?.casino?.website_language}
+                                                    support_language={casino?.casino?.support_language}
+                                                    key={`${casino.name}-${casino.id}`} 
+                                                />
+                                            ))
+                                        }
+                                    </motion.div>
+                                    <div 
+                                        className={styles.showMore}
+                                        style={(casinos.length==casinosRef.current.length || casinosShowMore) ? {display:"none"} : {}}
+                                        onClick={()=>setCasinosShowMore(true)}
+                                    >
+                                        Show more
+                                    </div>
+                                </motion.div>
+                            }
+                            {categoriesOnSearch && bookmakers && bookmakers.length>0 && (categoriesOnSearch[selectedCat].name == "bookmakers" || selectedCat == 0) &&
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                >
+                                    <div style={{ position: "relative" }}>
+                                        <AnimatePresence initial={false}>
+                                            {selectedCat == 0 && bookmakers.length>0 &&
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={styles.categoryHeaderResults}
+                                                    style={{ position: "absolute" }}
+                                                >
+                                                    <span className={styles.secondName}>
+                                                        Second name
+                                                    </span>
+                                                    <span className={styles.mainName}>
+                                                        Bookmakers
+                                                    </span>
+                                                </motion.div>
+                                            }
+                                        </AnimatePresence>
+                                        <AnimatePresence>
+                                            {selectedCat != 0 &&
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={styles.controls}
+                                                    style={{ position: "absolute", width: "100%" }}
+                                                >
+                                                    <div
+                                                        className={styles.sidebarControls}
+                                                        onClick={() => setSidebarShown(!sidebarShown)}
+                                                    >
+                                                        <motion.div
+                                                            variants={controlVariants}
+                                                            animate={sidebarShown ? 'left' : 'right'}
+                                                            className={styles.sidebarControlsSlide}
+                                                        />
+                                                        <div className={styles.sidebarControlsItem}>
+                                                            <ReactSVG
+                                                                src='/images/icons/layout-sidebar.svg'
+                                                                className={sidebarShown ? styles.light : styles.dark}
+                                                                height={24}
+                                                                width={24}
+                                                            />
+                                                        </div>
+                                                        <div className={styles.sidebarControlsItem}>
+                                                            <ReactSVG
+                                                                src='/images/icons/layout-sidebar-left-collapse.svg'
+                                                                className={sidebarShown ? styles.dark : styles.light}
+                                                                height={24}
+                                                                width={24}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.filterControls}>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterBookmakers === 'All' && styles.active}`}
+                                                            onClick={() => setFilterBookmakers('All')}
+                                                        >
+                                                            All
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterBookmakers === 'Best in your country' && styles.active}`}
+                                                            onClick={() => setFilterBookmakers('Best in your country')}
+                                                        >
+                                                            Best in your country
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterBookmakers === 'Recently added' && styles.active}`}
+                                                            onClick={() => setFilterBookmakers('Recently added')}
+                                                        >
+                                                            Recently added
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterBookmakers === 'Highly recommended' && styles.active}`}
+                                                            onClick={() => setFilterBookmakers('Highly recommended')}
+                                                        >
+                                                            Highly recommended
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterBookmakers === 'Best of the world' && styles.active}`}
+                                                            onClick={() => setFilterBookmakers('Best of the world')}
+                                                        >
+                                                            Best of the world
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            }
+                                        </AnimatePresence>
+                                    </div>
+                                    <motion.div
+                                        variants={resultCasinosVariants}
+                                        initial={"title"}
+                                        animate={selectedCat == 0 ? "title" : "controls"}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        className={styles.casinos}
+                                    >
+                                        {
+                                            bookmakers.map(casino => (
+                                                <CasinoCard 
+                                                    {...casino.casino} 
+                                                    shared_content={{...casino}} 
+                                                    games={casino?.casino?.games}
+                                                    website_language={casino?.casino?.website_language}
+                                                    support_language={casino?.casino?.support_language}
+                                                    key={`${casino.name}-${casino.id}`} 
+                                                />
+                                            ))
+                                        }
+                                    </motion.div>
+                                    <div 
+                                        className={styles.showMore}
+                                        style={(bookmakers.length==bookmakersRef.current.length || bookmakersShowMore) ? {display:"none"} : {}}
+                                        onClick={()=>setBookmakersShowMore(true)}
+                                    >
+                                        Show more
+                                    </div>
+                                </motion.div>
+                            }
+                            {categoriesOnSearch && (categoriesOnSearch[selectedCat].name == "slots" || selectedCat == 0) &&
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                >
+                                    <div style={{ position: "relative" }}>
+                                        <AnimatePresence initial={false}>
+                                            {selectedCat == 0 && slots.length>0 &&
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={styles.categoryHeaderResults}
+                                                    style={{ position: "absolute" }}
+                                                >
+                                                    <span className={styles.secondName}>
+                                                        Second name
+                                                    </span>
+                                                    <span className={styles.mainName}>
+                                                        Slots
+                                                    </span>
+                                                </motion.div>
+                                            }
+                                        </AnimatePresence>
+                                        <AnimatePresence>
+                                            {selectedCat != 0 &&
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={styles.controls}
+                                                    style={{ position: "absolute", width: "100%" }}
+                                                >
+                                                    <div
+                                                        className={styles.sidebarControls}
+                                                        onClick={() => setSidebarShown(!sidebarShown)}
+                                                    >
+                                                        <motion.div
+                                                            variants={controlVariants}
+                                                            animate={sidebarShown ? 'left' : 'right'}
+                                                            className={styles.sidebarControlsSlide}
+                                                        />
+                                                        <div className={styles.sidebarControlsItem}>
+                                                            <ReactSVG
+                                                                src='/images/icons/layout-sidebar.svg'
+                                                                className={sidebarShown ? styles.light : styles.dark}
+                                                                height={24}
+                                                                width={24}
+                                                            />
+                                                        </div>
+                                                        <div className={styles.sidebarControlsItem}>
+                                                            <ReactSVG
+                                                                src='/images/icons/layout-sidebar-left-collapse.svg'
+                                                                className={sidebarShown ? styles.dark : styles.light}
+                                                                height={24}
+                                                                width={24}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.filterControls}>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterSlots === 'All' && styles.active}`}
+                                                            onClick={() => setFilterSlots('All')}
+                                                        >
+                                                            All
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterSlots === 'New' && styles.active}`}
+                                                            onClick={() => setFilterSlots('New')}
+                                                        >
+                                                            New
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterSlots === 'Popular' && styles.active}`}
+                                                            onClick={() => setFilterSlots('Popular')}
+                                                        >
+                                                            Popular
+                                                        </div>
+                                                        <div
+                                                            className={`${styles.filterControlsItem} ${filterSlots === 'Promotions' && styles.active}`}
+                                                            onClick={() => setFilterSlots('Promotions')}
+                                                        >
+                                                            Promotions
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            }
+                                        </AnimatePresence>
+                                    </div>
+                                    <motion.div
+                                        variants={resultCasinosVariants}
+                                        initial={"title"}
+                                        animate={selectedCat == 0 ? "title" : "controls"}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        style={!sidebarShown ? { gridTemplateColumns: "repeat(4, 1fr)" } : {}}
+                                        className={styles.slots}
+                                    >
+                                        {slots && renderSlots(sidebarShown)}
+                                    </motion.div>
+                                    <div 
+                                        className={styles.showMore}
+                                        style={(slots.length==slotsRef.current.length || slotsShowMore) ? {display:"none"} : {}}
+                                        onClick={()=>setSlotsShowMore(true)}
+                                    >
+                                        Show more
+                                    </div>
+                                </motion.div>
+                            }
+                            </LayoutGroup>
+                        </AnimatePresence>
+                    </motion.div>
+                </div>
+            }            
         </div>
     )
 }
