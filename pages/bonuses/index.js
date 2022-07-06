@@ -102,22 +102,22 @@ export default function BonusesPage({ filters }) {
         }
         switch (filterName) {
             case 'Games':
-                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.games.find(game => game.id === item.id)));
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable?.games.find(game => game.id === item.id)));
                 break;
             case 'Website Language':
-                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.website_language.find(lang => lang.id === item.id)));
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable?.website_language.find(lang => lang.id === item.id)));
                 break;
             case 'Support Language':
-                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.support_language.find(lang => lang.id === item.id)));
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable?.support_language.find(lang => lang.id === item.id)));
                 break;
             case 'Payment Methods':
-                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.payment_methods.find(payment => payment.id === item.id)));
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable?.payment_methods.find(payment => payment.id === item.id)));
                 break;
             case 'Countries':
-                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.countries.find(country => country.id === item.id)));
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable?.countries.find(country => country.id === item.id)));
                 break;
             case 'Providers':
-                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable.providers.find(provider => provider.id === item.id)));
+                setFilteredItems(bonusesRef.current.filter(bonus => bonus.bonusable?.providers.find(provider => provider.id === item.id)));
                 break;
             default:
                 setFilteredItems(bonusesRef.current);
@@ -133,12 +133,12 @@ export default function BonusesPage({ filters }) {
                 setFilteredItems(bonuses);
                 break;
             case "Best in your country":
-                user?.country_id && (newFilteredItems = filteredItems.filter(casino => casino.bonusable.countries.find(country => country.id === user.country_id)));
-                newFilteredItems.sort((a, b) => b.bonusable.rating - a.bonusable.rating);
+                user?.country_id && (newFilteredItems = filteredItems.filter(casino => casino.bonusable?.countries.find(country => country.id === user.country_id)));
+                newFilteredItems.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Best of the world":
-                newFilteredItems.sort((a, b) => b.bonusable.rating - a.bonusable.rating);
+                newFilteredItems.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Recently added":
@@ -146,7 +146,7 @@ export default function BonusesPage({ filters }) {
                 setFilteredItems(newFilteredItems);
                 break;
             case "Highly recommended":
-                newFilteredItems.sort((a, b) => b.bonusable.reputation - a.bonusable.reputation);
+                newFilteredItems.sort((a, b) => b.bonusable?.reputation - a.bonusable?.reputation);
                 setFilteredItems(newFilteredItems);
                 break;
         }
