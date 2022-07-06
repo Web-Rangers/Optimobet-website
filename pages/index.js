@@ -100,6 +100,8 @@ export default function Home({
     const [freeSlots, setFreeSlots] = useState([])
     const [betting, setBetting] = useState([])
     const [exclusiveBonus, setExclusiveBonus] = useState([])
+    const [exclusiveBetting, setExclusiveBetting] = useState([])
+    const [exclusiveCasinos, setExclusiveCasinos] = useState([])
     const [percent, setPercent] = useState(0.8)
     const [styleMainSlider, setStyleMainSlider] = useState()
     const [styleSlotSlider, setStyleSlotSlider] = useState()
@@ -144,18 +146,23 @@ export default function Home({
     }, [width, freeSlots])
 
     useEffect(() => {
-        APIRequest('/home-components?type=new_casino')
+        APIRequest('/home-components?type=casino_new')
             .then(res => setNewCasinos(res))
             .catch(err => console.log(err))
-        APIRequest('/home-components?type=exclusive_bonus')
+        APIRequest('/home-components?type=bonus_exclusive')
             .then(res => setExclusiveBonus(res))
             .catch(err => console.log(err))
-        APIRequest('/home-components?type=free_slots')
+        APIRequest('/home-components?type=slots_free')
             .then(res => setFreeSlots(res))
             .catch(err => console.log(err))
         APIRequest('/home-components?type=betting')
             .then(res => setBetting(res))
             .catch(err => console.log(err))
+        APIRequest('/home-components?type=betting_exclusive')
+            .then(res => setExclusiveBetting(res))
+            .catch(err => console.log(err))
+        APIRequest('/home-components?type=casino_exclusive')
+            .then(res => setExclusiveCasinos(res))
         APIRequest('/sliders?page=home')
             .then(res => setSlides(res))
             .catch(err => console.log(err))
@@ -229,18 +236,18 @@ export default function Home({
                         </span>
                     </div>
                     <div className={styles.promoBlocksContent}>
-                        {betting[0] && <PromoBlock
+                        {exclusiveBetting[0] && <PromoBlock
                             charactersImage="/images/main/7880-1.png"
                             bgColor="#7F3FFC"
-                            {...betting[0]}
-                            rating={betting[0].reputation}
+                            {...exclusiveBetting[0]}
+                            rating={exclusiveBetting[0].reputation}
 
                         />}
-                        {betting[1] && <PromoBlock
+                        {exclusiveBetting[1] && <PromoBlock
                             charactersImage="/images/main/7880-2.png"
                             bgColor="#4B4453"
-                            {...betting[1]}
-                            rating={betting[1].reputation}
+                            {...exclusiveBetting[1]}
+                            rating={exclusiveBetting[1].reputation}
                         />}
                     </div>
                 </div>
@@ -377,7 +384,7 @@ export default function Home({
                             <span className={styles.promoBlocksSubTitle}>
                                 second name
                             </span>
-                            <span className={styles.promoBlocksTitle} style={{textTransform:"initial"}}>
+                            <span className={styles.promoBlocksTitle} style={{ textTransform: "initial" }}>
                                 How to start gambling
                             </span>
                         </div>
@@ -499,7 +506,7 @@ export default function Home({
                         <span className={styles.promoBlocksSubTitle}>
                             OVERALL {casinosCount} CASINOS
                         </span>
-                        <span className={styles.promoBlocksTitle} style={{textTransform:"initial"}}>
+                        <span className={styles.promoBlocksTitle} style={{ textTransform: "initial" }}>
                             We have casinos in these countries
                         </span>
                     </div>
@@ -542,7 +549,7 @@ export default function Home({
                         <span className={styles.promoBlocksSubTitle}>
                             second name
                         </span>
-                        <span className={styles.promoBlocksTitle} style={{textTransform:"initial"}}>
+                        <span className={styles.promoBlocksTitle} style={{ textTransform: "initial" }}>
                             How to opt the best site for gambling
                         </span>
                     </div>
