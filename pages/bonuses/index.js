@@ -165,14 +165,6 @@ export default function BonusesPage({ filters }) {
     }
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    loadMore();
-                }
-            }
-        )
-
         APIRequest('/sliders?page=bonus')
             .then(res => setNewCasinos(res))
             .catch(err => console.log(err))
@@ -182,11 +174,23 @@ export default function BonusesPage({ filters }) {
                 setBonuses(res.data);
                 bonusesRef.current = res.data;
                 setFilteredItems(res.data);
-                observer.observe(loadMoreRef.current);
             })
             .catch(err => console.log(err))
-        return () => observer.disconnect();
     }, [])
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMore();
+                }
+            }
+        )
+
+        bonuses.length > 5 && observer.observe(loadMoreRef.current);
+
+        return () => observer.disconnect();
+    }, [bonuses])
 
     useEffect(() => {
         let mainS = { height: 500 }
