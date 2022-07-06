@@ -179,7 +179,7 @@ export default function Home({
 
             <main className={styles.main}>
                 <div className={styles.mainSlider}>
-                    {newCasinos.length > 0 ?
+                    {slides.length > 0 ?
                         <SliderWithControls
                             styleWrap={styleMainSlider}
                             main
