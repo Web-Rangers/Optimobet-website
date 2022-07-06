@@ -1,11 +1,14 @@
 import styles from '../styles/components/Dropdown.module.css'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import Fuse from 'fuse.js'
+import debounce from '../functions/debounce'
 
-export default function Dropdown({ items = [], description, onChange, defaultSelected, bordered = true }) {
+export default function Dropdown({ items = [], description, onChange, defaultSelected, bordered = true, searchable = false }) {
     const [current, setCurrent] = useState(items[0])
     const [open, setOpen] = useState(false)
     const dropdownRef = useRef()
+    const [filteredItems, setFilteredItems] = useState(items)
 
     const selectItem = (item) => {
         setCurrent(item)
@@ -16,6 +19,22 @@ export default function Dropdown({ items = [], description, onChange, defaultSel
     const closeIfNotDropdown = (e) => {
         if ((e.target != dropdownRef.current) && (!dropdownRef.current.contains(e.target)))
             setOpen(false)
+    }
+
+    function handleSearch(e) {
+        const searchString = e.target.value;
+        if (searchString.length == 0) {
+            setFilteredItems(items)
+            return
+        }
+        const options = {
+            includeScore: true,
+            keys: ['value'],
+            threshold: 0.3,
+        }
+        const fuse = new Fuse(items, options)
+        const result = fuse.search(searchString)
+        setFilteredItems(result.map(res => res.item))
     }
 
     useEffect(() => {
@@ -61,7 +80,16 @@ export default function Dropdown({ items = [], description, onChange, defaultSel
                 style={open ? { height: "auto", border: "1px solid #4B445333", borderTop: "none" } : { height: "0px" }}
             >
                 <div className={styles.itemsWrap}>
-                    {items.map(item => (
+                    {searchable &&
+                        <div className={styles.search}>
+                            <input
+                                type="text"
+                                placeholder="Search your country"
+                                onChange={debounce(handleSearch, 1000)}
+                            />
+                        </div>
+                    }
+                    {filteredItems.map(item => (
                         <div
                             key={item.id}
                             className={styles.item}

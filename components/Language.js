@@ -73,8 +73,8 @@ export default function Language({ setBorder }) {
                         <span className={styles.languageHeader}>
                             Choose Language
                         </span>
-                        <Dropdown 
-                            description={"Website Language"} 
+                        <Dropdown
+                            description={"Website Language"}
                             items={
                                 [
                                     {
@@ -93,13 +93,14 @@ export default function Language({ setBorder }) {
                                         icon: "/storage/upload/flags/flag-icons-main/flags/4x3/es.svg"
                                     }
                                 ]
-                            } 
+                            }
                         />
                         <Dropdown
                             defaultSelected={countries?.find(country => country.code === user?.country_code)?.id}
                             onChange={(item) => country_id.current = countries.find(country => country.id === item.id)?.code}
                             items={countries?.map(country => ({ id: country.id, value: country.name, icon: country.flag_source }))}
                             description={"Your Country"}
+                            searchable
                         />
                         <div className={styles.applyOrReset}>
                             <div

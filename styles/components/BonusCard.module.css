@@ -10,6 +10,13 @@
     border: 1px solid #4B445333;
 }
 
+.imageContainer {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+
 .casinoImage {
     position: relative;
     width: 20%;
