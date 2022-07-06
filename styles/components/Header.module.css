@@ -6,7 +6,7 @@
     padding: 16px 10%;
     align-items: center;
     background-color: #FFFFFF;
-    z-index: 999;
+    z-index: 9999;
     border-bottom: 1px solid transparent;
     transition: .2s;
     justify-content: space-between;
