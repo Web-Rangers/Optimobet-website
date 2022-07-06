@@ -30,11 +30,13 @@ export default function CasinoCard({
         <div className={styles.casino}>
             <Link href={`/casinos/${id}`}>
                 <a className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
-                    <Image
-                        src={`${process.env.IMAGE_URL}/${image_source}`}
-                        layout='fill'
-                        objectFit='contain'
-                    />
+                    <div className={styles.imageContainer}>
+                        <Image
+                            src={`${process.env.IMAGE_URL}/${image_source}`}
+                            layout='fill'
+                            objectFit='contain'
+                        />
+                    </div>
                 </a>
             </Link>
             <div className={styles.casinoInfo}>

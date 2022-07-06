@@ -134,7 +134,7 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                             <Image
                                 src={`${process.env.IMAGE_URL}/${slot.image_source}`}
                                 layout="fill"
-                                objectFit='cover'
+                                objectFit='scale-down'
                             />
                         </div>
                         <div className={styles.slotDataInfo}>
@@ -232,10 +232,10 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                     <div />
                 </div>
                 <div className={styles.aboutSlot}>
-                    {slot.description && slot.description!="" && <span className={styles.slotDescription}>
+                    {slot.description && slot.description != "" && <span className={styles.slotDescription}>
                         {parse(slot.description ?? "-")}
                     </span>}
-                    {slot.verdict && slot.verdict!="" && <div className={styles.ourScore}>
+                    {slot.verdict && slot.verdict != "" && <div className={styles.ourScore}>
                         <div className={styles.ourScoreHeader}>
                             <span className={styles.scoreHeaderText}>
                                 Our Score

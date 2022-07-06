@@ -15,11 +15,13 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
     return (
         <div className={styles.casino}>
             <div className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
-                <Image
-                    src={`${process.env.IMAGE_URL}/${bonusable?.image_source}`}
-                    layout='fill'
-                    objectFit='contain'
-                />
+                <div className={styles.imageContainer}>
+                    <Image
+                        src={`${process.env.IMAGE_URL}/${bonusable?.image_source}`}
+                        layout='fill'
+                        objectFit='contain'
+                    />
+                </div>
             </div>
             <div className={styles.casinoInfo}>
                 <div className={styles.casinoColumn}>
