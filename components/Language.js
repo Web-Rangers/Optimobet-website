@@ -73,7 +73,28 @@ export default function Language({ setBorder }) {
                         <span className={styles.languageHeader}>
                             Choose Language
                         </span>
-                        <Dropdown description={"Website Language"} />
+                        <Dropdown 
+                            description={"Website Language"} 
+                            items={
+                                [
+                                    {
+                                        id: 1,
+                                        value: "English",
+                                        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/gb.svg"
+                                    },
+                                    {
+                                        id: 2,
+                                        value: "Russian",
+                                        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/ru.svg"
+                                    },
+                                    {
+                                        id: 3,
+                                        value: "Spanish",
+                                        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/es.svg"
+                                    }
+                                ]
+                            } 
+                        />
                         <Dropdown
                             defaultSelected={countries?.find(country => country.code === user?.country_code)?.id}
                             onChange={(item) => country_id.current = countries.find(country => country.id === item.id)?.code}

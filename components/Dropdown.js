@@ -2,38 +2,7 @@ import styles from '../styles/components/Dropdown.module.css'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-const demo = [
-    {
-        id: 1,
-        value: "English"
-    },
-    {
-        id: 2,
-        value: "Russian"
-    },
-    // {
-    //     id: 3,
-    //     value: "Georgian"
-    // },
-    // {
-    //     id: 4,
-    //     value: "German"
-    // },
-    // {
-    //     id: 5,
-    //     value: "French"
-    // },
-    {
-        id: 6,
-        value: "Spanish"
-    },
-    // {
-    //     id: 7,
-    //     value: "Italian"
-    // },
-]
-
-export default function Dropdown({ items = [...demo], description, onChange, defaultSelected, bordered = true }) {
+export default function Dropdown({ items = [], description, onChange, defaultSelected, bordered = true }) {
     const [current, setCurrent] = useState(items[0])
     const [open, setOpen] = useState(false)
     const dropdownRef = useRef()
@@ -70,7 +39,7 @@ export default function Dropdown({ items = [...demo], description, onChange, def
             >
                 <div className={styles.icon}>
                     <Image
-                        src={`${process.env.IMAGE_URL}/${current.icon}`}
+                        src={`${process.env.IMAGE_URL}/${current?.icon}`}
                         width={27}
                         height={20}
                     />
@@ -82,7 +51,7 @@ export default function Dropdown({ items = [...demo], description, onChange, def
                         </span>
                     }
                     <span className={styles.selected}>
-                        {current.value}
+                        {current?.value || ""}
                     </span>
                 </div>
                 <div className={styles.tick} />
