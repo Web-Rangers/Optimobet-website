@@ -16,7 +16,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
         <div className={styles.casino}>
             <div className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
                 <Image
-                    src={`${process.env.IMAGE_URL}/${bonusable.image_source}`}
+                    src={`${process.env.IMAGE_URL}/${bonusable?.image_source}`}
                     layout='fill'
                     objectFit='contain'
                 />
@@ -29,7 +29,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                         </span>
                         {bonusable?.rating &&
                             <div className={styles.casinoRating}>
-                                <Stars points={bonusable.rating} />
+                                <Stars points={bonusable?.rating} />
                             </div>
                         }
                         <span className={styles.titleText}>
@@ -66,8 +66,8 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                 </div>
                             ))
                         }
-                        {bonusable.games.length > gameCount.current && <div className={styles.casinoGame} >
-                            +{bonusable.games.length - gameCount.current}
+                        {bonusable?.games.length > gameCount.current && <div className={styles.casinoGame} >
+                            +{bonusable?.games.length - gameCount.current}
                         </div>}
                     </div>
                 </div>
@@ -89,8 +89,8 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                         </div>
                                     ))
                                 }
-                                {bonusable.website_language.length > 2 && <div className={styles.language}>
-                                    +{bonusable.website_language.length - 2}
+                                {bonusable?.website_language.length > 2 && <div className={styles.language}>
+                                    +{bonusable?.website_language.length - 2}
                                 </div>}
                             </div>
                         </div>
@@ -110,8 +110,8 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                         </div>
                                     ))
                                 }
-                                {bonusable.support_language.length > 2 && <div className={styles.language}>
-                                    +{bonusable.support_language.length - 2}
+                                {bonusable?.support_language.length > 2 && <div className={styles.language}>
+                                    +{bonusable?.support_language.length - 2}
                                 </div>}
 
                             </div>
