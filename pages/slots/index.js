@@ -116,10 +116,10 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
         setPage(1)
     }, [providerFilter, filter])
 
-    function renderSlots(sidebarShown, pageC) {
+    function renderSlots(sidebarShown, pageC, width) {
         let column = 1;
         let row = 1;
-        const maxColumns = sidebarShown ? 3 : width <= 768 ? 3 : 4;
+        const maxColumns = sidebarShown ? 3 : width <= 768 ? 2 : 4;
         return slotsFiltered.slice(0, pageC * 30).map((item, index) => {
             const slot = <Slot
                 {...item}
@@ -304,7 +304,7 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                     style={sidebarShown && width > 768 ? { gridTemplateColumns: 'repeat(3, 1fr)' } : { gridTemplateColumns: 'repeat(4, 1fr)' }}
                     className={styles.slots}
                 >
-                    {renderSlots(sidebarShown, page)}
+                    {renderSlots(sidebarShown, page, width)}
                     <div ref={loadMoreRef} />
                     {
                         width <= 768 &&
