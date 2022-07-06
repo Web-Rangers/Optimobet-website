@@ -293,9 +293,9 @@ export default function Home({
 
                 <div className={styles.sitesLine}>
                     <div className={styles.BlocksHeader}>
-                        <span className={styles.promoBlocksSubTitle}>
+                        {/* <span className={styles.promoBlocksSubTitle}>
                             second name
-                        </span>
+                        </span> */}
                         <span className={styles.promoBlocksTitle}>
                             online casinos
                         </span>
@@ -320,9 +320,9 @@ export default function Home({
 
                 <div className={styles.promoBlocks}>
                     <div className={styles.BlocksHeader}>
-                        <span className={styles.promoBlocksSubTitle}>
+                        {/* <span className={styles.promoBlocksSubTitle}>
                             second name
-                        </span>
+                        </span> */}
                         <span className={styles.promoBlocksTitle}>
                             exclusive bonus
                         </span>
@@ -345,9 +345,9 @@ export default function Home({
                 {width > 1024 && <div className={styles.slotsSlider}>
                     <div className={styles.headerBlockWrap}>
                         <div className={styles.BlocksHeader}>
-                            <span className={styles.promoBlocksSubTitle}>
+                            {/* <span className={styles.promoBlocksSubTitle}>
                                 second name
-                            </span>
+                            </span> */}
                             <span className={styles.promoBlocksTitle}>
                                 free slots
                             </span>
@@ -382,9 +382,9 @@ export default function Home({
                 <div className={styles.gamblingRules}>
                     <div className={styles.headerBlockWrap}>
                         <div className={styles.BlocksHeader}>
-                            <span className={styles.promoBlocksSubTitle}>
+                            {/* <span className={styles.promoBlocksSubTitle}>
                                 second name
-                            </span>
+                            </span> */}
                             <span className={styles.promoBlocksTitle} style={{ textTransform: "initial" }}>
                                 How to start gambling
                             </span>
@@ -440,9 +440,9 @@ export default function Home({
                 <div className={styles.faqBlock}>
                     <div className={styles.headerBlockWrap}>
                         <div className={styles.BlocksHeader}>
-                            <span className={styles.promoBlocksSubTitle}>
+                            {/* <span className={styles.promoBlocksSubTitle}>
                                 second name
-                            </span>
+                            </span> */}
                             <span className={styles.promoBlocksTitle}>
                                 frequently asked quetions
                             </span>
@@ -547,9 +547,9 @@ export default function Home({
 
                 <div className={styles.aboutSite}>
                     <div className={styles.BlocksHeader}>
-                        <span className={styles.promoBlocksSubTitle}>
+                        {/* <span className={styles.promoBlocksSubTitle}>
                             second name
-                        </span>
+                        </span> */}
                         <span className={styles.promoBlocksTitle} style={{ textTransform: "initial" }}>
                             How to opt the best site for gambling
                         </span>
