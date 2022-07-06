@@ -183,7 +183,7 @@ export default function SiteCard({
                     <div className={styles.gamesCircles}>
                         {
                             games?.slice(0, gamesCount).map(game => (
-                                <div key={`game_${game.id}`}>
+                                <div key={`game_${game.id}`} title={game.name}>
                                     <Image
                                         src={`${process.env.IMAGE_URL}/${game.image_source}`}
                                         layout="fill"
