@@ -65,10 +65,10 @@ export default function PromoBlock({
                             <span className={styles.promoCountry}>
                                 {countries[0]?.name}
                             </span>
-                            <div className={styles.headerImage} style={{width:"50%"}}>
+                            <div className={styles.headerImage}>
                                 <Image
                                     src={`${process.env.IMAGE_URL}${image_source}`}
-                                    objectFit='cover'
+                                    objectFit='contain'
                                     layout='fill'
                                     objectPosition={'left center'}
                                 />
