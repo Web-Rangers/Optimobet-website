@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from '../../styles/pages/Slots.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper';
+import { EffectFade, Pagination } from 'swiper';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -31,7 +31,7 @@ const mobileFilters = [
     },
 ]
 
-export default function SlotsPage({ slots, providers }) {
+export default function SlotsPage({ slots, providers, sliderContent }) {
     const [sidebarShown, setSidebarShown] = useState(true)
     const [filter, setFilter] = useState('All')
     const [availableProviders, setAvailableProviders] = useState(providers.filter(prov => prov.count > 0))
@@ -173,27 +173,36 @@ export default function SlotsPage({ slots, providers }) {
             >
                 <div className={styles.slider}>
                     <Swiper
-                        modules={[Pagination]}
+                        modules={[Pagination, EffectFade]}
                         slidesPerView={1}
-                        spaceBetween={21}
+                        effect={"fade"}
                         pagination={{
                             clickable: true,
                             bulletClass: styles.bullet,
                             bulletActiveClass: styles.bulletActive,
                             horizontalClass: styles.pagination,
                         }}
+                        className={styles.sliderWrap}
                         loop
                     >
                         {
-                            slots.slice(0, 10).map(item => (
-                                <SwiperSlide key={`slide_${item}`}>
+                            sliderContent?.map(item => (
+                                <SwiperSlide key={`slide_${item.id}`}>
                                     <div className={styles.slide} >
                                         <Image
-                                            src={`${process.env.IMAGE_URL}/${item.image_source}`}
+                                            src={`${process.env.IMAGE_URL}/${item.image_bg_source}`}
                                             alt="slide"
                                             layout="fill"
                                             objectFit='cover'
+                                            style={{borderRadius:"16px"}}
                                         />
+                                        <div className={styles.logoImg}>
+                                            <Image
+                                                src={`${process.env.IMAGE_URL}/${item.image_source}`}
+                                                layout="fill"
+                                                objectFit='contain'
+                                            />
+                                        </div>
                                     </div>
                                 </SwiperSlide>
                             ))
@@ -287,6 +296,7 @@ export default function SlotsPage({ slots, providers }) {
 export async function getStaticProps() {
     const slots = await APIRequest('/nolimit/slots?no_paginate=1', 'GET')
     const providers = await APIRequest('/nolimit/providers', 'GET')
+    const sliderContent = await APIRequest('/sliders?page=slots', 'GET')
 
     return {
         props: {
@@ -305,7 +315,8 @@ export async function getStaticProps() {
                             .length
                     }
                 ))
-            ]
+            ],
+            sliderContent
         },
         revalidate: 10,
     }
