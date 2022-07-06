@@ -322,6 +322,39 @@
 
 @media screen and (max-width: 768px) {
     .filters {
+        position: fixed;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        top: 0;
+        gap: 0;
+        overflow: scroll;
+    }
+
+    .mobileFilterButton {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 16px;
+        z-index: 10000;
+        padding: 16px 70px;
+        background-color: #7F3FFC;
+        border-radius: 100px;
+        text-align: left;
+        font: normal normal 500 16px/56px Samsung Sans;
+        letter-spacing: 0px;
+        color: #F2F2F2;
+        text-transform: uppercase;
+        opacity: 1;
+        left: 25%;
+        cursor: pointer;
+        min-width: 220px;
+        min-height: 88px;
+    }
+
+    .filters .filtersTitle {
         display: none;
     }
 
@@ -344,4 +377,29 @@
     .sliderBlock {
         width: 90% !important;
     }
+
+    .casinoInfo {
+        gap: 25px;
+    }
+
+    .controls {
+        display: none;
+    }
+
+    .contentContainer {
+        margin: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .content {
+        margin: 0 !important;
+        width: 100% !important;
+        padding: 0 16px;
+    }
+
+    .sliderBlock {
+        width: 90% !important;
+    }
+
 }

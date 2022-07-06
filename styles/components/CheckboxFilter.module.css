@@ -13,7 +13,7 @@
     padding-right: 32px;
 }
 
-.title span{
+.title span {
     display: flex;
     align-items: center;
 }
@@ -95,4 +95,13 @@
     content: '✔';
     position: absolute;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    .filter {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid #4B445333;
+    }
+
 }

@@ -90,6 +90,15 @@ export default function BookmakersPage({ filters }) {
         }
     }
 
+    const mobileButtonVariants = {
+        shown: {
+            backgroundColor: '#7F3FFC',
+        },
+        hidden: {
+            backgroundColor: '#FFFFFF',
+        }
+    }
+
     function handleFilterByCategory(item, filterName) {
         if (item === null) {
             setFilteredItems(bookmakersRef.current);
@@ -181,6 +190,12 @@ export default function BookmakersPage({ filters }) {
 
         return () => observer.disconnect();
     }, [bookmakers])
+
+    useEffect(() => {
+        if (width <= 768) {
+            setSidebarShown(false);
+        }
+    }, [width])
 
     return (
         <div className={styles.container}>
@@ -312,6 +327,28 @@ export default function BookmakersPage({ filters }) {
                         {filteredItems.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
                             <BeatLoader loading={loading} color='#7F3FFC' />
                         </div>}
+                        {
+                            width <= 768 &&
+                            <motion.div
+                                variants={mobileButtonVariants}
+                                animate={sidebarShown ? 'shown' : 'hidden'}
+                                className={styles.mobileFilterButton}
+                                onClick={() => setSidebarShown(!sidebarShown)}
+                            >
+                                {
+                                    sidebarShown
+                                        ? `Filter (${filteredItems.length})`
+                                        : <span className={styles.filtersTitle}>
+                                            <Image
+                                                src={'/images/icons/filter.svg'}
+                                                height={20}
+                                                width={20}
+                                            />
+                                            Filters
+                                        </span>
+                                }
+                            </motion.div>
+                        }
                     </div>
                 </motion.div>
             </div>
