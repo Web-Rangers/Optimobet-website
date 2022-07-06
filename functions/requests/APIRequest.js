@@ -11,6 +11,8 @@ export default async function APIRequest(
     if (typeof localStorage !== 'undefined') {
         const country = JSON.parse(localStorage.getItem('user'))?.country_code;
         country && headers.append('X-Country', country)
+        const lang = JSON.parse(localStorage.getItem('user'))?.language_code;
+        lang && headers.append('X-Localization', lang)
     }
     const options = {
         method,

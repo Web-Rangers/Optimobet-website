@@ -7,17 +7,40 @@ import APIRequest from '../functions/requests/APIRequest'
 import useUserInfo from '../hooks/useUserInfo'
 import { useRouter } from 'next/router'
 
+const languages = [
+    {
+        id: 1,
+        value: "English",
+        code: "EN",
+        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/gb.svg"
+    },
+    {
+        id: 2,
+        value: "Russian",
+        code: "RU",
+        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/ru.svg"
+    },
+    {
+        id: 3,
+        value: "Spanish",
+        code: "ES",
+        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/es.svg"
+    }
+]
+
 export default function Language({ setBorder }) {
     const [open, setOpen] = useState(false)
     const [countries, setCountries] = useState()
     const user = useUserInfo();
     const country_id = useRef('GE')
+    const language_id = useRef('EN')
     const router = useRouter();
     const blockRef = useRef()
 
     const apply = () => {
         const newUser = { ...user };
         newUser.country_code = country_id.current;
+        newUser.language_code = language_id.current;
         localStorage.setItem('user', JSON.stringify(newUser));
         router.reload();
         setOpen(false)
@@ -26,6 +49,7 @@ export default function Language({ setBorder }) {
     const reset = () => {
         const newUser = { ...user };
         newUser.country_code = undefined;
+        newUser.language_code = undefined;
         localStorage.setItem('user', JSON.stringify(newUser));
         router.reload();
         setOpen(false)
@@ -61,7 +85,7 @@ export default function Language({ setBorder }) {
                 onClick={() => setOpen(!open)}
                 style={open ? { borderColor: "#7F3FFC" } : {}}
             >
-                <span>EN</span>
+                <span>{language_id.current || " "}</span>
                 <span className={styles.separator} />
                 <div className={styles.userCountry}>
                     <Image
@@ -87,25 +111,8 @@ export default function Language({ setBorder }) {
                         </span>
                         <Dropdown
                             description={"Website Language"}
-                            items={
-                                [
-                                    {
-                                        id: 1,
-                                        value: "English",
-                                        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/gb.svg"
-                                    },
-                                    {
-                                        id: 2,
-                                        value: "Russian",
-                                        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/ru.svg"
-                                    },
-                                    {
-                                        id: 3,
-                                        value: "Spanish",
-                                        icon: "/storage/upload/flags/flag-icons-main/flags/4x3/es.svg"
-                                    }
-                                ]
-                            }
+                            onChange={(item) => language_id.current = languages.find(lang => lang.id === item.id)?.code}
+                            items={languages}
                         />
                         <Dropdown
                             defaultSelected={countries?.find(country => country.code === user?.country_code)?.id}
