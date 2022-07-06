@@ -13,6 +13,7 @@ export default function Language({ setBorder }) {
     const user = useUserInfo();
     const country_id = useRef('GE')
     const router = useRouter();
+    const blockRef = useRef()
 
     const apply = () => {
         const newUser = { ...user };
@@ -40,10 +41,21 @@ export default function Language({ setBorder }) {
         APIRequest('/countries', 'GET')
             .then(res => { setCountries(res) })
             .catch(err => console.log(err))
+            
+        if (window)
+            window.addEventListener('click', closeIfNotDropdown)
+        return () => {
+            window.removeEventListener('click', closeIfNotDropdown)
+        }
     }, [])
 
+    const closeIfNotDropdown = (e) => {
+        if ((e.target != blockRef.current) && (!blockRef.current.contains(e.target)))
+            setOpen(false)
+    }
+
     return (
-        <div className={styles.container}>
+        <div className={styles.container} ref={blockRef}>
             <div
                 className={styles.language}
                 onClick={() => setOpen(!open)}

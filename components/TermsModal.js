@@ -10,6 +10,19 @@ export default function TermsModal({ rules, setModalState }) {
     const blockRef = useRef()
     const [leftOffset, setLeftOffset] = useState({})
 
+    const closeIfNotDropdown = (e) => {
+        if ((e.target != blockRef.current) && (!blockRef.current.contains(e.target) && (blockRef.current.parentElement!=e.target)))
+            setModalState && setModalState(false)
+    }
+
+    useEffect(()=>{
+        if (window)
+            window.addEventListener('click', closeIfNotDropdown)
+        return () => {
+            window.removeEventListener('click', closeIfNotDropdown)
+        }
+    },[])
+
     useEffect(()=>{
         if (width<=750)            
         setLeftOffset({width:width, right:0})
