@@ -11,7 +11,7 @@ export default function PromoBlock({
     charactersWidth,
     charactersHeight,
     name,
-    features,
+    single_bonuses,
     claim_bonus_text,
     bonus_url,
     countries,
@@ -80,7 +80,7 @@ export default function PromoBlock({
                             {shared_content?.name || claim_bonus_text}
                         </span>
                         {
-                            features?.map(feature => (
+                            single_bonuses?.features?.map(feature => (
                                 <span key={feature} className={styles.promoCheckInfo}>
                                     {feature}
                                 </span>
