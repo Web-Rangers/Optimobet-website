@@ -23,14 +23,16 @@ export default function CasinoPage({ casino }) {
                     <div className={styles.sideCol}>
                         <div className={styles.sticky}>
                             <div className={styles.casinoCard}>
-                                <div className={styles.casinoHeaderCard}>
-                                    <div className={styles.casinoHeaderLogo} style={{ backgroundColor: casino.bg_color }}>
-                                        <Image
-                                            src={`${process.env.IMAGE_URL}/${casino?.image_source}`}
-                                            alt={casino?.shared_content?.name}
-                                            objectFit='contain'
-                                            layout='fill'
-                                        />
+                                <div className={styles.casinoHeaderCard} style={{ backgroundColor: casino.bg_color }}>
+                                    <div className={styles.casinoHeaderLogo} >
+                                        <div>
+                                            <Image
+                                                src={`${process.env.IMAGE_URL}/${casino?.image_source}`}
+                                                alt={casino?.shared_content?.name}
+                                                objectFit='contain'
+                                                layout='fill'
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className={styles.casinoContentCard}>
@@ -104,8 +106,8 @@ export default function CasinoPage({ casino }) {
                             <InfoBlock
                                 iconSrc="/images/icons/casino/current-location.svg"
                                 infoTitle="IP Address From"
-                                infoText={casino?.countries[0]?.name}
-                                dataImages={[`${process.env.IMAGE_URL}/${casino?.countries[0]?.flag_source}`]}
+                                infoText={casino?.only_ip[0]?.name}
+                                dataImages={[`${process.env.IMAGE_URL}/${casino?.only_ip[0]?.flag_source}`]}
                             />
                             <InfoBlock
                                 iconSrc="/images/icons/casino/users.svg"
@@ -128,8 +130,8 @@ export default function CasinoPage({ casino }) {
                             <InfoBlock
                                 iconSrc="/images/icons/casino/user.svg"
                                 infoTitle="Residents From"
-                                infoText="Georgia"
-                                dataImages={["/images/icons/circle-check.svg"]}
+                                infoText={casino?.only_residence[0]?.name}
+                                dataImages={[`${process.env.IMAGE_URL}/${casino?.only_residence[0]?.flag_source}`]}
                             />
                             <InfoBlock
                                 iconSrc="/images/icons/casino/shield.svg"

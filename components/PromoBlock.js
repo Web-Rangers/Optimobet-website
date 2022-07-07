@@ -6,12 +6,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function PromoBlock({
+    id,
     bgColor,
     charactersImage,
     charactersWidth,
     charactersHeight,
     name,
-    features,
+    single_bonuses,
     claim_bonus_text,
     bonus_url,
     countries,
@@ -77,10 +78,10 @@ export default function PromoBlock({
                     </div>
                     <div className={styles.promoBonusInfo}>
                         <span className={styles.promoBonus}>
-                            {shared_content?.name || claim_bonus_text}
+                            {single_bonuses?.name || shared_content.name}
                         </span>
                         {
-                            features?.map(feature => (
+                            single_bonuses?.features?.map(feature => (
                                 <span key={feature} className={styles.promoCheckInfo}>
                                     {feature}
                                 </span>
@@ -98,7 +99,7 @@ export default function PromoBlock({
                     >
                         Get Bonus
                     </a>
-                    <Link href={"/bookmakers"}>
+                    <Link href={`/casinos/${id}`}>
                         <a className={styles.promoBonusApply}>
                             View more
                         </a>

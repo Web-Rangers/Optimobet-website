@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     padding: 24px;
     box-shadow: 0px 0px 30px #4B445333;
@@ -18,7 +18,8 @@
     max-height: 350px;
     width: 750px;
 }
-.trigon{
+
+.trigon {
     position: absolute;
     width: 0;
     height: 0;
@@ -28,31 +29,46 @@
     right: 94px;
     z-index: 999;
 }
-.termsHeader{
+
+.termsHeader {
     font: normal normal 500 16px/18px Samsung Sans;
     letter-spacing: 0px;
     color: #1A1C21;
     text-transform: uppercase;
 }
-.termsHeader{
+
+.termsHeader {
     display: flex;
     gap: 16px;
     justify-content: space-between;
 }
-.termsContent{
+
+.termsContent {
     overflow-y: auto;
 }
-.termsContent::-webkit-scrollbar{
+
+.termsContent::-webkit-scrollbar {
     width: 8px;
-    background: #4B445310;   
+    background: #4B445310;
     background-clip: padding-box;
     border-left: 4px solid rgba(0, 0, 0, 0);
 }
-.termsContent::-webkit-scrollbar-button{
+
+.termsContent::-webkit-scrollbar-button {
     display: none;
 }
-.termsContent::-webkit-scrollbar-thumb{ 
+
+.termsContent::-webkit-scrollbar-thumb {
     background: #4B445333;
     background-clip: padding-box;
     border-left: 4px solid rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 425px) {
+    .container {
+        right: -115px !important;
+        width: 400px !important;
+    }
+
+
 }

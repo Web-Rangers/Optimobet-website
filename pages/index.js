@@ -232,18 +232,90 @@ export default function Home({
                     />
                 </div>
 
-                <div className={styles.sitesLine}>
+                <div className={styles.promoBlocks}>
                     <div className={styles.BlocksHeader}>
                         {/* <span className={styles.promoBlocksSubTitle}>
-                            second name
+                            Bet and win
                         </span> */}
                         <span className={styles.promoBlocksTitle}>
                             online casinos
                         </span>
                     </div>
+                    <div className={styles.promoBlocksContent}>
+                        {exclusiveCasinos[0]
+                            ? <PromoBlock
+                                charactersImage="/images/main/7880-1.png"
+                                bgColor="#7F3FFC"
+                                {...exclusiveCasinos[0]}
+                                rating={exclusiveCasinos[0].reputation}
+                            />
+                            : <div className='preloader'>
+                                <BeatLoader color='#7F3FFC' />
+                            </div>
+                        }
+                        {exclusiveCasinos[1]
+                            && <PromoBlock
+                                charactersImage="/images/main/7880-2.png"
+                                bgColor="#4B4453"
+                                {...exclusiveCasinos[1]}
+                                rating={exclusiveCasinos[1].reputation}
+                            />
+                        }
+                    </div>
+                </div>
+
+                <div className={styles.sitesGallery}>
                     {
-                        newCasinos.length > 0
-                            ? newCasinos.slice(0, 3).map(casino => (
+                        newCasinos.slice(0, width > 1024 ? 3 : 4).map(casino => (
+                            <SiteCard
+                                {...casino}
+                                key={casino.id}
+                                rep={casino.reputation}
+                            />
+                        ))
+                    }
+                    <div className={styles.promoInSites}>
+                        {newCasinos[3]
+                            && <PromoBlock
+                                charactersImage="/images/main/7880-3.png"
+                                bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
+                                charactersWidth={width > 1024 ? "60%" : null}
+                                charactersHeight={width > 1024 ? null : "100%"}
+                                {...newCasinos[3]}
+                                rating={newCasinos[3].reputation}
+                            />
+                        }
+                    </div>
+                    {
+                        newCasinos.slice(width > 1024 ? 4 : 5, 8).map(casino => (
+                            <SiteCard
+                                {...casino}
+                                key={casino.id}
+                                rep={casino.reputation}
+                            />
+                        ))
+                    }
+                    <div className={styles.moreButtonArea}>
+                        <Link href="/casinos">
+                            <a className={styles.moreButton}>
+                                See More
+                            </a>
+                        </Link>
+                    </div>
+                </div>
+
+                <div className={styles.sitesLine}>
+                    <div className={styles.BlocksHeader}>
+                        <span className={styles.promoBlocksSubTitle}>
+                            Bet and win
+                        </span>
+                        <span className={styles.promoBlocksTitle}>
+                            betting sites
+                        </span>
+                    </div>
+                    {
+                        betting.length > 0
+                            ? betting.slice(0, 3).map(casino => (
                                 <SiteCard
                                     key={casino.id}
                                     {...casino}
@@ -255,81 +327,6 @@ export default function Home({
                             </div>
                     }
                     <div className={styles.moreButtonArea} style={{ marginTop: "24px" }}>
-                        <Link href="/casinos">
-                            <a className={styles.moreButton}>
-                                See More
-                            </a>
-                        </Link>
-                    </div>
-                </div>
-
-                <div className={styles.promoBlocks}>
-                    <div className={styles.BlocksHeader}>
-                        <span className={styles.promoBlocksSubTitle}>
-                            Bet and win
-                        </span>
-                        <span className={styles.promoBlocksTitle}>
-                            Betting sites
-                        </span>
-                    </div>
-                    <div className={styles.promoBlocksContent}>
-                        {exclusiveBetting[0]
-                            ? <PromoBlock
-                                charactersImage="/images/main/7880-1.png"
-                                bgColor="#7F3FFC"
-                                {...exclusiveBetting[0]}
-                                rating={exclusiveBetting[0].reputation}
-                            />
-                            : <div className='preloader'>
-                                <BeatLoader color='#7F3FFC' />
-                            </div>
-                        }
-                        {exclusiveBetting[1]
-                            && <PromoBlock
-                                charactersImage="/images/main/7880-2.png"
-                                bgColor="#4B4453"
-                                {...exclusiveBetting[1]}
-                                rating={exclusiveBetting[1].reputation}
-                            />
-                        }
-                    </div>
-                </div>
-
-                <div className={styles.sitesGallery}>
-                    {
-                        betting.slice(0, width > 1024 ? 3 : 4).map(casino => (
-                            <SiteCard
-                                {...casino}
-                                key={casino.id}
-                                rep={casino.reputation}
-                            />
-                        ))
-                    }
-                    <div className={styles.promoInSites}>
-                        {betting[3]
-                            ? <PromoBlock
-                                charactersImage="/images/main/7880-3.png"
-                                bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
-                                charactersWidth={width > 1024 ? "60%" : null}
-                                charactersHeight={width > 1024 ? null : "100%"}
-                                {...betting[3]}
-                                rating={betting[3].reputation}
-                            />
-                            : <div className='preloader'>
-                                <BeatLoader color='#7F3FFC' />
-                            </div>
-                        }
-                    </div>
-                    {
-                        betting.slice(width > 1024 ? 4 : 5, 8).map(casino => (
-                            <SiteCard
-                                {...casino}
-                                key={casino.id}
-                                rep={casino.reputation}
-                            />
-                        ))
-                    }
-                    <div className={styles.moreButtonArea}>
                         <Link href="/bookmakers">
                             <a className={styles.moreButton}>
                                 See More
@@ -534,7 +531,7 @@ export default function Home({
                     </div>
                     <div className={styles.countriesContent}>
                         {
-                            countries.slice(0, 11).map(country => (
+                            countries.map(country => (
                                 <div className={styles.country} key={country.id}>
                                     <span className={styles.countryName}>
                                         {country.name}
@@ -732,7 +729,7 @@ export async function getStaticProps() {
             bonusesCount: bonuses.total,
             slotsCount: slots.total,
             bookmakersCount: bookmakers.total,
-            countries: countries,
+            countries: countries.slice(0, 11),
             providers
         },
         revalidate: 10,
