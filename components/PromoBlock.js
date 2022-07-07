@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function PromoBlock({
+    id,
     bgColor,
     charactersImage,
     charactersWidth,
@@ -98,7 +99,7 @@ export default function PromoBlock({
                     >
                         Get Bonus
                     </a>
-                    <Link href={"/bookmakers"}>
+                    <Link href={`/casinos/${id}`}>
                         <a className={styles.promoBonusApply}>
                             View more
                         </a>
