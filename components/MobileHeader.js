@@ -50,6 +50,14 @@ export default function MobileHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const user = useUserInfo();
 
+    useEffect(()=>{
+        if (isMenuOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = ""
+        }
+    },[isMenuOpen])
+
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
             <div
