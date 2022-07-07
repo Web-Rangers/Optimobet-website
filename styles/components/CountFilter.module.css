@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.title span{
+.title span {
     display: flex;
     align-items: center;
 }
@@ -112,4 +112,11 @@
     opacity: 1;
     border-top: 1px solid #4B44531A;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .filter {
+        border-radius: 0;
+    }
+
 }

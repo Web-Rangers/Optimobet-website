@@ -232,6 +232,37 @@ export default function Home({
                     />
                 </div>
 
+                <div className={styles.sitesLine}>
+                    <div className={styles.BlocksHeader}>
+                        {/* <span className={styles.promoBlocksSubTitle}>
+                            second name
+                        </span> */}
+                        <span className={styles.promoBlocksTitle}>
+                            online casinos
+                        </span>
+                    </div>
+                    {
+                        newCasinos.length > 0
+                            ? newCasinos.slice(0, 3).map(casino => (
+                                <SiteCard
+                                    key={casino.id}
+                                    {...casino}
+                                    rep={casino.reputation}
+                                />
+                            ))
+                            : <div className='preloader'>
+                                <BeatLoader color='#7F3FFC' />
+                            </div>
+                    }
+                    <div className={styles.moreButtonArea} style={{ marginTop: "24px" }}>
+                        <Link href="/casinos">
+                            <a className={styles.moreButton}>
+                                See More
+                            </a>
+                        </Link>
+                    </div>
+                </div>
+
                 <div className={styles.promoBlocks}>
                     <div className={styles.BlocksHeader}>
                         <span className={styles.promoBlocksSubTitle}>
@@ -254,15 +285,12 @@ export default function Home({
                             </div>
                         }
                         {exclusiveBetting[1]
-                            ? <PromoBlock
+                            && <PromoBlock
                                 charactersImage="/images/main/7880-2.png"
                                 bgColor="#4B4453"
                                 {...exclusiveBetting[1]}
                                 rating={exclusiveBetting[1].reputation}
                             />
-                            : <div className='preloader'>
-                                <BeatLoader color='#7F3FFC' />
-                            </div>
                         }
                     </div>
                 </div>
@@ -310,33 +338,6 @@ export default function Home({
                     </div>
                 </div>
 
-                <div className={styles.sitesLine}>
-                    <div className={styles.BlocksHeader}>
-                        {/* <span className={styles.promoBlocksSubTitle}>
-                            second name
-                        </span> */}
-                        <span className={styles.promoBlocksTitle}>
-                            online casinos
-                        </span>
-                    </div>
-                    {
-                        newCasinos.slice(0, 3).map(casino => (
-                            <SiteCard
-                                key={casino.id}
-                                {...casino}
-                                rep={casino.reputation}
-                            />
-                        ))
-                    }
-                    <div className={styles.moreButtonArea} style={{ marginTop: "24px" }}>
-                        <Link href="/casinos">
-                            <a className={styles.moreButton}>
-                                See More
-                            </a>
-                        </Link>
-                    </div>
-                </div>
-
                 <div className={styles.promoBlocks}>
                     <div className={styles.BlocksHeader}>
                         {/* <span className={styles.promoBlocksSubTitle}>
@@ -375,9 +376,10 @@ export default function Home({
                     {offsetSlots && offsetSlots.length > 0 &&
                         <SliderWithControls
                             styleWrap={styleSlotSlider}
+                            loop
                         >
                             {offsetSlots.map((item, index) => (
-                                <SwiperSlide className={styles.slotBlock} key={index}>
+                                <SwiperSlide className={styles.slotBlock} key={index} >
                                     {item.map(slot => (
                                         <div
                                             style={{

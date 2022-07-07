@@ -172,6 +172,17 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                     exit="hidden"
                     className={styles.filters}
                 >
+                    {
+                        width <= 768 && <div className={styles.mobileFilterHeader}>
+                            <span>Filters</span>
+                            <Image
+                                src="/images/icons/close.svg"
+                                width={24}
+                                height={24}
+                                onClick={() => setSidebarShown(false)}
+                            />
+                        </div>
+                    }
                     <div className={styles.filtersBlocks}>
                         <CountFilter
                             items={availableProviders}
@@ -330,7 +341,7 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                     }
                 </div>
             </motion.div>
-        </div>
+        </div >
     )
 }
 
