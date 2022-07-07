@@ -899,4 +899,10 @@
     .promoBlocksTitle{
         font: normal normal bold 20px/23px Samsung Sans;
     }
+    .bonusText{
+        font: normal normal bold 18px/30px Samsung Sans;
+    }
+    .feature {
+        font: normal normal 500 13px/15px Samsung Sans
+    }
 }
