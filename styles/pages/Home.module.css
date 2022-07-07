@@ -836,6 +836,7 @@
     .casinoInfo {
         padding: 32px 20px;
         height: 60%;
+        gap: 20px;
     }
 
     .characters {
@@ -889,14 +890,16 @@
     .countriesContent {
         gap: 12px;
     }
-    
+
     .rulesList li {
         font: normal normal bold 16px/19px Samsung Sans;
     }
-    .promoBlocksSubTitle{
+
+    .promoBlocksSubTitle {
         font: normal normal 500 13px/16px Samsung Sans;
     }
-    .promoBlocksTitle{
+
+    .promoBlocksTitle {
         font: normal normal bold 20px/23px Samsung Sans;
     }
 }
