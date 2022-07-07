@@ -232,6 +232,37 @@ export default function Home({
                     />
                 </div>
 
+                <div className={styles.sitesLine}>
+                    <div className={styles.BlocksHeader}>
+                        {/* <span className={styles.promoBlocksSubTitle}>
+                            second name
+                        </span> */}
+                        <span className={styles.promoBlocksTitle}>
+                            online casinos
+                        </span>
+                    </div>
+                    {
+                        newCasinos.length > 0
+                            ? newCasinos.slice(0, 3).map(casino => (
+                                <SiteCard
+                                    key={casino.id}
+                                    {...casino}
+                                    rep={casino.reputation}
+                                />
+                            ))
+                            : <div className='preloader'>
+                                <BeatLoader color='#7F3FFC' />
+                            </div>
+                    }
+                    <div className={styles.moreButtonArea} style={{ marginTop: "24px" }}>
+                        <Link href="/casinos">
+                            <a className={styles.moreButton}>
+                                See More
+                            </a>
+                        </Link>
+                    </div>
+                </div>
+
                 <div className={styles.promoBlocks}>
                     <div className={styles.BlocksHeader}>
                         <span className={styles.promoBlocksSubTitle}>
@@ -300,33 +331,6 @@ export default function Home({
                     }
                     <div className={styles.moreButtonArea}>
                         <Link href="/bookmakers">
-                            <a className={styles.moreButton}>
-                                See More
-                            </a>
-                        </Link>
-                    </div>
-                </div>
-
-                <div className={styles.sitesLine}>
-                    <div className={styles.BlocksHeader}>
-                        {/* <span className={styles.promoBlocksSubTitle}>
-                            second name
-                        </span> */}
-                        <span className={styles.promoBlocksTitle}>
-                            online casinos
-                        </span>
-                    </div>
-                    {
-                        newCasinos.slice(0, 3).map(casino => (
-                            <SiteCard
-                                key={casino.id}
-                                {...casino}
-                                rep={casino.reputation}
-                            />
-                        ))
-                    }
-                    <div className={styles.moreButtonArea} style={{ marginTop: "24px" }}>
-                        <Link href="/casinos">
                             <a className={styles.moreButton}>
                                 See More
                             </a>
