@@ -218,6 +218,17 @@ export default function BookmakersPage({ filters }) {
                             Filters
                         </span>
                         {
+                            width <= 768 && <div className={styles.mobileFilterHeader}>
+                                <span>Filters</span>
+                                <Image
+                                    src="/images/icons/close.svg"
+                                    width={24}
+                                    height={24}
+                                    onClick={() => setSidebarShown(false)}
+                                />
+                            </div>
+                        }
+                        {
                             filters.map((filter, index) => (
                                 <CheckboxFilter
                                     key={filter.name}
