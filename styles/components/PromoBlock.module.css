@@ -44,8 +44,10 @@
 }
 
 .promoReputation {
-    width: 58px;
-    height: 58px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
 }
 
 .promoCountry {
