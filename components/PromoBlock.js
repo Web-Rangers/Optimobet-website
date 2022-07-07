@@ -77,7 +77,7 @@ export default function PromoBlock({
                     </div>
                     <div className={styles.promoBonusInfo}>
                         <span className={styles.promoBonus}>
-                            {shared_content?.name || claim_bonus_text}
+                            {single_bonuses?.name || shared_content.name}
                         </span>
                         {
                             single_bonuses?.features?.map(feature => (

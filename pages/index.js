@@ -307,7 +307,7 @@ export default function Home({
                     }
                     <div className={styles.promoInSites}>
                         {betting[3]
-                            ? <PromoBlock
+                            && <PromoBlock
                                 charactersImage="/images/main/7880-3.png"
                                 bgColor="transparent linear-gradient(251deg, #FFC448 0%, #FF8457 100%) 0% 0% no-repeat padding-box"
                                 charactersWidth={width > 1024 ? "60%" : null}
@@ -315,9 +315,6 @@ export default function Home({
                                 {...betting[3]}
                                 rating={betting[3].reputation}
                             />
-                            : <div className='preloader'>
-                                <BeatLoader color='#7F3FFC' />
-                            </div>
                         }
                     </div>
                     {
