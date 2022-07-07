@@ -21,6 +21,7 @@
     color: #4B4453;
     gap: 8px;
     transition: .2s;
+    max-height: 48px;
 }
 
 .userCountry {
