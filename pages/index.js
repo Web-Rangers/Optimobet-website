@@ -254,15 +254,12 @@ export default function Home({
                             </div>
                         }
                         {exclusiveBetting[1]
-                            ? <PromoBlock
+                            && <PromoBlock
                                 charactersImage="/images/main/7880-2.png"
                                 bgColor="#4B4453"
                                 {...exclusiveBetting[1]}
                                 rating={exclusiveBetting[1].reputation}
                             />
-                            : <div className='preloader'>
-                                <BeatLoader color='#7F3FFC' />
-                            </div>
                         }
                     </div>
                 </div>
