@@ -14,12 +14,26 @@ import { useRouter } from 'next/router'
 export default function Login() {
     const { width, height } = useWindowSize()
     const [imgLeft, setImgLeft] = useState()
-
+    const router = useRouter()
     const [currentPage, setCurrentPage] = useState()
 
     useEffect(() => {
         setCurrentPage(<SignIn setCurrentPage={setCurrentPage} />)
     }, [])
+
+    useEffect(()=>{
+        if (router.query.token) {
+            APIRequest("/me", "GET")
+                .then(res => {
+                    setCookie("token", router.query.token)
+                    localStorage.setItem("user", JSON.stringify(res))
+                    router.push('/')
+                })
+                .catch(e => {
+                    console.error(e)
+                })
+        }
+    },[router.query])
 
     useEffect(() => {
         if ((0.4 * width - 520) > 0)
