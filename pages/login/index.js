@@ -133,20 +133,24 @@ function SignIn({ setCurrentPage }) {
                             height={24}
                         />
                     </div>
-                    <div className={styles.social}>
-                        <Image
-                            src="/images/icons/socials/facebook.svg"
-                            width={24}
-                            height={24}
-                        />
-                    </div>
-                    <div className={styles.social}>
-                        <Image
-                            src="/images/icons/socials/Google.svg"
-                            width={24}
-                            height={24}
-                        />
-                    </div>
+                    <Link href={"http://backend.luckyrabbits.ge/social/login/facebook"}>
+                        <div className={styles.social}>
+                            <Image
+                                src="/images/icons/socials/facebook.svg"
+                                width={24}
+                                height={24}
+                            />
+                        </div>
+                    </Link>                    
+                    <Link href={"http://backend.luckyrabbits.ge/social/login/google"}>
+                        <div className={styles.social}>
+                            <Image
+                                src="/images/icons/socials/Google.svg"
+                                width={24}
+                                height={24}
+                            />
+                        </div>
+                    </Link>
                     <div className={styles.social}>
                         <Image
                             src="/images/icons/socials/Twitter.svg"
@@ -294,20 +298,24 @@ function SignUp({ setCurrentPage }) {
                             height={24}
                         />
                     </div>
-                    <div className={styles.social}>
-                        <Image
-                            src="/images/icons/socials/facebook.svg"
-                            width={24}
-                            height={24}
-                        />
-                    </div>
-                    <div className={styles.social}>
-                        <Image
-                            src="/images/icons/socials/Google.svg"
-                            width={24}
-                            height={24}
-                        />
-                    </div>
+                    <Link href={"http://backend.luckyrabbits.ge/social/login/facebook"}>
+                        <div className={styles.social}>
+                            <Image
+                                src="/images/icons/socials/facebook.svg"
+                                width={24}
+                                height={24}
+                            />
+                        </div>
+                    </Link>                    
+                    <Link href={"http://backend.luckyrabbits.ge/social/login/google"}>
+                        <div className={styles.social}>
+                            <Image
+                                src="/images/icons/socials/Google.svg"
+                                width={24}
+                                height={24}
+                            />
+                        </div>
+                    </Link>
                     <div className={styles.social}>
                         <Image
                             src="/images/icons/socials/Twitter.svg"
