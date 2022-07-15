@@ -344,12 +344,12 @@ export default function CasinoPage({ casino }) {
                                 infoText={casino?.live_language[0]?.name}
                                 dataImages={casino?.live_language?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
                             />
-                            <InfoBlock
+                            {/* <InfoBlock
                                 iconSrc="/images/icons/casino/user.svg"
                                 infoTitle="Residents From"
                                 infoText={casino?.only_residence[0]?.name}
                                 dataImages={casino?.only_residence?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
-                            />
+                            /> */}
                             <InfoBlock
                                 iconSrc="/images/icons/casino/shield.svg"
                                 infoTitle="VPN"
@@ -502,7 +502,7 @@ function ProviderCard({ name, image_source }) {
 
 export async function getStaticProps({ params }) {
     const { id } = params
-    const casino = await APIRequest(`/nolimit/casinos/${id}`)
+    const casino = await APIRequest(`/nolimit/bookmakers/${id}`)
 
     return {
         props: {
@@ -513,7 +513,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const casinos = await APIRequest('/nolimit/casinos?no_paginate=1', 'GET')
+    const casinos = await APIRequest('/nolimit/bookmakers?no_paginate=1', 'GET')
     const paths = casinos.map(casino => ({ params: { id: casino.id.toString() } }))
 
     return { paths, fallback: 'blocking' }
