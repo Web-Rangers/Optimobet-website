@@ -374,7 +374,7 @@ export default function CasinosPage({ filters }) {
                         {
                             casinos.length > 0
                                 ? filteredItems.map(casino => (
-                                    <CasinoCard {...casino} key={casino.name} />
+                                    <CasinoCard basepath={'casinos'} {...casino} key={casino.name} />
                                 ))
                                 : <div className='preloader'>
                                     <BeatLoader color='#7F3FFC' />

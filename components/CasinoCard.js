@@ -8,6 +8,7 @@ import TermsModal from './TermsModal'
 import useWindowSize from '../hooks/useWindowSize'
 
 export default function CasinoCard({
+    basepath,
     claim_bonus_url,
     bonus_url,
     features,
@@ -28,7 +29,7 @@ export default function CasinoCard({
 
     return (
         <div className={styles.casino}>
-            <Link href={`/casinos/${id}`}>
+            <Link href={`/${basepath}/${id}`}>
                 <a className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
                     <div className={styles.imageContainer}>
                         <Image
