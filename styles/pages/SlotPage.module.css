@@ -267,4 +267,13 @@
     .slotsSlider {
         padding: 0 16px;
     }
+
+    .slotSlide {
+        height: 424px !important;
+        max-width: 250px;
+    }
+
+    .slotSlide>div {
+        height: 100%;
+    }
 }
