@@ -91,7 +91,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                         </div>
                                     ))
                                 }
-                                {bonusable?.website_language.length > 2 && <div className={styles.language}>
+                                {bonusable?.website_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
                                     +{bonusable?.website_language.length - 2}
                                 </div>}
                             </div>
@@ -112,7 +112,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                         </div>
                                     ))
                                 }
-                                {bonusable?.support_language.length > 2 && <div className={styles.language}>
+                                {bonusable?.support_language.length > 2 && <div className={`${styles.language} ${styles.grayNums}`}>
                                     +{bonusable?.support_language.length - 2}
                                 </div>}
 
