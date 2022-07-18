@@ -4,6 +4,7 @@
     border: 1px solid #4B445333;
     border-radius: 16px;
     width: calc(33% - 18px);
+    background: #fff;
 }
 
 .cardHeader {
@@ -153,22 +154,22 @@
 }
 
 .checkInfo {
-    font: normal normal normal 15px/17px Samsung Sans;
+    font: normal normal normal 15px/26px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453;
     display: flex;
     gap: 8px;
-    align-items: center;
 }
 
 .checkInfo::before {
     background-image: url("/images/icons/circle-check.svg");
-    background-size: 14px;
+    background-size: 18px;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     content: "";
     flex-shrink: 0;
+    margin-top: 3px;
 }
 
 .contentGames {
@@ -220,12 +221,12 @@
     border: none;
     outline: none;
     color: #F2F2F2;
-    font: normal normal medium 15px/17px Samsung Sans;
+    font: normal normal 500 15px/17px Samsung Sans;
     cursor: pointer;
 }
 
 .bonusApply {
-    font: normal normal medium 15px/24px Samsung Sans;
+    font: normal normal 500 15px/24px Samsung Sans;
     letter-spacing: 0px;
     color: #4B445380;
     position: relative;

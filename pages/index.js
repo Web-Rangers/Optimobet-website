@@ -164,10 +164,15 @@ export default function Home({
             .catch(err => console.log(err))
         APIRequest('/home-components?type=casino_exclusive')
             .then(res => setExclusiveCasinos(res))
+            .catch(err => console.log(err))
         APIRequest('/sliders?page=home')
             .then(res => setSlides(res))
             .catch(err => console.log(err))
     }, [])
+
+    useEffect(()=>{
+        console.log(exclusiveCasinos)
+    },[exclusiveCasinos])
 
     return (
         <div className={styles.container}>
@@ -320,6 +325,7 @@ export default function Home({
                                     key={casino.id}
                                     {...casino}
                                     rep={casino.reputation}
+                                    bordersNone
                                 />
                             ))
                             : <div className='preloader'>

@@ -18,7 +18,8 @@ export default function PromoBlock({
     countries,
     rating,
     image_source,
-    shared_content
+    shared_content,
+    features
 }) {
     const [buttonBg, setButtonBg] = useState("")
 
@@ -81,7 +82,7 @@ export default function PromoBlock({
                             {single_bonuses?.name || shared_content.name}
                         </span>
                         {
-                            single_bonuses?.features?.map(feature => (
+                            features?.map(feature => (
                                 <span key={feature} className={styles.promoCheckInfo}>
                                     {feature}
                                 </span>

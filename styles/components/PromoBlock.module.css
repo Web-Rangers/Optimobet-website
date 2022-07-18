@@ -75,18 +75,19 @@
     letter-spacing: 0px;
     color: #F2F2F2;
     display: flex;
-    align-items: center;
 }
 
 .promoCheckInfo::before {
     background-image: url("/images/icons/circle-check-white.svg");
-    background-size: 14px;
+    object-fit: contain;
+    background-size: 18px;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     content: "";
     flex-shrink: 0;
     margin-right: 10px;
+    margin-top: 3px;
 }
 
 .promoBonusButton {
@@ -109,7 +110,7 @@
 }
 
 .promoBonusApply {
-    font: normal normal medium 15px/24px Samsung Sans;
+    font: normal normal 500 15px/24px Samsung Sans;
     letter-spacing: 0px;
     color: #F2F2F2;
     text-decoration: none;

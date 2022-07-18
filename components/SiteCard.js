@@ -83,7 +83,8 @@ export default function SiteCard({
     games,
     rating,
     image_source,
-    terms_and_conditions
+    terms_and_conditions,
+    bordersNone = false
 }) {
     const [reputation, setReputation] = useState(
         reputations.filter(([percent, value]) => (
@@ -133,6 +134,7 @@ export default function SiteCard({
     return (
         <div
             className={`${styles.siteCard} ${styles[reputation]}`}
+            style={bordersNone ? {borderColor:"transparent"} : {}}
         >
             <div className={styles.cardHeader}>
                 <div className={styles.headerImage}>
