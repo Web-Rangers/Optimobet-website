@@ -44,13 +44,11 @@
 
 .tick::before {
     content: "";
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid #4B4453;
-    border-right: 2px solid #4B4453;
-    border-radius: 2px;
-    transform: rotateZ(45deg);
-    margin-top: -2px;
+    width: 24px;
+    height: 24px;
+    background: url(/images/icons/chevron-down.svg) no-repeat;
+    background-size: contain;
+    background-position: center center;
 }
 
 .itemsContainer {
