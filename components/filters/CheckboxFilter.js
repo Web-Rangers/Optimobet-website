@@ -27,7 +27,7 @@ export default function CheckboxFilter({ items, title, collapsible = false, init
 
     const chevronVariants = {
         open: {
-            rotate: 90,
+            rotate: 180,
         },
         closed: {
             rotate: 0,
