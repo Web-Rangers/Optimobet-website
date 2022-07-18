@@ -221,20 +221,6 @@ export default function CasinoPage({ casino }) {
                                             </tr>
                                         ))
                                     }
-                                    <tr>
-                                        <td>
-                                            Payment method
-                                        </td>
-                                        <td>
-                                            Deposit Limit And Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Limit and Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Time
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -442,20 +428,6 @@ export default function CasinoPage({ casino }) {
                                             </tr>
                                         ))
                                     }
-                                    <tr>
-                                        <td>
-                                            Payment method
-                                        </td>
-                                        <td>
-                                            Deposit Limit And Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Limit and Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Time
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

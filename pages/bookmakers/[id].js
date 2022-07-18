@@ -221,20 +221,6 @@ export default function CasinoPage({ casino }) {
                                             </tr>
                                         ))
                                     }
-                                    <tr>
-                                        <td>
-                                            Payment method
-                                        </td>
-                                        <td>
-                                            Deposit Limit And Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Limit and Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Time
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -344,12 +330,12 @@ export default function CasinoPage({ casino }) {
                                 infoText={casino?.live_language[0]?.name}
                                 dataImages={casino?.live_language?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
                             />
-                            {/* <InfoBlock
+                            <InfoBlock
                                 iconSrc="/images/icons/casino/user.svg"
                                 infoTitle="Residents From"
                                 infoText={casino?.only_residence[0]?.name}
                                 dataImages={casino?.only_residence?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
-                            /> */}
+                            />
                             <InfoBlock
                                 iconSrc="/images/icons/casino/shield.svg"
                                 infoTitle="VPN"
@@ -442,20 +428,6 @@ export default function CasinoPage({ casino }) {
                                             </tr>
                                         ))
                                     }
-                                    <tr>
-                                        <td>
-                                            Payment method
-                                        </td>
-                                        <td>
-                                            Deposit Limit And Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Limit and Fees
-                                        </td>
-                                        <td>
-                                            Withdrawal Time
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
