@@ -216,7 +216,7 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                         {
                             sliderContent?.map(item => (
                                 <SwiperSlide key={`slide_${item.id}`}>
-                                    <Link href={item.details_link}>
+                                    <Link href={item.details_link ?? '/slots'}>
                                         <div className={styles.slide}>
                                             <Image
                                                 src={`${process.env.IMAGE_URL}/${item.image_bg_source}`}

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import TermsModal from './TermsModal'
 import useWindowSize from '../hooks/useWindowSize'
+import Link from 'next/link'
 
 const percentStyles = {
     "badRep": {
@@ -84,7 +85,9 @@ export default function SiteCard({
     rating,
     image_source,
     terms_and_conditions,
-    bordersNone = false
+    bordersNone = false,
+    id,
+    basepath
 }) {
     const [reputation, setReputation] = useState(
         reputations.filter(([percent, value]) => (
@@ -137,14 +140,16 @@ export default function SiteCard({
             style={bordersNone ? {borderColor:"transparent"} : {}}
         >
             <div className={styles.cardHeader}>
-                <div className={styles.headerImage}>
-                    <Image
-                        src={`${process.env.IMAGE_URL}${image_source}`}
-                        objectFit='contain'
-                        layout='fill'
-                        objectPosition={'left center'}
-                    />
-                </div>
+                <Link href={`/${basepath}/${id}`}>
+                    <a className={styles.headerImage}>
+                        <Image
+                            src={`${process.env.IMAGE_URL}${image_source}`}
+                            objectFit='contain'
+                            layout='fill'
+                            objectPosition={'left center'}
+                        />
+                    </a>
+                </Link>
                 <div className={styles.reputation}>
                     <span>
                         {reputationName} reputation

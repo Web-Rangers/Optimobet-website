@@ -82,7 +82,7 @@ export default function BookmakersPage({ filters }) {
             }
         },
         narrow: {
-            marginLeft: 'calc(20% + 30px)',
+            marginLeft: 'calc(23% + 30px)',
             width: '80%',
             transition: {
                 duration: 0.5,

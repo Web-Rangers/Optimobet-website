@@ -19,7 +19,8 @@ export default function PromoBlock({
     rating,
     image_source,
     shared_content,
-    features
+    features,
+    basepath
 }) {
     const [buttonBg, setButtonBg] = useState("")
 
@@ -67,14 +68,16 @@ export default function PromoBlock({
                             <span className={styles.promoCountry}>
                                 {countries[0]?.name}
                             </span>
-                            <div className={styles.headerImage}>
-                                <Image
-                                    src={`${process.env.IMAGE_URL}${image_source}`}
-                                    objectFit='contain'
-                                    layout='fill'
-                                    objectPosition={'left center'}
-                                />
-                            </div>
+                            <Link href={`/${basepath}/${id}`}>
+                                <a className={styles.headerImage}>
+                                    <Image
+                                        src={`${process.env.IMAGE_URL}${image_source}`}
+                                        objectFit='contain'
+                                        layout='fill'
+                                        objectPosition={'left center'}
+                                    />
+                                </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.promoBonusInfo}>

@@ -253,6 +253,7 @@ export default function Home({
                                 bgColor="#7F3FFC"
                                 {...exclusiveCasinos[0]}
                                 rating={exclusiveCasinos[0].reputation}
+                                basepath='casinos'
                             />
                             : <div className='preloader'>
                                 <BeatLoader color='#7F3FFC' />
@@ -264,6 +265,7 @@ export default function Home({
                                 bgColor="#4B4453"
                                 {...exclusiveCasinos[1]}
                                 rating={exclusiveCasinos[1].reputation}
+                                basepath='casinos'
                             />
                         }
                     </div>
@@ -276,6 +278,7 @@ export default function Home({
                                 {...casino}
                                 key={casino.id}
                                 rep={casino.reputation}
+                                basepath='casinos'
                             />
                         ))
                     }
@@ -288,6 +291,7 @@ export default function Home({
                                 charactersHeight={width > 1024 ? null : "100%"}
                                 {...newCasinos[3]}
                                 rating={newCasinos[3].reputation}
+                                basepath='casinos'
                             />
                         }
                     </div>
@@ -297,6 +301,7 @@ export default function Home({
                                 {...casino}
                                 key={casino.id}
                                 rep={casino.reputation}
+                                basepath='casinos'
                             />
                         ))
                     }
@@ -326,6 +331,7 @@ export default function Home({
                                     {...casino}
                                     rep={casino.reputation}
                                     bordersNone
+                                    basepath='bookmakers'
                                 />
                             ))
                             : <div className='preloader'>

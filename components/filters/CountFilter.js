@@ -38,7 +38,7 @@ export default function CountFilter({ items, title, collapsible = false, initial
 
     const chevronVariants = {
         open: {
-            rotate: 90,
+            rotate: 180,
         },
         closed: {
             rotate: 0,
@@ -55,7 +55,7 @@ export default function CountFilter({ items, title, collapsible = false, initial
             variants={contentVariants}
             animate={isOpen ? 'open' : 'closed'}
             className={styles.filter}
-            transition={{duration:0.2, ease:"easeInOut"}}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
         >
             {title && <div
                 onClick={() => collapsible && setIsOpen(!isOpen)}
@@ -66,7 +66,7 @@ export default function CountFilter({ items, title, collapsible = false, initial
                     <motion.span
                         variants={chevronVariants}
                         animate={isOpen ? 'open' : 'closed'}
-                        transition={{duration:0.2, ease:"easeInOut"}}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
                     >
                         <Image
                             src="/images/icons/chevron-down.svg"
@@ -80,7 +80,7 @@ export default function CountFilter({ items, title, collapsible = false, initial
                 variants={title ? itemsVariants : itemVariants2}
                 animate={isOpen ? 'open' : 'closed'}
                 className={styles.items}
-                transition={{duration:0.2, ease:"easeInOut"}}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
             >
                 {items.map(item => (
                     <div
