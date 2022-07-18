@@ -122,7 +122,7 @@
 .filterControls {
     display: flex;
     flex-direction: row;
-    gap: 24px;
+    gap: 48px;
 }
 
 .filterControlsItem {
@@ -130,7 +130,6 @@
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    padding: 12px 24px;
     text-align: left;
     font: normal normal 500 15px/17px Samsung Sans;
     letter-spacing: 0px;
@@ -141,6 +140,7 @@
 
 .filterControlsItem.active {
     background-color: #7F3FFC;
+    padding: 12px 24px;
     color: white;
 }
 
