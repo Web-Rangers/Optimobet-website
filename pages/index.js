@@ -170,10 +170,6 @@ export default function Home({
             .catch(err => console.log(err))
     }, [])
 
-    useEffect(()=>{
-        console.log(exclusiveCasinos)
-    },[exclusiveCasinos])
-
     return (
         <div className={styles.container}>
             <Head>
