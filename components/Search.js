@@ -169,6 +169,7 @@ export default function Search({ setBorder }) {
                                             name={res.name}
                                             rating={res.score}
                                             image_source={res.image_source}
+                                            slot
                                         />
                                     )}
                                 </>
@@ -186,17 +187,17 @@ export default function Search({ setBorder }) {
     )
 }
 
-function SearchResult({ name, rating, href = "/", image_source }) {
+function SearchResult({ name, rating, href = "/", image_source, slot = false }) {
     return (
         <Link href={href ?? '#'}>
             <a className={styles.resultContent}>
                 <div className={styles.resultInfo}>
                     <div className={styles.resultLogo}>
-                        <div className={styles.logoWrap}>
+                        <div className={styles.logoWrap} style={slot ? {margin:0, width:"100%", height:"100%"} : {}}>
                             <Image
                                 src={`${process.env.IMAGE_URL}/${image_source}`}
                                 layout="fill"
-                                objectFit='contain'
+                                objectFit={slot ? 'cover' : 'contain'}
                                 objectPosition="center center"
                             />
                         </div>                        
