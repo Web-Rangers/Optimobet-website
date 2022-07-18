@@ -192,11 +192,14 @@ function SearchResult({ name, rating, href = "/", image_source }) {
             <a className={styles.resultContent}>
                 <div className={styles.resultInfo}>
                     <div className={styles.resultLogo}>
-                        <Image
-                            src={`${process.env.IMAGE_URL}/${image_source}`}
-                            layout="fill"
-                            objectFit='cover'
-                        />
+                        <div className={styles.logoWrap}>
+                            <Image
+                                src={`${process.env.IMAGE_URL}/${image_source}`}
+                                layout="fill"
+                                objectFit='contain'
+                                objectPosition="center center"
+                            />
+                        </div>                        
                     </div>
                     <div className={styles.resultData}>
                         <span className={styles.resultName}>

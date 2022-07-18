@@ -136,6 +136,13 @@
     border-radius: 8px;
 }
 
+.logoWrap{
+    position: relative;
+    margin: 16px;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+}
+
 .resultData {
     display: flex;
     flex-direction: column;
