@@ -363,7 +363,7 @@
         left: calc(50% - 113px);
         cursor: pointer;
         min-width: 220px;
-        min-height: 88px;
+        height: 68px;
     }
 
     .filters .filtersTitle {
