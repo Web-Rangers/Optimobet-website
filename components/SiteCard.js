@@ -165,9 +165,13 @@ export default function SiteCard({
             </div>
             <div className={styles.cardContent}>
                 <div className={styles.contentTitle}>
-                    <span>
-                        {shared_content?.name}
-                    </span>
+                    <Link href={`/${basepath}/${id}`}>
+                        <a>
+                            <span>
+                                {shared_content?.name}
+                            </span>
+                        </a>
+                    </Link>                    
                     <div className={styles.starsBlock}>
                         <Stars points={rating} />
                     </div>
