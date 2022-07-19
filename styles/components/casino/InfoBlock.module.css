@@ -1,5 +1,5 @@
-.infoBlock{
-    width: 33%;
+.infoBlock {
+    width: calc(33% - 30px);
     display: flex;
     border: 1px solid #4B445333;
     border-radius: 16px;
@@ -7,24 +7,28 @@
     gap: 16px;
     justify-content: space-between;
 }
-.infoBlockLeft{
+
+.infoBlockLeft {
     display: flex;
     align-items: center;
     gap: 16px;
 }
-.infoData{
+
+.infoData {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
 }
-.infoIcon{
+
+.infoIcon {
     display: flex;
     width: 24px;
     height: 24px;
     position: relative;
 }
-.infoText{
+
+.infoText {
     font: normal normal normal 15px/17px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453;
@@ -32,12 +36,14 @@
     flex-direction: column;
     gap: 4px;
 }
-.infoTitle{
+
+.infoTitle {
     font: normal normal 500 15px/17px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453;
 }
-.infoData{
+
+.infoData {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -46,7 +52,8 @@
     letter-spacing: 0px;
     color: #4B4453;
 }
-.infoBlock{
+
+.infoBlock {
     min-width: 250px;
     max-width: 360px;
 }
