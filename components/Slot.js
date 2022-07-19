@@ -36,6 +36,7 @@ export default function Slot({ name, provider, score, big, id, style, image_sour
                         layout="fill"
                         objectFit='contain'
                         objectPosition={'left center'}
+                        style={{opacity: 0.7}}
                     />
                 </div>
                 <div className={styles.pictureArea}>

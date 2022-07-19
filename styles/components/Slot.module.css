@@ -21,9 +21,9 @@
 
 .provider {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    width: calc(100% - 128px);
+    top: 24px;
+    left: 32px;
+    width: calc(100% - 160px);
     height: 40px;
     z-index: 5;
 }
