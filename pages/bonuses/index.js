@@ -370,7 +370,7 @@ export default function BonusesPage({ filters }) {
                             </div>
                         }
                         {
-                            bonuses.length > 0
+                            filteredItems.length > 0
                                 ? filteredItems.map((bonus, index) => (
                                     <BonusCard {...bonus} key={`bonus_${bonus.id}_${index}`} />
                                 ))

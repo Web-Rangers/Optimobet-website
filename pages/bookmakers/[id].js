@@ -131,7 +131,7 @@ export default function CasinoPage({ casino }) {
                                 iconSrc="/images/icons/casino/user.svg"
                                 infoTitle="Residents From"
                                 infoText={casino?.only_residence[0]?.name}
-                                dataImages={[`${process.env.IMAGE_URL}/${casino?.only_residence[0]?.flag_source}`]}
+                                dataImages={casino?.only_residence?.map(lang => `${process.env.IMAGE_URL}/${lang.flag_source}`).slice(0, 3)}
                             />
                             <InfoBlock
                                 iconSrc="/images/icons/casino/shield.svg"

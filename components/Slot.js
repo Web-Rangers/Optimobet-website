@@ -3,9 +3,11 @@ import styles from '../styles/components/Slot.module.css'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { useState } from 'react'
 import Link from 'next/link'
+import useWindowSize from '../hooks/useWindowSize'
 
 export default function Slot({ name, provider, score, big, id, style, image_source }) {
     const [hover, setHover] = useState(false)
+    const { width } = useWindowSize()
 
     const variants = {
         "top": {
@@ -35,8 +37,8 @@ export default function Slot({ name, provider, score, big, id, style, image_sour
                         src={`${process.env.IMAGE_URL}/${provider?.image_source}`}
                         layout="fill"
                         objectFit='contain'
-                        objectPosition={'left center'}
                         style={{opacity: 0.7}}
+                        objectPosition={width > 480 ? 'left center' : 'center'}
                     />
                 </div>
                 <div className={styles.pictureArea}>

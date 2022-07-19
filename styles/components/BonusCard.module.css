@@ -10,6 +10,67 @@
     border: 1px solid #4B445333;
 }
 
+.exclusive {
+    border: 2px solid #7F3FFC;
+    overflow: hidden;
+}
+
+.exclusive:after {
+    content: 'EXCLUSIVE FOR OPTIMOBET VISITORS';
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px 40px;
+    background-color: #7F3FFC;
+    border-radius: 0 0 0 16px;
+    text-align: left;
+    font: normal normal normal 15px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.exclusive .casinoColumn.right {
+    padding-top: 40px;
+}
+
+.promocode {
+    position: relative;
+    padding: 20px 26px 6px;
+    border: 1px solid #4B445333;
+    border-radius: 24px;
+    text-align: left;
+    font: normal normal 500 18px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #4B4453;
+    height: 48px;
+}
+
+.promocode::after {
+    content: 'Use promo code';
+    position: absolute;
+    left: 26px;
+    top: 0;
+    text-align: left;
+    font: normal normal normal 12px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #1A1C21;
+    opacity: 0.5;
+}
+
+.copyButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #4B445333;
+    height: 100%;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
 .imageContainer {
     position: relative;
     width: 90%;
@@ -217,6 +278,13 @@
         flex-direction: column;
     }
 
+    .exclusive::after {
+        content: 'EXCLUSIVE';
+        border-bottom: 2px solid #F2F2F2;
+        border-left: 2px solid #F2F2F2;
+        padding: 6px 12px;
+    }
+
     .casinoImage {
         height: 80px;
         width: 100%;
@@ -247,5 +315,14 @@
 
     .casinoGames {
         flex-shrink: 0;
+    }
+
+    .casinoName {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .titleText {
+        width: 100%;
     }
 }

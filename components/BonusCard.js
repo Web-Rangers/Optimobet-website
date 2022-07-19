@@ -7,14 +7,23 @@ import Stars from './Stars'
 import TermsModal from './TermsModal'
 import useWindowSize from '../hooks/useWindowSize'
 
-export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id, bg_color }) {
+export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id, bonusable_type, exclusive, promocode }) {
     const [modal, setModal] = useState(false)
     const { width } = useWindowSize();
     const gameCount = useRef(width <= 480 ? 5 : 3);
 
+    function getButtonText(type) {
+        const _type = type?.split('\\')[2];
+        switch (_type) {
+            case 'Casino': return 'Visit Casino';
+            case 'Bookmaker': return 'Visit Bookmaker';
+            default: return 'Get Bonus';
+        }
+    }
+
     return (
-        <div className={styles.casino}>
-            <div className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
+        <div className={`${styles.casino} ${exclusive && styles.exclusive}`}>
+            <div className={styles.casinoImage} style={{ backgroundColor: bonusable?.bg_color }}>
                 <div className={styles.imageContainer}>
                     <Image
                         src={`${process.env.IMAGE_URL}/${bonusable?.image_source}`}
@@ -52,6 +61,21 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                             ))
                         }
                     </div>
+                    {promocode && <div className={styles.promocode}>
+                        <span>
+                            {promocode}
+                        </span>
+                        <div
+                            onClick={() => navigator.clipboard.writeText(promocode)}
+                            className={styles.copyButton}
+                        >
+                            <Image
+                                src="/images/icons/copy.svg"
+                                height={18}
+                                width={18}
+                            />
+                        </div>
+                    </div>}
                     <span className={styles.subtitle}>
                         Available games
                     </span>
@@ -145,12 +169,12 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                                     rel='noopener noreferrer'
                                     className={`${styles.casinoButton} ${styles.highlighted}`}
                                 >
-                                    Get Bonus
+                                    {getButtonText(bonusable_type)}
                                 </a>
                             </Link>
                             :
                             <div className={`${styles.casinoButton} ${styles.highlighted}`}>
-                                Get Bonus
+                                {getButtonText(bonusable_type)}
                             </div>
                         }
                     </div>
