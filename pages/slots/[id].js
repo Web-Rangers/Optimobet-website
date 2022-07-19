@@ -155,9 +155,9 @@ export default function SlotPage({ slot, providers, slotsForSlider }) {
                             </button>
                         }
                     </div>
-                    <div className={styles.slotDemoView}>
+                    {width > 425 && <div className={styles.slotDemoView}>
                         {parse(slot.game_script)}
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className={styles.slotPage}>
