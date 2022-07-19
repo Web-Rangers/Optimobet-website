@@ -12,6 +12,7 @@
     letter-spacing: 0px;
     color: #1A1C21B3;
     outline: none;
+    height: 48px;
 }
 
 .input::placeholder {
@@ -23,9 +24,6 @@
 }
 
 .input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 24px;
-    top: 12px;
     background-image: url(/images/icons/calendar.svg);
     height: 24px;
     width: 24px;

@@ -386,13 +386,13 @@ function SignUp({ setCurrentPage }) {
                     />
                     <div className={styles.genderPicker} style={{ marginBottom: "24px" }}>
                         <span
-                            className={gender == "M" && styles.selectedGender}
+                            className={`${gender == "M" && styles.selectedGender}`}
                             onClick={() => setGender("M")}
                         >
                             M
                         </span>
                         <span
-                            className={gender == "F" && styles.selectedGender}
+                            className={`${gender == "F" && styles.selectedGender}`}
                             onClick={() => setGender("F")}
                         >
                             F
