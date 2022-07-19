@@ -397,7 +397,7 @@ export default function CasinosPage({ filters }) {
                                         : <span className={styles.filtersTitle}>
                                             <Image
                                                 src={'/images/icons/filter.svg'}
-                                                height={20}
+                                                height={17}
                                                 width={20}
                                             />
                                             Filters

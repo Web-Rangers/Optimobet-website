@@ -52,10 +52,11 @@
 
 .typeName {
     text-align: left;
-    font: normal normal medium 15px/26px Samsung Sans;
+    font: normal normal 500 15px/26px Samsung Sans;
     letter-spacing: 0px;
     color: #4B4453B3;
     transition: all .3s ease-in-out;
+    cursor: pointer;
 }
 
 .typeCheckbox {
@@ -72,15 +73,11 @@
 }
 
 .type.active::before {
-    content: '';
+    content: url(/images/icons/filter_arrow.svg);
     position: absolute;
     left: -32px;
-    width: 0;
-    height: 0;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    border-left: 13px solid #7F3FFC;
-    border-radius: 13px;
+    width: 10px;
+    height: 10px;
 }
 
 .type.active .typeName {
@@ -92,7 +89,7 @@
 }
 
 .type.active .typeCheckbox:after {
-    content: '✔';
+    content: url(/images/icons/check.svg);
     position: absolute;
     color: #FFFFFF;
 }
