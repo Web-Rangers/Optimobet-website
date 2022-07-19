@@ -278,6 +278,13 @@
         flex-direction: column;
     }
 
+    .exclusive::after {
+        content: 'EXCLUSIVE';
+        border-bottom: 2px solid #F2F2F2;
+        border-left: 2px solid #F2F2F2;
+        padding: 6px 12px;
+    }
+
     .casinoImage {
         height: 80px;
         width: 100%;
@@ -308,5 +315,14 @@
 
     .casinoGames {
         flex-shrink: 0;
+    }
+
+    .casinoName {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .titleText {
+        width: 100%;
     }
 }
