@@ -77,22 +77,12 @@
     transition: all .3s ease-in-out;
 }
 
-.provider::before {
-    content: '';
+.provider.active::before {
+    content: url(/images/icons/filter_arrow.svg);
     position: absolute;
     left: -32px;
-    width: 0;
-    height: 0;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-left: 10px solid transparent;
-    transition: all .3s ease-in-out;
-    border-bottom-left-radius: 3px;
-    border-top-left-radius: 3px;
-}
-
-.provider.active::before {
-    border-left-color: #7F3FFC;
+    width: 10px;
+    height: 10px;
 }
 
 .provider.active .providerName {
