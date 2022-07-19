@@ -52,8 +52,6 @@
     color: #F2F2F2;
 }
 
-
-
 .slot.big .slotInfo {
     align-items: flex-start;
 }
@@ -122,4 +120,35 @@
     .slot.big .slotInfo {
         max-width: 172px;
     }
+}
+
+@media screen and (max-width: 480px) {
+    .slotInfo {
+        display: none;
+    }
+
+    .slot.big .slotInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 172px;
+    }
+
+    .slot.big .provider {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: calc(100% - 128px);
+        height: 40px;
+        z-index: 5;
+    }
+
+    .provider {
+        top: auto;
+        left: 0;
+        bottom: 15px;
+        width: 100%;
+    }
+
 }
