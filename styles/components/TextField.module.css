@@ -7,34 +7,38 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #1A1C2133;
     border-radius: 24px;
-    padding: 15px 24px;
-    font: normal normal normal 15px/16px Samsung Sans;
+    padding: 22px 24px 8px 24px;
+    font-family: Samsung Sans;
+    font-size: 15px;
+    line-height: 18px;
     letter-spacing: 0px;
-    color: #1A1C21B3;
+    color: #4B4453;
     outline: none;
     height: 48px;
 }
 
-.input::placeholder {
+.placeholder{  
+    position: absolute;  
     color: #4B4453B3;
+    font: normal normal normal 15px/16px Samsung Sans;
+    left: 25px;
+    pointer-events: none;
+}
+
+.input::placeholder {
+    display: none;
 }
 
 .input[type="date"] {
-    padding: 13px 24px 14px;
+    padding: 22px 24px 8px 23px;
 }
 
 .input[type="date"]::-webkit-calendar-picker-indicator {
     background-image: url(/images/icons/calendar.svg);
     height: 24px;
     width: 24px;
-}
-
-.label {
     position: absolute;
-    text-align: left;
-    font: normal normal normal 12px/26px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453B3;
-    opacity: 1;
-    left: 24px
+    right: 24px;
+    top: 10px;
+    cursor: pointer;
 }

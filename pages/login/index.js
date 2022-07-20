@@ -382,7 +382,7 @@ function SignUp({ setCurrentPage }) {
                             )
                         }
                         style={{ marginBottom: "24px" }}
-                        onFocus={(e) => { e.target.type = "date" }}
+                        onFocusCapture={(e) => { e.target.type = "date" }}
                     />
                     <div className={styles.genderPicker} style={{ marginBottom: "24px" }}>
                         <span
