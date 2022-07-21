@@ -29,7 +29,7 @@ export default function CasinoCard({
 
     return (
         <div className={styles.casino}>
-            <Link href={`/${basepath}/${id}`}>
+            <Link href={`/${basepath}/${shared_content.slug}`}>
                 <a className={styles.casinoImage} style={{ backgroundColor: bg_color }}>
                     <div className={styles.imageContainer}>
                         <Image
@@ -43,7 +43,7 @@ export default function CasinoCard({
             <div className={styles.casinoInfo}>
                 <div className={styles.casinoColumn}>
                     <div className={styles.casinoName}>
-                        <Link href={`/casinos/${id}`}>
+                        <Link href={`/${basepath}/${shared_content.slug}`}>
                             <a>
                                 <span className={styles.casinoNameText}>{shared_content.name}</span>
                             </a>

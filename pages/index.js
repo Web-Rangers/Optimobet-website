@@ -698,7 +698,7 @@ function NewCasino({ bonus_url, shared_content, features, id, claim_bonus_text, 
                         Get Bonus
                     </a>
                     {bonus_url
-                        ? <Link href={`/casinos/${id}`}>
+                        ? <Link href={`/casinos/${shared_content.slug}`}>
                             <a className={styles.detailsButton}>
                                 Details
                             </a>

@@ -474,7 +474,7 @@ function ProviderCard({ name, image_source }) {
 
 export async function getStaticProps({ params }) {
     const { id } = params
-    const casino = await APIRequest(`/nolimit/casinos/${id}`)
+    const casino = await APIRequest(`/nolimit/casinos/${id}`, 'GET')
 
     return {
         props: {
@@ -485,8 +485,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const casinos = await APIRequest('/nolimit/casinos?no_paginate=1', 'GET')
-    const paths = casinos.map(casino => ({ params: { id: casino.id.toString() } }))
+    let casinos = await APIRequest('/nolimit/casinos?no_paginate=1', 'GET')
+    casinos = casinos.filter(casino => casino.slug !== null)
+    const paths = casinos.map(casino => ({ params: { id: casino.slug } }))
 
     return { paths, fallback: 'blocking' }
 }
