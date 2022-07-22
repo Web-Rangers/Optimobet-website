@@ -15,8 +15,6 @@ import APIRequest from '../../functions/requests/APIRequest';
 import Dropdown from '../../components/Dropdown';
 import Link from 'next/link';
 
-const sliderTemp = [1, 2, 3, 4, 5]
-
 const mobileFilters = [
     {
         id: '1',

@@ -11,6 +11,7 @@ import { BeatLoader } from 'react-spinners';
 import CasinoCard from '../../components/CasinoCard';
 import useWindowSize from '../../hooks/useWindowSize';
 import Dropdown from '../../components/Dropdown';
+import { useRouter } from 'next/router';
 
 const mobileFilters = [
     {
@@ -46,6 +47,9 @@ export default function BookmakersPage({ filters }) {
     const user = useUserInfo()
     const [loading, setLoading] = useState(false);
     const { width } = useWindowSize();
+    const router = useRouter();
+    const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
+
 
     const controlVariants = {
         left: {
@@ -158,7 +162,7 @@ export default function BookmakersPage({ filters }) {
 
     function loadMore() {
         setLoading(true);
-        APIRequest(`/bookmakers?page=${page + 1}`, 'GET')
+        APIRequest(`/bookmakers?page=${page + 1}&${queryString}`, 'GET')
             .then(res => {
                 setPage(page++);
                 setLoading(false);
@@ -168,7 +172,7 @@ export default function BookmakersPage({ filters }) {
     }
 
     useEffect(() => {
-        APIRequest('/bookmakers', 'GET')
+        APIRequest(`/bookmakers?${queryString}`, 'GET')
             .then(res => {
                 setBookmakers(res.data);
                 bookmakersRef.current = res.data;

@@ -217,12 +217,17 @@ function MenuDropLink({ name, children, type, onClick }) {
     }, [router.pathname])
 
     function getLinkByType(type) {
-        return types.find(item => item.name == type)?.href || "/";
+        return types.find(item => item.name == type)?.href || "/casinos";
     }
 
     function toggle() {
         setIsOpen(!isOpen);
         onClick && onClick();
+    }
+
+    function composeLink(url) {
+        const params = new URLSearchParams(url.split('?')[1]);
+        return `${href}?${params.toString()}`;
     }
 
     return (
@@ -250,7 +255,7 @@ function MenuDropLink({ name, children, type, onClick }) {
                                 <div className={styles.dropdownListChildren}>
                                     {
                                         child.children.map(child => (
-                                            <Link href={child.url} key={child.name}>
+                                            <Link href={composeLink(child.url)} key={child.name}>
                                                 <a onClick={toggle}>
                                                     {child.name}
                                                 </a>

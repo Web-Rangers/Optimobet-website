@@ -14,6 +14,7 @@ import { BeatLoader } from 'react-spinners';
 import CasinoCard from '../../components/CasinoCard'
 import useWindowSize from '../../hooks/useWindowSize';
 import Dropdown from '../../components/Dropdown';
+import { useRouter } from 'next/router';
 
 const mobileFilters = [
     {
@@ -51,6 +52,8 @@ export default function CasinosPage({ filters }) {
     const { width } = useWindowSize();
     const [styleMainSlider, setStyleMainSlider] = useState()
     const [newCasinos, setNewCasinos] = useState([])
+    const router = useRouter();
+    const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
 
     const controlVariants = {
         left: {
@@ -163,7 +166,7 @@ export default function CasinosPage({ filters }) {
 
     function loadMore() {
         setLoading(true);
-        APIRequest(`/casinos?page=${page + 1}`, 'GET')
+        APIRequest(`/casinos?page=${page + 1}&${queryString}`, 'GET')
             .then(res => {
                 setPage(page++);
                 setLoading(false);
@@ -173,13 +176,11 @@ export default function CasinosPage({ filters }) {
     }
 
     useEffect(() => {
-
-
         APIRequest('/sliders?page=home')
             .then(res => setNewCasinos(res))
             .catch(err => console.log(err))
 
-        APIRequest('/casinos', 'GET')
+        APIRequest(`/casinos?${queryString}`, 'GET')
             .then(res => {
                 setCasinos(res.data)
                 casinosRef.current = res.data;

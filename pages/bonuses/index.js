@@ -51,6 +51,8 @@ export default function BonusesPage({ filters }) {
     const { width } = useWindowSize();
     const [styleMainSlider, setStyleMainSlider] = useState()
     const [newCasinos, setNewCasinos] = useState([])
+    const router = useRouter();
+    const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
 
     const controlVariants = {
         left: {
@@ -163,7 +165,7 @@ export default function BonusesPage({ filters }) {
 
     function loadMore() {
         setLoading(true);
-        APIRequest(`/bonuses?page=${page + 1}`, 'GET')
+        APIRequest(`/bonuses?page=${page + 1}&${queryString}`, 'GET')
             .then(res => {
                 setPage(page++);
                 let newDataF = [...res.data]
@@ -178,7 +180,7 @@ export default function BonusesPage({ filters }) {
             .then(res => setNewCasinos(res))
             .catch(err => console.log(err))
 
-        APIRequest('/bonuses', 'GET')
+        APIRequest(`/bonuses?${queryString}`, 'GET')
             .then(res => {
                 setBonuses(res.data);
                 bonusesRef.current = res.data;
