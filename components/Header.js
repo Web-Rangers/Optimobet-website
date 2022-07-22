@@ -217,7 +217,7 @@ function MenuDropLink({ name, children, type, onClick }) {
     }, [router.pathname])
 
     function getLinkByType(type) {
-        return types.find(item => item.name == type)?.href || "/casinos";
+        return types.find(item => item.name == type)?.href || "/";
     }
 
     function toggle() {
