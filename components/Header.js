@@ -43,28 +43,20 @@ const links = [
 
 const types = [
     {
-        name: 'Casinos',
+        name: 'casino',
         href: '/casinos'
     },
     {
-        name: 'Bonuses',
+        name: 'bonus',
         href: '/bonuses'
     },
     {
-        name: 'Bookmakers',
+        name: 'bookmaker',
         href: '/bookmakers'
     },
     {
-        name: 'Slots',
+        name: 'slot',
         href: '/slots'
-    },
-    {
-        name: 'Complaints',
-        href: '/complaints'
-    },
-    {
-        name: 'Blog',
-        href: '/blog'
     },
 ]
 
@@ -225,9 +217,9 @@ function MenuDropLink({ name, children, type, onClick }) {
         onClick && onClick();
     }
 
-    function composeLink(url) {
+    function composeLink(url, type) {
         const params = new URLSearchParams(url.split('?')[1]);
-        return `${href}?${params.toString()}`;
+        return `${getLinkByType(type)}?${params.toString()}`;
     }
 
     return (
@@ -255,7 +247,7 @@ function MenuDropLink({ name, children, type, onClick }) {
                                 <div className={styles.dropdownListChildren}>
                                     {
                                         child.children.map(child => (
-                                            <Link href={composeLink(child.url)} key={child.name}>
+                                            <Link href={composeLink(child.url, child.type)} key={child.name}>
                                                 <a onClick={toggle}>
                                                     {child.name}
                                                 </a>
