@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    reactStrictMode: false,
     env: {
         API_URL: "http://46.101.158.103:81/api",
         IMAGE_URL: "http://46.101.158.103:81"

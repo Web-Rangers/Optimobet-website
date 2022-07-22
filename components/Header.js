@@ -41,11 +41,47 @@ const links = [
     // },
 ]
 
+const types = [
+    {
+        name: 'Casinos',
+        href: '/casinos'
+    },
+    {
+        name: 'Bonuses',
+        href: '/bonuses'
+    },
+    {
+        name: 'Bookmakers',
+        href: '/bookmakers'
+    },
+    {
+        name: 'Slots',
+        href: '/slots'
+    },
+    {
+        name: 'Complaints',
+        href: '/complaints'
+    },
+    {
+        name: 'Blog',
+        href: '/blog'
+    },
+]
+
 export default function Header() {
     const { width, height } = useWindowSize()
     const [bordered, setBordered] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [menuItems, setMenuItems] = useState();
     const user = useUserInfo();
+
+    useEffect(() => {
+        APIRequest('/menu', 'GET')
+            .then(res => {
+                setMenuItems(res);
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
@@ -62,9 +98,17 @@ export default function Header() {
             {width > 1024 ?
                 <nav className={styles.navigation}>
                     {
-                        links.map(link => (
-                            <MenuLink key={link.name} {...link} />
-                        ))
+                        !menuItems
+                            ? links.map((link, index) => (
+                                <MenuLink key={link.name} {...link} />
+                            ))
+                            : menuItems.map((link, index) => (
+                                <MenuDropLink
+                                    key={link.name}
+                                    onClick={() => setBordered(!bordered)}
+                                    {...link}
+                                />
+                            ))
                     }
                 </nav>
                 :
@@ -125,10 +169,10 @@ function MenuLink({ href, name }) {
 
     useEffect(() => {
         const _isActive = router.pathname.split('/').includes(href.split('/')[1]);
-        if (href!="/")
-        setIsActive(_isActive);
-        if (href == "/" && router.asPath=="/")
-        setIsActive(true);
+        if (href != "/")
+            setIsActive(_isActive);
+        if (href == "/" && router.asPath == "/")
+            setIsActive(true);
     }, [router.pathname])
 
     return (
@@ -137,6 +181,89 @@ function MenuLink({ href, name }) {
                 {name}
             </a>
         </Link>
+    )
+}
+
+function MenuDropLink({ name, children, type, onClick }) {
+    const router = useRouter();
+    const [isActive, setIsActive] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const blockRef = useRef(null);
+    const href = getLinkByType(type);
+
+    const dropdownVariants = {
+        open: {
+            opacity: [0, 1],
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut"
+            }
+        },
+        closed: {
+            opacity: 0,
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut"
+            }
+        }
+    }
+
+    useEffect(() => {
+        const _isActive = router.pathname.split('/').includes(href.split('/')[1]);
+        if (href != "/")
+            setIsActive(_isActive);
+        if (href == "/" && router.asPath == "/")
+            setIsActive(true);
+    }, [router.pathname])
+
+    function getLinkByType(type) {
+        return types.find(item => item.name == type)?.href || "/";
+    }
+
+    function toggle() {
+        setIsOpen(!isOpen);
+        onClick && onClick();
+    }
+
+    return (
+        <div
+            className={styles.navItem}
+            onClick={toggle}
+        >
+            <a className={`${styles.link} ${isActive && styles.active}`}>
+                {name}
+            </a>
+            <AnimatePresence initial={false}>
+                {isOpen && <motion.div
+                    variants={dropdownVariants}
+                    animate="open"
+                    exit="closed"
+                    className={styles.dropdown}
+                    ref={blockRef}
+                >
+                    {
+                        children.map(child => (
+                            <div className={styles.dropdownList} key={child.name} >
+                                <span className={styles.dropdownTitle} >
+                                    {child.name}
+                                </span>
+                                <div className={styles.dropdownListChildren}>
+                                    {
+                                        child.children.map(child => (
+                                            <Link href={child.url} key={child.name}>
+                                                <a onClick={toggle}>
+                                                    {child.name}
+                                                </a>
+                                            </Link>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        ))
+                    }
+                </motion.div>}
+            </AnimatePresence>
+        </div >
     )
 }
 

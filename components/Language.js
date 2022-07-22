@@ -74,7 +74,7 @@ export default function Language({ setBorder }) {
         APIRequest('/countries', 'GET')
             .then(res => { setCountries(res) })
             .catch(err => console.log(err))
-            
+
         if (window)
             window.addEventListener('click', closeIfNotDropdown)
         return () => {
@@ -155,54 +155,54 @@ export default function Language({ setBorder }) {
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.2 }}
                             >
-                                <AnimateSharedLayout transition={{duration: 0.2}}>
+                                <AnimateSharedLayout transition={{ duration: 0.2 }}>
                                     <div className={styles.tabs}>
-                                        <motion.div 
-                                            className={`${styles.tab} ${page==1 && styles.activeTab}`}
-                                            onClick={()=>setPage(1)}
+                                        <motion.div
+                                            className={`${styles.tab} ${page == 1 && styles.activeTab}`}
+                                            onClick={() => setPage(1)}
                                             animate
                                         >
                                             Website Language
-                                            {page == 1 &&                                    
-                                                <motion.div 
+                                            {page == 1 &&
+                                                <motion.div
                                                     className={styles.activeLine}
                                                     layoutId="underline"
                                                     animate
                                                 />
-                                            } 
+                                            }
                                         </motion.div>
-                                        <motion.div 
-                                            className={`${styles.tab} ${page==2 && styles.activeTab}`}
-                                            onClick={()=>setPage(2)}
+                                        <motion.div
+                                            className={`${styles.tab} ${page == 2 && styles.activeTab}`}
+                                            onClick={() => setPage(2)}
                                             animate
                                         >
                                             Your Country
-                                            {page == 2 &&                                    
-                                                <motion.div 
+                                            {page == 2 &&
+                                                <motion.div
                                                     className={styles.activeLine}
                                                     layoutId="underline"
                                                     animate
                                                 />
-                                            } 
+                                            }
                                         </motion.div>
                                     </div>
                                 </AnimateSharedLayout>
                                 <AnimatePresence initial={false}>
-                                    {page == 1 && 
+                                    {page == 1 &&
                                         <>
                                             <motion.div
-                                                initial={{opacity:0}}
-                                                animate={{opacity:1}}
-                                                exit={{opacity:0}}
-                                                transition={{duration:0.2, ease:"easeInOut"}}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.2, ease: "easeInOut" }}
                                                 className={styles.bubblesWrap}
                                             >
                                                 <div className={styles.bubblesBlock}>
                                                     {languages.map(lang => (
-                                                        <div 
-                                                            className={`${styles.langBubble} ${lang.code==languageSelected && styles.activeBubble}`}
+                                                        <div
+                                                            className={`${styles.langBubble} ${lang.code == languageSelected && styles.activeBubble}`}
                                                             key={`lang-${lang.id}`}
-                                                            onClick={()=>{
+                                                            onClick={() => {
                                                                 language_id.current = lang.code
                                                                 setLanguageSelected(lang.code)
                                                             }}
@@ -220,13 +220,13 @@ export default function Language({ setBorder }) {
                                                 </div>
                                             </motion.div>
                                             <div className={styles.buttons}>
-                                                <div 
+                                                <div
                                                     className={styles.applyBtn}
                                                     onClick={apply}
                                                 >
                                                     Apply Settings
                                                 </div>
-                                                <div 
+                                                <div
                                                     className={styles.resetBtn}
                                                     onClick={reset}
                                                 >
@@ -237,21 +237,21 @@ export default function Language({ setBorder }) {
                                     }
                                 </AnimatePresence>
                                 <AnimatePresence>
-                                    {page == 2 && 
+                                    {page == 2 &&
                                         <>
-                                            <motion.div 
-                                                initial={{opacity:0}}
-                                                animate={{opacity:1}}
-                                                exit={{opacity:0}}
-                                                transition={{duration:0.2, ease:"easeInOut"}}
+                                            <motion.div
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.2, ease: "easeInOut" }}
                                                 className={styles.bubblesWrap}
                                             >
                                                 <div className={styles.bubblesBlock}>
                                                     {countries?.map(country => (
-                                                        <div 
+                                                        <div
                                                             key={`country-${country.id}`}
-                                                            className={`${styles.langBubble} ${country.code==countrySelected && styles.activeBubble}`}
-                                                            onClick={()=>{
+                                                            className={`${styles.langBubble} ${country.code == countrySelected && styles.activeBubble}`}
+                                                            onClick={() => {
                                                                 country_id.current = country.code
                                                                 setCountrySelected(country.code)
                                                             }}
@@ -269,13 +269,13 @@ export default function Language({ setBorder }) {
                                                 </div>
                                             </motion.div>
                                             <div className={styles.buttons}>
-                                                <div 
+                                                <div
                                                     className={styles.applyBtn}
                                                     onClick={apply}
                                                 >
                                                     Apply Settings
                                                 </div>
-                                                <div 
+                                                <div
                                                     className={styles.resetBtn}
                                                     onClick={reset}
                                                 >
