@@ -7,7 +7,7 @@ import Stars from './Stars'
 import TermsModal from './TermsModal'
 import useWindowSize from '../hooks/useWindowSize'
 
-export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id, bonusable_type, exclusive, promocode }) {
+export default function BonusCard({ name, title, terms_and_condition, bonusable, games = [], id, bonusable_type, exclusive, promo_code }) {
     const [modal, setModal] = useState(false)
     const { width } = useWindowSize();
     const gameCount = useRef(width <= 480 ? 5 : 3);
@@ -61,9 +61,9 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                             ))
                         }
                     </div>
-                    {promocode && <div className={styles.promocode}>
+                    {promo_code !== null && <div className={styles.promocode}>
                         <span>
-                            {promocode}
+                            {promo_code}
                         </span>
                         <div
                             onClick={() => navigator.clipboard.writeText(promocode)}
