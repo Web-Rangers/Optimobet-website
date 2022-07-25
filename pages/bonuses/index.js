@@ -14,6 +14,7 @@ import BonusCard from '../../components/BonusCard'
 import useUserInfo from '../../hooks/useUserInfo'
 import useWindowSize from '../../hooks/useWindowSize';
 import Dropdown from '../../components/Dropdown';
+import { useRouter } from 'next/router'
 
 const mobileFilters = [
     {
