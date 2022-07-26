@@ -29,7 +29,7 @@
 }
 
 .link {
-    min-width: fit-content;
+    width: max-content;
     position: relative;
     text-align: left;
     font: normal normal 500 15px/18px Samsung Sans;

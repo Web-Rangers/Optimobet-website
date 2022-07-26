@@ -206,6 +206,7 @@ function MenuDropLink({ name, children, type, onClick }) {
             setIsActive(_isActive);
         if (href == "/" && router.asPath == "/")
             setIsActive(true);
+        setIsOpen(false);
     }, [router.pathname])
 
     function getLinkByType(type) {
