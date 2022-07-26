@@ -20,7 +20,8 @@ export default function PromoBlock({
     image_source,
     shared_content,
     features,
-    basepath
+    basepath,
+    country
 }) {
     const [buttonBg, setButtonBg] = useState("")
 
@@ -66,7 +67,7 @@ export default function PromoBlock({
                         </div>
                         <div className={styles.promoSiteInfo}>
                             <span className={styles.promoCountry}>
-                                {countries[0]?.name}
+                                Available in {country}
                             </span>
                             <Link href={`/${basepath}/${id}`}>
                                 <a className={styles.headerImage}>
@@ -103,7 +104,7 @@ export default function PromoBlock({
                     >
                         Get Bonus
                     </a>
-                    <Link href={`/casinos/${id}`}>
+                    <Link href={`/casinos/${shared_content.slug}`}>
                         <a className={styles.promoBonusApply}>
                             View more
                         </a>

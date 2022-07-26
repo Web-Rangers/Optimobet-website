@@ -103,7 +103,7 @@ export default function Home({
             .then(res => setSlides(res))
             .catch(err => console.log(err))
         APIRequest('/country')
-            .then(res => { })
+            .then(res => { setUserCountry(res.name) })
             .catch(err => console.log(err))
     }, [])
 
@@ -187,6 +187,7 @@ export default function Home({
                                 {...exclusiveCasinos[0]}
                                 rating={exclusiveCasinos[0].reputation}
                                 basepath='casinos'
+                                country={userCountry}
                             />
                             : <div className='preloader'>
                                 <BeatLoader color='#7F3FFC' />
@@ -199,6 +200,7 @@ export default function Home({
                                 {...exclusiveCasinos[1]}
                                 rating={exclusiveCasinos[1].reputation}
                                 basepath='casinos'
+                                country={userCountry}
                             />
                         }
                     </div>
@@ -225,6 +227,7 @@ export default function Home({
                                 {...newCasinos[3]}
                                 rating={newCasinos[3].reputation}
                                 basepath='casinos'
+                                country={userCountry}
                             />
                         }
                     </div>
@@ -298,6 +301,7 @@ export default function Home({
                                     charactersImage={`/images/main/7880-${index + 4}.png`}
                                     bgColor={index == 0 ? "#4B4453" : "#00C69C"}
                                     charactersWidth={index == 0 ? "55%" : null}
+                                    country={userCountry}
                                 />
                             ))
                         }

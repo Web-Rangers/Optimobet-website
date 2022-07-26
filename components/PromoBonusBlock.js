@@ -59,7 +59,7 @@ export default function PromoBonusBlock({
                         </div>
                         <div className={styles.promoSiteInfo}>
                             <span className={styles.promoCountry}>
-                                {bonusable?.countries[0]?.name}
+                                Available in {country}
                             </span>
                             <div className={styles.headerImage}>
                                 <Image
