@@ -100,8 +100,8 @@
 .langMobile{
     position: fixed;
     width: 100%;
-    height: calc(100% - 77px);
-    top: 77px;
+    height: calc(100% - 62px);
+    top: 62px;
     left: 0px;
     display: flex;
     flex-direction: column;

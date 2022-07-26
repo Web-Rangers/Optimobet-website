@@ -18,22 +18,26 @@ const links = [
     {
         href: '/casinos',
         name: 'Online Casinos',
-        svg: 'casinos'
+        svg: 'casinos',
+        page: 1
     },
     {
         href: '/bonuses',
         name: 'Bonuses',
-        svg: 'bonuses'
+        svg: 'bonuses',
+        page: 2
     },
     {
         href: '/bookmakers',
         name: 'Bookmakers',
-        svg: 'bookmakers'
+        svg: 'bookmakers',
+        page: 3
     },
     {
         href: '/slots',
         name: 'Free games',
-        svg: 'slots'
+        svg: 'slots',
+        page: 4
     },
     // {
     //     href: '/complaints',
@@ -48,7 +52,10 @@ const links = [
 export default function MobileHeader() {
     const [bordered, setBordered] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const user = useUserInfo();
+    const user = useUserInfo()
+    const [menuPage, setMenuPage] = useState(1)
+    const [menuItems, setMenuItems] = useState()
+    const router = useRouter()
 
     useEffect(()=>{
         if (isMenuOpen) {
@@ -58,32 +65,37 @@ export default function MobileHeader() {
         }
     },[isMenuOpen])
 
+    useEffect(()=>{
+        if (router.asPath && (router.asPath != '/')) {
+            console.log(router.asPath, links.filter(link => router.asPath.includes(link.href))[0]?.page)
+            setMenuPage(links.filter(link => router.asPath.includes(link.href))[0]?.page)
+        }
+    }, [router])
+
+    useEffect(() => {
+        APIRequest('/menu', 'GET')
+        .then(res => {
+            setMenuItems(res);
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+    }, [])
+
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
-            <div
-                className={styles.burgerMenuButton}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-                <Image src="/images/icons/menu.svg" width={32} height={32} />
-            </div>
-            <Search setBorder={setBordered} />
-            {
-                !user?.first_name
-                    ? <Link href="/login">
-                        <a>
-                            <Image src="/images/icons/user.svg" width={32} height={32} />
-                        </a>
-                    </Link>
-                    : <UserMenu user={user} setBorder={setBordered} />
-            }
-            <AnimatePresence initial={false}>
-                {
-                    isMenuOpen && <motion.div
-                        className={styles.burgerMenu}
-                        animate={{ top: ['-100vh', '0vh'] }}
-                        exit={{ top: ['0vh', '-100vh'] }}
-                    >
-                        <div className={styles.menuHeader}>
+            <div className={styles.backHeader} />
+            <AnimatePresence initial={false} exitBeforeEnter>
+                <motion.div 
+                    className={styles.menuHeader}
+                    key={isMenuOpen ? "menuShow" : "menuHide"}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{duration: 0.2, ease:"easeInOut"}}  
+                >
+                    { 
+                        isMenuOpen ?
+                        <>
                             <div
                                 className={styles.burgerMenuButton}
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -98,15 +110,62 @@ export default function MobileHeader() {
                             <div className={styles.mobileLanguage}>
                                 <Language />
                             </div>
-                        </div>
-                        <div className={styles.menuNavigation}>
+                        </>
+                        :
+                        <>
+                            <div
+                                className={styles.burgerMenuButton}
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            >
+                                <Image src="/images/icons/menu.svg" width={32} height={32} />
+                            </div>
+                            <Search setBorder={setBordered} />
                             {
-                                links.map(({ href, name, svg }) => (
-                                    <div onClick={() => setIsMenuOpen(!isMenuOpen)} key={name}>
-                                        <MenuLink href={href} name={name} svg={svg} key={name} />
+                                !user?.first_name
+                                    ? <Link href="/login">
+                                        <a style={{display:"flex"}}>
+                                            <Image src="/images/icons/user.svg" width={28} height={28} objectFit="contain" />
+                                        </a>
+                                    </Link>
+                                    : <UserMenu user={user} setBorder={setBordered} />
+                            }
+                        </>
+                    }
+                </motion.div>
+            </AnimatePresence>          
+            <AnimatePresence initial={false}>
+                {
+                    isMenuOpen && <motion.div
+                        className={styles.burgerMenu}
+                        animate={{ top: ['-100vh', '0vh'] }}
+                        exit={{ top: ['0vh', '-100vh'] }}
+                        transition={{duration: 0.3, ease:"easeInOut"}}
+                    >
+                        <div className={styles.pagesNav}>
+                            {
+                                links.map(({ href, name, svg, page }) => (
+                                    <div 
+                                        className={
+                                            `${styles.pageIcon} 
+                                            ${page==menuPage && styles.activePage} 
+                                            ${(page==3 && page==menuPage) && styles.activePageFix3} 
+                                            ${(page==4 && page==menuPage) && styles.activePageFix4}`
+                                        }
+                                        onClick={()=>{
+                                            setMenuPage(page)
+                                        }}
+                                    >
+                                        <ReactSVG
+                                            src={`/images/icons/header/${svg}.svg`}
+                                            width={24}
+                                            height={24}
+                                        />
                                     </div>
                                 ))
                             }
+                        </div>
+                        <div className={styles.menuNavigation}>
+                            
                         </div>
                     </motion.div>
                 }

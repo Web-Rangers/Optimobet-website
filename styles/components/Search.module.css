@@ -208,3 +208,13 @@
         position: relative;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .search {
+        position: relative;
+        margin-right: 0;
+    }
+    .search input {
+        padding: 12px 24px;
+    }
+}

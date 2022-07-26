@@ -16,6 +16,7 @@
 
 .logo {
     margin-right: 60px;
+    display: flex;
 }
 
 .navigation {
@@ -326,6 +327,7 @@
 
 .burgerMenuButton {
     cursor: pointer;
+    display: flex;
 }
 
 .burgerMenu {
@@ -334,7 +336,8 @@
     left: 0;
     z-index: 99999;
     background-color: white;
-    height: 100vh;
+    margin-top: 63px;
+    height: calc(100vh - 63px);
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -345,8 +348,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 16px;
-    border-bottom: 1px solid #4B44531A;
+    width: 100%;
+    z-index: 999999;
+}
+
+.menuDefault{
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%;
 }
 
 .menuNavigation {
@@ -360,6 +370,62 @@
     margin: 0;
 }
 
+/* Menu mobile with categories */
+
+.backHeader{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background: #fff;
+}
+
+.pagesNav{
+    display: flex;
+    border-bottom: 1px solid #4B44531A;
+    border-top: 1px solid #4B44531A;
+}
+
+.pageIcon{
+    display: flex;
+    padding: 0px 18px;
+    margin: 12px 0px;
+}
+
+.pageIcon:not(:last-child){
+    border-right: 1px solid #4B44531A;
+}
+
+.pageIcon div{
+    width: 24px;
+    height: 24px;
+}
+
+.pageIcon svg *{
+    transition: all 0.3s ease-in-out;
+}
+
+.activePage path{
+    fill: #7F3FFC;
+}
+
+.activePageFix3 path{
+    fill: none;
+}
+
+.activePageFix3 svg *{
+    stroke: #7F3FFC;
+}
+
+.activePageFix4 path{
+    fill: none;
+}
+
+.activePageFix4 svg path:not(:first-child){
+    fill: #7F3FFC;
+}
 /* Menu to expand */
 
 .hideMenuBtn {
@@ -467,11 +533,11 @@
 
 @media screen and (max-width: 480px) {
     .container {
-        padding: 16px;
+        padding: 0;
     }
 
-    .container>div {
-        margin: 0;
+    .menuHeader{
+        padding: 10px 16px;        
     }
 
     .link {
