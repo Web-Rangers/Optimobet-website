@@ -141,20 +141,20 @@ export default function BookmakersPage({ filters }) {
                 setFilteredItems(bookmakersRef.current);
                 break;
             case "Best in your country":
-                user?.country_id && (newFilteredItems = filteredItems.filter(casino => casino.countries.find(country => country.id === user.country_id)));
-                newFilteredItems.sort((a, b) => b.rating - a.rating);
+                user?.country_id && (newFilteredItems = filteredItems?.filter(casino => casino.countries.find(country => country.id === user.country_id)));
+                newfilteredItems?.sort((a, b) => b.rating - a.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Best of the world":
-                newFilteredItems.sort((a, b) => b.rating - a.rating);
+                newfilteredItems?.sort((a, b) => b.rating - a.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Recently added":
-                newFilteredItems.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                newfilteredItems?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 setFilteredItems(newFilteredItems);
                 break;
             case 'Highly recommended':
-                newFilteredItems.sort((a, b) => b.reputation - a.reputation);
+                newfilteredItems?.sort((a, b) => b.reputation - a.reputation);
                 setFilteredItems(newFilteredItems);
                 break;
         }
@@ -332,14 +332,14 @@ export default function BookmakersPage({ filters }) {
                         }
                         {
                             bookmakers.length > 0
-                                ? filteredItems.map(bookmaker => (
+                                ? filteredItems?.map(bookmaker => (
                                     <CasinoCard basepath={'bookmakers'} {...bookmaker} key={bookmaker.id} />
                                 ))
                                 : <div className='preloader'>
                                     <BeatLoader color='#7F3FFC' />
                                 </div>
                         }
-                        {filteredItems.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
+                        {filteredItems?.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
                             <BeatLoader loading={loading} color='#7F3FFC' />
                         </div>}
                         {
@@ -352,7 +352,7 @@ export default function BookmakersPage({ filters }) {
                             >
                                 {
                                     sidebarShown
-                                        ? `Filter (${filteredItems.length})`
+                                        ? `Filter (${filteredItems?.length})`
                                         : <span className={styles.filtersTitle}>
                                             <Image
                                                 src={'/images/icons/filter.svg'}

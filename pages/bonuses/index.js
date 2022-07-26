@@ -145,20 +145,20 @@ export default function BonusesPage({ filters }) {
                 setFilteredItems(bonuses);
                 break;
             case "Best in your country":
-                user?.country_id && (newFilteredItems = filteredItems.filter(casino => casino.bonusable?.countries.find(country => country.id === user.country_id)));
-                newFilteredItems.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
+                user?.country_id && (newFilteredItems = filteredItems?.filter(casino => casino.bonusable?.countries.find(country => country.id === user.country_id)));
+                newfilteredItems?.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Best of the world":
-                newFilteredItems.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
+                newfilteredItems?.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Recently added":
-                newFilteredItems.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                newfilteredItems?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 setFilteredItems(newFilteredItems);
                 break;
             case "Highly recommended":
-                newFilteredItems.sort((a, b) => b.bonusable?.reputation - a.bonusable?.reputation);
+                newfilteredItems?.sort((a, b) => b.bonusable?.reputation - a.bonusable?.reputation);
                 setFilteredItems(newFilteredItems);
                 break;
         }
@@ -373,15 +373,15 @@ export default function BonusesPage({ filters }) {
                             </div>
                         }
                         {
-                            filteredItems.length > 0
-                                ? filteredItems.map((bonus, index) => (
+                            filteredItems?.length > 0
+                                ? filteredItems?.map((bonus, index) => (
                                     <BonusCard {...bonus} key={`bonus_${bonus.id}_${index}`} />
                                 ))
                                 : <div className='preloader'>
                                     <BeatLoader color='#7F3FFC' />
                                 </div>
                         }
-                        {filteredItems.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
+                        {filteredItems?.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
                             <BeatLoader loading={loading} color='#7F3FFC' />
                         </div>}
                         {
@@ -394,7 +394,7 @@ export default function BonusesPage({ filters }) {
                             >
                                 {
                                     sidebarShown
-                                        ? `Filter (${filteredItems.length})`
+                                        ? `Filter (${filteredItems?.length})`
                                         : <span className={styles.filtersTitle}>
                                             <Image
                                                 src={'/images/icons/filter.svg'}

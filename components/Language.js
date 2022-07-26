@@ -7,6 +7,8 @@ import APIRequest from '../functions/requests/APIRequest'
 import useUserInfo from '../hooks/useUserInfo'
 import { useRouter } from 'next/router'
 import useWindowSize from '../hooks/useWindowSize'
+import debounce from '../functions/debounce'
+import Fuse from 'fuse.js'
 
 const languages = [
     {
@@ -41,6 +43,7 @@ export default function Language({ setBorder }) {
     const router = useRouter();
     const blockRef = useRef()
     const [page, setPage] = useState(1)
+    const [searchResults, setSearchResults] = useState()
 
     const apply = () => {
         const newUser = { ...user };
@@ -72,7 +75,10 @@ export default function Language({ setBorder }) {
 
     useEffect(() => {
         APIRequest('/countries', 'GET')
-            .then(res => { setCountries(res) })
+            .then(res => {
+                setCountries(res)
+                setSearchResults(res)
+            })
             .catch(err => console.log(err))
         APIRequest('/country', 'GET')
             .then(res => {
@@ -93,6 +99,22 @@ export default function Language({ setBorder }) {
     const closeIfNotDropdown = (e) => {
         if ((e.target != blockRef.current) && (!blockRef.current.contains(e.target)))
             setOpen(false)
+    }
+
+    function handleSearch(e) {
+        const searchString = e.target.value;
+        if (searchString.length == 0) {
+            setSearchResults(countries)
+            return
+        }
+        const options = {
+            includeScore: true,
+            keys: ['name'],
+            threshold: 0.3,
+        }
+        const fuse = new Fuse(countries, options)
+        const result = fuse.search(searchString)
+        setSearchResults(result.map(res => res.item))
     }
 
     return (
@@ -254,8 +276,15 @@ export default function Language({ setBorder }) {
                                                 transition={{ duration: 0.2, ease: "easeInOut" }}
                                                 className={styles.bubblesWrap}
                                             >
+                                                <div className={styles.search}>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Search your country"
+                                                        onChange={debounce(handleSearch, 1000)}
+                                                    />
+                                                </div>
                                                 <div className={styles.bubblesBlock}>
-                                                    {countries?.map(country => (
+                                                    {searchResults?.map(country => (
                                                         <div
                                                             key={`country-${country.id}`}
                                                             className={`${styles.langBubble} ${country.code == countrySelected && styles.activeBubble}`}
