@@ -69,7 +69,7 @@ export default function PromoBlock({
                             <span className={styles.promoCountry}>
                                 Available in {country}
                             </span>
-                            <Link href={`/${basepath}/${id}`}>
+                            <Link href={`/${basepath}/${shared_content.slug}`}>
                                 <a className={styles.headerImage}>
                                     <Image
                                         src={`${process.env.IMAGE_URL}${image_source}`}

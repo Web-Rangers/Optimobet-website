@@ -140,7 +140,7 @@ export default function SiteCard({
             style={bordersNone ? { borderColor: "transparent" } : {}}
         >
             <div className={styles.cardHeader}>
-                <Link href={`/${basepath}/${id}`}>
+                <Link href={`/${basepath}/${shared_content.slug}`}>
                     <a className={styles.headerImage}>
                         <Image
                             src={`${process.env.IMAGE_URL}${image_source}`}
