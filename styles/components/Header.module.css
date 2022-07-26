@@ -354,10 +354,10 @@
     z-index: 999999;
 }
 
-.menuDefault{
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
+.menuDefault {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -374,7 +374,7 @@
     margin: 0;
 }
 
-.backHeader{
+.backHeader {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -384,63 +384,63 @@
     background: #fff;
 }
 
-.pagesNav{
+.pagesNav {
     display: flex;
     border-bottom: 1px solid #4B44531A;
     border-top: 1px solid #4B44531A;
 }
 
-.pageIcon{
+.pageIcon {
     display: flex;
     padding: 0px 18px;
     margin: 12px 0px;
 }
 
-.pageIcon:not(:last-child){
+.pageIcon:not(:last-child) {
     border-right: 1px solid #4B44531A;
 }
 
-.pageIcon div{
+.pageIcon div {
     width: 24px;
     height: 24px;
 }
 
-.pageIcon svg *{
+.pageIcon svg * {
     transition: all 0.3s ease-in-out;
 }
 
-.activePage path{
+.activePage path {
     fill: #7F3FFC;
 }
 
-.activePageFix3 path{
+.activePageFix3 path {
     fill: none;
 }
 
-.activePageFix3 svg *{
+.activePageFix3 svg * {
     stroke: #7F3FFC;
 }
 
-.activePageFix4 path{
+.activePageFix4 path {
     fill: none;
 }
 
-.activePageFix4 svg path:not(:first-child){
+.activePageFix4 svg path:not(:first-child) {
     fill: #7F3FFC;
 }
 
-.mainLink{    
+.mainLink {
     font: normal normal 500 16px/19px Samsung Sans;
     color: #4B4453;
 }
 
-.sectionName{   
-    margin-top: 12px; 
+.sectionName {
+    margin-top: 12px;
     font: normal normal 500 14px/17px Samsung Sans;
     color: #4B445380;
 }
 
-.queryLink{    
+.queryLink {
     font: normal normal normal 15px/18px Samsung Sans;
     color: #4B4453;
 }
@@ -501,7 +501,7 @@
     flex-direction: row;
     gap: 111px;
     padding: 22px 40px;
-    padding-top: 0;
+    /* padding-top: 0; */
     background-color: #FFFFFF;
     border: 1px solid #4B44531A;
     border-top: none;
@@ -555,8 +555,8 @@
         padding: 0;
     }
 
-    .menuHeader{
-        padding: 10px 16px;        
+    .menuHeader {
+        padding: 10px 16px;
     }
 
     .link {

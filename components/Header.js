@@ -181,7 +181,7 @@ function MenuDropLink({ name, children, type, onClick }) {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const blockRef = useRef(null);
-    const href = getLinkByType(type);
+    const href = getLinkByType(children[0]?.children[0]?.type); //temporary solution??? hopefully
 
     const dropdownVariants = {
         open: {
