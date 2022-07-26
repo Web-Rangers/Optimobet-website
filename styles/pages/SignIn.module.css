@@ -33,9 +33,10 @@
     height: 50%;
     min-height: 520px;
     width: 55%;
-    top: 50%;
+    /* top: 50%; */
     left: calc((40vw - 520px)/2 + 520px);
     z-index: 2;
+    bottom: 0;
 }
 
 .characters * {
