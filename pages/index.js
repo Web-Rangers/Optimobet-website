@@ -666,10 +666,6 @@ export async function getStaticProps() {
 
     return {
         props: {
-            // newCasinos: casinos.data,
-            // exclusiveBonus: bonuses.data,
-            // freeSlots: slots.data,
-            // betting: bookmakers.data,
             casinosCount: casinos.total,
             bonusesCount: bonuses.total,
             slotsCount: slots.total,
