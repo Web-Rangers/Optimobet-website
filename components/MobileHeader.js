@@ -85,15 +85,15 @@ export default function MobileHeader() {
     const [menuItems, setMenuItems] = useState()
     const router = useRouter()
 
-    useEffect(()=>{
+    useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = "hidden"
         } else {
             document.body.style.overflow = ""
         }
-    },[isMenuOpen])
+    }, [isMenuOpen])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (router.asPath && (router.asPath != '/')) {
             console.log(router.asPath, links.filter(link => router.asPath.includes(link.href))[0]?.page)
             setMenuPage(links.filter(link => router.asPath.includes(link.href))[0]?.page)
@@ -102,86 +102,87 @@ export default function MobileHeader() {
 
     useEffect(() => {
         APIRequest('/menu', 'GET')
-        .then(res => {
-            setMenuItems(res);
-            console.log(res)
-        })
-        .catch(err => console.log(err))
+            .then(res => {
+                setMenuItems(res);
+                console.log(res)
+            })
+            .catch(err => console.log(err))
     }, [])
 
     return (
         <header className={`${styles.container} ${bordered && styles.bordered}`}>
             <div className={styles.backHeader} />
             <AnimatePresence initial={false} exitBeforeEnter>
-                <motion.div 
+                <motion.div
                     className={styles.menuHeader}
                     key={isMenuOpen ? "menuShow" : "menuHide"}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{duration: 0.2, ease:"easeInOut"}}  
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                    { 
+                    {
                         isMenuOpen ?
-                        <>
-                            <div
-                                className={styles.burgerMenuButton}
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            >
-                                <Image src="/images/icons/close.svg" width={32} height={32} />
-                            </div>
-                            <Link href="/">
-                                <a className={styles.logo} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                                    <Image src="/images/logo.svg" width={153} height={36} />
-                                </a>
-                            </Link>
-                            <div className={styles.mobileLanguage}>
-                                <Language />
-                            </div>
-                        </>
-                        :
-                        <>
-                            <div
-                                className={styles.burgerMenuButton}
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            >
-                                <Image src="/images/icons/menu.svg" width={32} height={32} />
-                            </div>
-                            <Search setBorder={setBordered} />
-                            {
-                                !user?.first_name
-                                    ? <Link href="/login">
-                                        <a style={{display:"flex"}}>
-                                            <Image src="/images/icons/user.svg" width={28} height={28} objectFit="contain" />
-                                        </a>
-                                    </Link>
-                                    : <UserMenu user={user} setBorder={setBordered} />
-                            }
-                        </>
+                            <>
+                                <div
+                                    className={styles.burgerMenuButton}
+                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                >
+                                    <Image src="/images/icons/close.svg" width={32} height={32} />
+                                </div>
+                                <Link href="/">
+                                    <a className={styles.logo} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                        <Image src="/images/logo.svg" width={153} height={36} />
+                                    </a>
+                                </Link>
+                                <div className={styles.mobileLanguage}>
+                                    <Language />
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div
+                                    className={styles.burgerMenuButton}
+                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                >
+                                    <Image src="/images/icons/menu.svg" width={32} height={32} />
+                                </div>
+                                <Search setBorder={setBordered} />
+                                {
+                                    !user?.first_name
+                                        ? <Link href="/login">
+                                            <a style={{ display: "flex" }}>
+                                                <Image src="/images/icons/user.svg" width={28} height={28} objectFit="contain" />
+                                            </a>
+                                        </Link>
+                                        : <UserMenu user={user} setBorder={setBordered} />
+                                }
+                            </>
                     }
                 </motion.div>
-            </AnimatePresence>          
+            </AnimatePresence>
             <AnimatePresence initial={false}>
                 {
                     isMenuOpen && <motion.div
                         className={styles.burgerMenu}
                         animate={{ top: ['-100vh', '0vh'] }}
                         exit={{ top: ['0vh', '-100vh'] }}
-                        transition={{duration: 0.3, ease:"easeInOut"}}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
                         <div className={styles.pagesNav}>
                             {
-                                menuItems?.map((section,index) => (
-                                    <div 
+                                menuItems?.map((section, index) => (
+                                    <div
                                         className={
                                             `${styles.pageIcon} 
-                                            ${index+1==menuPage && styles.activePage}` 
+                                            ${index + 1 == menuPage && styles.activePage}`
                                             // ${(page==3 && page==menuPage) && styles.activePageFix3} 
                                             // ${(page==4 && page==menuPage) && styles.activePageFix4}`
                                         }
-                                        onClick={()=>{
-                                            setMenuPage(index+1)
+                                        onClick={() => {
+                                            setMenuPage(index + 1)
                                         }}
+                                        key={`a_${index}`}
                                     >
                                         <ReactSVG
                                             src={`/images/icons/header/${section.image}.svg`}
@@ -193,44 +194,45 @@ export default function MobileHeader() {
                             }
                         </div>
                         <AnimatePresence initial={false} exitBeforeEnter>
-                            <motion.div 
+                            <motion.div
                                 className={styles.menuNavigation}
                                 key={menuPage}
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                exit={{opacity: 0}}
-                                transition={{duration: 0.2, ease:"easeInOut"}} 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.2, ease: "easeInOut" }}
                             >
-                                {menuItems[menuPage-1]?.type ? 
-                                    <Link href={menuItems[menuPage-1]?.type}>
-                                        <a 
+                                {menuItems[menuPage - 1]?.type ?
+                                    <Link href={menuItems[menuPage - 1]?.type}>
+                                        <a
                                             className={styles.mainLink}
                                             rel='noopener noreferrer'
                                         >
-                                            {menuItems[menuPage-1]?.name}
+                                            {menuItems[menuPage - 1]?.name}
                                         </a>
                                     </Link>
                                     :
-                                    <a 
-                                        className={styles.mainLink}                                        
+                                    <a
+                                        className={styles.mainLink}
                                         rel='noopener noreferrer'
                                     >
-                                        {menuItems[menuPage-1]?.name}
+                                        {menuItems[menuPage - 1]?.name}
                                     </a>
                                 }
                                 {
-                                    menuItems[menuPage-1]?.children.map(
+                                    menuItems[menuPage - 1]?.children.map(
                                         links => (
                                             <>
                                                 <span className={styles.sectionName}>
                                                     {links.name}
                                                 </span>
                                                 {links.children.map(
-                                                    link => (
-                                                        <Link href={composeLink(link.url, link.type)}>
-                                                            <a 
+                                                    (link, index) => (
+                                                        <Link href={composeLink(link.url, link.type)} key={`b_${link.name}`} >
+                                                            <a
                                                                 className={styles.queryLink}
                                                                 rel='noopener noreferrer'
+                                                                key={`b_${link.name}`}
                                                             >
                                                                 {link.name}
                                                             </a>
@@ -241,18 +243,19 @@ export default function MobileHeader() {
                                         )
                                     )
                                 }{
-                                    menuItems[menuPage-1]?.children.map(
+                                    menuItems[menuPage - 1]?.children.map(
                                         links => (
                                             <>
-                                                <span className={styles.sectionName}>
+                                                <span className={styles.sectionName} key={`b_${link.name}`}>
                                                     {links.name}
                                                 </span>
                                                 {links.children.map(
                                                     link => (
-                                                        <Link href={composeLink(link.url, link.type)}>
-                                                            <a 
+                                                        <Link href={composeLink(link.url, link.type)} key={`c_${link.name}`}>
+                                                            <a
                                                                 className={styles.queryLink}
                                                                 rel='noopener noreferrer'
+                                                                key={`c_${link.name}`}
                                                             >
                                                                 {link.name}
                                                             </a>
