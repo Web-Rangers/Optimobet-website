@@ -249,4 +249,8 @@
     .siteCard {
         width: 100%;
     }
+
+    .reputationText {
+        display: none;
+    }
 }

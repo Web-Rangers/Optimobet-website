@@ -16,73 +16,6 @@ import APIRequest from '../functions/requests/APIRequest';
 import Link from 'next/link';
 import PromoBonusBlock from '../components/PromoBonusBlock';
 import { BeatLoader } from 'react-spinners';
-
-const _slots = [
-    {
-        id: 1,
-        name: 'Slot 1',
-        provider: 'ELK Studio',
-        type: 'Achievement',
-        rating: 4.5,
-    },
-    {
-        id: 2,
-        name: 'Slot 2',
-        provider: 'Netend',
-        type: 'Megaways',
-        rating: 4.5,
-    },
-    {
-        id: 3,
-        name: 'Slot 3',
-        provider: 'YGGDRASIL',
-        type: 'Bonus Buy',
-        rating: 4.5,
-    },
-    {
-        id: 4,
-        name: 'Slot 4',
-        provider: 'EGT',
-        type: 'Sticky Features',
-        rating: 4.5,
-    },
-    {
-        id: 5,
-        name: 'Slot 5',
-        provider: 'PRAGMATICPLAY',
-        type: 'Jackpot',
-        rating: 4.5,
-    },
-    {
-        id: 6,
-        name: 'Slot 6',
-        provider: 'Booming Games',
-        type: 'Achievement',
-        rating: 4.5,
-    },
-    {
-        id: 7,
-        name: 'Slot 7',
-        provider: 'IRON DOG',
-        type: 'Megaways',
-        rating: 4.5,
-    },
-    {
-        id: 8,
-        name: 'Slot 8',
-        provider: 'BETSOFT',
-        type: 'Bonus Buy',
-        rating: 4.5,
-    },
-    {
-        id: 9,
-        name: 'Slot 9',
-        provider: '2by2gaming',
-        type: 'Sticky Features',
-        rating: 4.5,
-    }
-]
-
 export default function Home({
     // newCasinos,
     // freeSlots,
@@ -107,6 +40,7 @@ export default function Home({
     const [styleMainSlider, setStyleMainSlider] = useState()
     const [styleSlotSlider, setStyleSlotSlider] = useState()
     const [slides, setSlides] = useState([]);
+    const [userCountry, setUserCountry] = useState();
 
     useEffect(() => {
         let perc = 0.8
@@ -167,6 +101,9 @@ export default function Home({
             .catch(err => console.log(err))
         APIRequest('/sliders?page=home')
             .then(res => setSlides(res))
+            .catch(err => console.log(err))
+        APIRequest('/country')
+            .then(res => { })
             .catch(err => console.log(err))
     }, [])
 

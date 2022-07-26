@@ -78,7 +78,7 @@ const reputations = [
 export default function SiteCard({
     rep = 100,
     shared_content,
-    claim_bonus_url,
+    bonus_url,
     claim_bonus_text,
     features,
     games,
@@ -137,7 +137,7 @@ export default function SiteCard({
     return (
         <div
             className={`${styles.siteCard} ${styles[reputation]}`}
-            style={bordersNone ? {borderColor:"transparent"} : {}}
+            style={bordersNone ? { borderColor: "transparent" } : {}}
         >
             <div className={styles.cardHeader}>
                 <Link href={`/${basepath}/${id}`}>
@@ -151,7 +151,7 @@ export default function SiteCard({
                     </a>
                 </Link>
                 <div className={styles.reputation}>
-                    <span>
+                    <span className={styles.reputationText}>
                         {reputationName} reputation
                     </span>
                     <div className={styles.repVisualizer}>
@@ -171,7 +171,7 @@ export default function SiteCard({
                                 {shared_content?.name}
                             </span>
                         </a>
-                    </Link>                    
+                    </Link>
                     <div className={styles.starsBlock}>
                         <Stars points={rating} />
                     </div>
@@ -211,7 +211,7 @@ export default function SiteCard({
                 </div>
                 <div className={styles.buttonBonus}>
                     <a
-                        href={claim_bonus_url}
+                        href={bonus_url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.getBonus}
