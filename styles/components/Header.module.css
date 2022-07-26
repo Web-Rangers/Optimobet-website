@@ -330,6 +330,8 @@
     display: flex;
 }
 
+/* Menu mobile with categories */
+
 .burgerMenu {
     position: absolute;
     top: 0;
@@ -362,15 +364,15 @@
 .menuNavigation {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     padding: 16px;
+    padding-bottom: 100px;
+    overflow-y: auto;
 }
 
 .mobileLanguage>div {
     margin: 0;
 }
-
-/* Menu mobile with categories */
 
 .backHeader{
     position: absolute;
@@ -426,6 +428,23 @@
 .activePageFix4 svg path:not(:first-child){
     fill: #7F3FFC;
 }
+
+.mainLink{    
+    font: normal normal 500 16px/19px Samsung Sans;
+    color: #4B4453;
+}
+
+.sectionName{   
+    margin-top: 12px; 
+    font: normal normal 500 14px/17px Samsung Sans;
+    color: #4B445380;
+}
+
+.queryLink{    
+    font: normal normal normal 15px/18px Samsung Sans;
+    color: #4B4453;
+}
+
 /* Menu to expand */
 
 .hideMenuBtn {
