@@ -29,6 +29,8 @@
     /* background-color: #ccc; */
     display: flex;
     align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .separator {
@@ -95,9 +97,9 @@
     .language {
         padding: 10px 24px;
     }
-}   
+}
 
-.langMobile{
+.langMobile {
     position: fixed;
     width: 100%;
     height: calc(100% - 62px);
@@ -108,7 +110,8 @@
     background: #FFF;
     z-index: 9999;
 }
-.tabs{
+
+.tabs {
     display: flex;
     gap: 24px;
     font: normal normal normal 13px/16px Samsung Sans;
@@ -116,14 +119,17 @@
     padding: 12px 16px;
     border-bottom: 1px solid #4B44531A;
 }
-.tab{    
+
+.tab {
     position: relative;
 }
-.activeTab{
+
+.activeTab {
     color: #7F3FFC;
     transition: all 0.2s ease-in-out;
 }
-.activeLine{
+
+.activeLine {
     background: #7F3FFC;
     border-radius: 13px 13px 0px 0px;
     height: 3px;
@@ -131,7 +137,8 @@
     position: absolute;
     bottom: -13px;
 }
-.bubblesWrap{
+
+.bubblesWrap {
     position: relative;
     height: calc(100% - 48px);
     width: 100%;
@@ -140,16 +147,19 @@
     top: 41px;
     overflow-y: auto;
 }
-.bubblesWrap::-webkit-scrollbar{
+
+.bubblesWrap::-webkit-scrollbar {
     display: none;
 }
-.bubblesBlock{
+
+.bubblesBlock {
     padding: 16px;
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
 }
-.langBubble{
+
+.langBubble {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -162,12 +172,14 @@
     transition: all 0.2s ease-in-out;
     height: fit-content;
 }
-.activeBubble{
+
+.activeBubble {
     border-color: #7F3FFC;
     color: #7F3FFC;
     font: normal normal 500 15px/18px Samsung Sans;
 }
-.buttons{
+
+.buttons {
     display: flex;
     width: 100%;
     height: 48px;
@@ -175,7 +187,8 @@
     bottom: 0px;
     left: 0px;
 }
-.applyBtn{
+
+.applyBtn {
     width: 50%;
     display: flex;
     align-items: center;
@@ -184,7 +197,8 @@
     color: #F2F2F2;
     background: #7F3FFC;
 }
-.resetBtn{
+
+.resetBtn {
     width: 50%;
     display: flex;
     align-items: center;

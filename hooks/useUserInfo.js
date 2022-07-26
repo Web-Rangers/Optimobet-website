@@ -5,14 +5,13 @@ export default function useUserInfo() {
 
     useEffect(() => {
         const onStorage = () => {
-            console.log('storage')
             const userData = localStorage.getItem('user')
             if (userData) {
                 setInfo(JSON.parse(userData))
             }
         };
 
-        window.addEventListener('storage', onStorage);
+        window.addEventListener('localstorage', onStorage);
 
         const userData = localStorage.getItem('user')
         if (userData) {
@@ -20,7 +19,7 @@ export default function useUserInfo() {
         }
 
         return () => {
-            window.removeEventListener('storage', onStorage);
+            window.removeEventListener('localstorage', onStorage);
         };
     }, []);
 

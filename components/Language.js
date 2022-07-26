@@ -36,7 +36,7 @@ export default function Language({ setBorder }) {
     const user = useUserInfo();
     const country_id = useRef('GE')
     const language_id = useRef('EN')
-    const [countrySelected, setCountrySelected] = useState('GE')
+    const [countrySelected, setCountrySelected] = useState()
     const [languageSelected, setLanguageSelected] = useState('EN')
     const router = useRouter();
     const blockRef = useRef()
@@ -74,7 +74,15 @@ export default function Language({ setBorder }) {
         APIRequest('/countries', 'GET')
             .then(res => { setCountries(res) })
             .catch(err => console.log(err))
-
+        APIRequest('/country', 'GET')
+            .then(res => {
+                if (!user?.country_code) {
+                    country_id.current = res.code
+                    localStorage.setItem('user', JSON.stringify({ ...user, country_code: res.code }))
+                    setCountrySelected(res.code)
+                }
+            })
+            .catch(err => console.log(err))
         if (window)
             window.addEventListener('click', closeIfNotDropdown)
         return () => {
