@@ -49,6 +49,34 @@ const links = [
     // },
 ]
 
+const types = [
+    {
+        name: 'casino',
+        href: '/casinos'
+    },
+    {
+        name: 'bonus',
+        href: '/bonuses'
+    },
+    {
+        name: 'bookmaker',
+        href: '/bookmakers'
+    },
+    {
+        name: 'slot',
+        href: '/slots'
+    },
+]
+
+function getLinkByType(type) {
+    return types.find(item => item.name == type)?.href || "/";
+}
+
+function composeLink(url, type) {
+    const params = new URLSearchParams(url.split('?')[1]);
+    return `${getLinkByType(type)}?${params.toString()}`;
+}
+
 export default function MobileHeader() {
     const [bordered, setBordered] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -143,20 +171,20 @@ export default function MobileHeader() {
                     >
                         <div className={styles.pagesNav}>
                             {
-                                links.map(({ href, name, svg, page }) => (
+                                menuItems?.map((section,index) => (
                                     <div 
                                         className={
                                             `${styles.pageIcon} 
-                                            ${page==menuPage && styles.activePage} 
-                                            ${(page==3 && page==menuPage) && styles.activePageFix3} 
-                                            ${(page==4 && page==menuPage) && styles.activePageFix4}`
+                                            ${index+1==menuPage && styles.activePage}` 
+                                            // ${(page==3 && page==menuPage) && styles.activePageFix3} 
+                                            // ${(page==4 && page==menuPage) && styles.activePageFix4}`
                                         }
                                         onClick={()=>{
-                                            setMenuPage(page)
+                                            setMenuPage(index+1)
                                         }}
                                     >
                                         <ReactSVG
-                                            src={`/images/icons/header/${svg}.svg`}
+                                            src={`/images/icons/header/${section.image}.svg`}
                                             width={24}
                                             height={24}
                                         />
@@ -164,9 +192,79 @@ export default function MobileHeader() {
                                 ))
                             }
                         </div>
-                        <div className={styles.menuNavigation}>
-                            
-                        </div>
+                        <AnimatePresence initial={false} exitBeforeEnter>
+                            <motion.div 
+                                className={styles.menuNavigation}
+                                key={menuPage}
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                transition={{duration: 0.2, ease:"easeInOut"}} 
+                            >
+                                {menuItems[menuPage-1]?.type ? 
+                                    <Link href={menuItems[menuPage-1]?.type}>
+                                        <a 
+                                            className={styles.mainLink}
+                                            rel='noopener noreferrer'
+                                        >
+                                            {menuItems[menuPage-1]?.name}
+                                        </a>
+                                    </Link>
+                                    :
+                                    <a 
+                                        className={styles.mainLink}                                        
+                                        rel='noopener noreferrer'
+                                    >
+                                        {menuItems[menuPage-1]?.name}
+                                    </a>
+                                }
+                                {
+                                    menuItems[menuPage-1]?.children.map(
+                                        links => (
+                                            <>
+                                                <span className={styles.sectionName}>
+                                                    {links.name}
+                                                </span>
+                                                {links.children.map(
+                                                    link => (
+                                                        <Link href={composeLink(link.url, link.type)}>
+                                                            <a 
+                                                                className={styles.queryLink}
+                                                                rel='noopener noreferrer'
+                                                            >
+                                                                {link.name}
+                                                            </a>
+                                                        </Link>
+                                                    )
+                                                )}
+                                            </>
+                                        )
+                                    )
+                                }{
+                                    menuItems[menuPage-1]?.children.map(
+                                        links => (
+                                            <>
+                                                <span className={styles.sectionName}>
+                                                    {links.name}
+                                                </span>
+                                                {links.children.map(
+                                                    link => (
+                                                        <Link href={composeLink(link.url, link.type)}>
+                                                            <a 
+                                                                className={styles.queryLink}
+                                                                rel='noopener noreferrer'
+                                                            >
+                                                                {link.name}
+                                                            </a>
+                                                        </Link>
+                                                    )
+                                                )}
+                                            </>
+                                        )
+                                    )
+                                }
+                            </motion.div>
+                        </AnimatePresence>
                     </motion.div>
                 }
             </AnimatePresence>
