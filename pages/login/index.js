@@ -21,7 +21,7 @@ export default function Login() {
         setCurrentPage(<SignIn setCurrentPage={setCurrentPage} />)
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (router.query.token) {
             APIRequest("/me", "GET")
                 .then(res => {
@@ -33,7 +33,7 @@ export default function Login() {
                     console.error(e)
                 })
         }
-    },[router.query])
+    }, [router.query])
 
     useEffect(() => {
         if ((0.4 * width - 520) > 0)
@@ -66,7 +66,7 @@ export default function Login() {
                 {width <= 480 && <>
                     <div className={styles.mobileImage}>
                         <Image
-                            src="/images/signin/2 – 4.png"
+                            src="/images/signin/2–4.png"
                             width={250}
                             height={140}
                         />
@@ -84,7 +84,7 @@ export default function Login() {
                     </div>
                     <div className={styles.characters} style={imgLeft ? { left: imgLeft + "px" } : {}}>
                         <Image
-                            src="/images/signin/2 – 4.png"
+                            src="/images/signin/2–4.png"
                             objectFit='contain'
                             layout='fill'
                         />
@@ -155,7 +155,7 @@ function SignIn({ setCurrentPage }) {
                                 height={24}
                             />
                         </div>
-                    </Link>                    
+                    </Link>
                     <Link href={"http://backend.luckyrabbits.ge/social/login/google"}>
                         <div className={styles.social}>
                             <Image
@@ -320,7 +320,7 @@ function SignUp({ setCurrentPage }) {
                                 height={24}
                             />
                         </div>
-                    </Link>                    
+                    </Link>
                     <Link href={"http://backend.luckyrabbits.ge/social/login/google"}>
                         <div className={styles.social}>
                             <Image

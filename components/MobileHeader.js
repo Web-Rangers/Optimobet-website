@@ -597,7 +597,7 @@ function PasswordModal({ onClose }) {
                 />
                 <div className={styles.modalImageOverlap}>
                     <Image
-                        src="/images/phoenix.png"
+                        src="/images/Phoenix.png"
                         height={165}
                         width={104}
                         alt="phoenix"

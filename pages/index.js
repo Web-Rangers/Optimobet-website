@@ -396,7 +396,7 @@ export default function Home({
                         </ol>
                         <div className={styles.gamblingPicture}>
                             <Image
-                                src="/images/main/taylor.png"
+                                src="/images/main/Taylor.png"
                                 objectFit='contain'
                                 layout='fill'
                             />
