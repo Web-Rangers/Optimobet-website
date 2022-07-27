@@ -127,6 +127,11 @@
         display: none;
     }
 
+    .slotRating {
+        right: 16px;
+        top: 16px;
+    }
+
     .slot.big .slotInfo {
         display: flex;
         flex-direction: column;
