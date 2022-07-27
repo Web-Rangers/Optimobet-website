@@ -78,6 +78,7 @@
     left: -32px;
     width: 10px;
     height: 10px;
+    top: 3px;
 }
 
 .type.active .typeName {

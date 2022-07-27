@@ -66,7 +66,7 @@ export default function BonusCard({ name, title, terms_and_condition, bonusable,
                             {promo_code}
                         </span>
                         <div
-                            onClick={() => navigator.clipboard.writeText(promocode)}
+                            onClick={() => navigator.clipboard.writeText(promo_code)}
                             className={styles.copyButton}
                         >
                             <Image
