@@ -142,19 +142,19 @@ export default function BookmakersPage({ filters }) {
                 break;
             case "Best in your country":
                 user?.country_id && (newFilteredItems = filteredItems?.filter(casino => casino.countries.find(country => country.id === user.country_id)));
-                newfilteredItems?.sort((a, b) => b.rating - a.rating);
+                newFilteredItems?.sort((a, b) => b.rating - a.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Best of the world":
-                newfilteredItems?.sort((a, b) => b.rating - a.rating);
+                newFilteredItems?.sort((a, b) => b.rating - a.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Recently added":
-                newfilteredItems?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                newFilteredItems?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 setFilteredItems(newFilteredItems);
                 break;
             case 'Highly recommended':
-                newfilteredItems?.sort((a, b) => b.reputation - a.reputation);
+                newFilteredItems?.sort((a, b) => b.reputation - a.reputation);
                 setFilteredItems(newFilteredItems);
                 break;
         }

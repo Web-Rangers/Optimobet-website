@@ -146,19 +146,19 @@ export default function BonusesPage({ filters }) {
                 break;
             case "Best in your country":
                 user?.country_id && (newFilteredItems = filteredItems?.filter(casino => casino.bonusable?.countries.find(country => country.id === user.country_id)));
-                newfilteredItems?.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
+                newFilteredItems?.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Best of the world":
-                newfilteredItems?.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
+                newFilteredItems?.sort((a, b) => b.bonusable?.rating - a.bonusable?.rating);
                 setFilteredItems(newFilteredItems);
                 break;
             case "Recently added":
-                newfilteredItems?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                newFilteredItems?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 setFilteredItems(newFilteredItems);
                 break;
             case "Highly recommended":
-                newfilteredItems?.sort((a, b) => b.bonusable?.reputation - a.bonusable?.reputation);
+                newFilteredItems?.sort((a, b) => b.bonusable?.reputation - a.bonusable?.reputation);
                 setFilteredItems(newFilteredItems);
                 break;
         }
