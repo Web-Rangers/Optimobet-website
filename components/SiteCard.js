@@ -165,7 +165,7 @@ export default function SiteCard({
             </div>
             <div className={styles.cardContent}>
                 <div className={styles.contentTitle}>
-                    <Link href={`/${basepath}/${id}`}>
+                    <Link href={`/${basepath}/${shared_content.slug}`}>
                         <a>
                             <span>
                                 {shared_content?.name}
