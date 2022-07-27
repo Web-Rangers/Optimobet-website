@@ -246,7 +246,7 @@ export default function MobileHeader() {
                                     menuItems[menuPage - 1]?.children.map(
                                         links => (
                                             <>
-                                                <span className={styles.sectionName} key={`b_${link.name}`}>
+                                                <span className={styles.sectionName} key={`b_${links.name}`}>
                                                     {links.name}
                                                 </span>
                                                 {links.children.map(
