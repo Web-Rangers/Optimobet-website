@@ -1,404 +1,106 @@
-.container {
+.casino {
     position: relative;
-}
-
-.mainSlider {
     width: 100%;
+    height: 100%;
 }
 
-.sliderBlock {
-    width: 80% !important;
-}
-
-.sliderBlock>div {
-    height: 500px;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-}
-
-.sliderPicture {
-    width: 100%;
-}
-
-.categoryBlocks {
-    width: 100%;
-    padding: 50px 10% 100px 10%;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.categoryBlocks>* {
-    flex: 1 1;
-}
-
-.promoBlocks {
-    display: flex;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 30px;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.BlocksHeader {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 6px;
-}
-
-.promoBlocksSubTitle {
-    text-transform: uppercase;
-    font: normal normal 500 18px/20px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B445380;
-}
-
-.promoBlocksTitle {
-    text-transform: capitalize;
-    font: normal normal bold 28px/30px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453;
-}
-
-.promoBlocksContent {
-    display: flex;
-    gap: 30px;
-}
-
-.sitesGallery {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    width: 80%;
-    margin: auto;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.promoInSites {
-    width: calc(66% - 1px);
-}
-
-.moreButtonArea {
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.moreButton {
-    border: 1px solid #4B445333;
-    border-radius: 24px;
-    font: normal normal 500 15px/17px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453;
-    padding: 15px 40px;
-    cursor: pointer;
-}
-
-.sitesLine {
-    background: #F2F2F2 0% 0% no-repeat padding-box;
-    width: 100%;
-    padding: 40px 10% 30px 10%;
-    margin-top: 32px;
-    margin-bottom: 100px;
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.slotsSlider {
-    margin-top: 100px;
-    width: 100%;
-}
-
-.slotBlock {
-    width: 80% !important;
-    display: flex;
-    gap: 30px;
-}
-
-.slotBlock>div {
-    flex: 1 1;
-    height: 500px;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-}
-
-.headerBlockWrap {
-    margin-left: 10%;
-    margin-bottom: 16px;
-}
-
-.gamblingRules {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background: url(/images/main/LandscapeBackground.png) no-repeat;
-    padding-top: 40px;
-    position: relative;
-    background-size: cover;
-}
-
-.gamblingRules::before {
-    content: "";
+.casinoBg {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: #F2F2F2E0 0% 0% no-repeat padding-box;
+    height: 410px;
+    background-color: #4B4453;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
-.gamblingRules>* {
-    z-index: 1;
-}
-
-.gamblingContent {
-    width: 100%;
-    margin: auto;
-    position: relative;
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 24px;
-}
-
-.rulesList {
-    margin: 0;
-}
-
-.rulesList {
-    width: 40%;
-    list-style-type: none;
-    counter-reset: my-counter;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
-    z-index: 2;
-}
-
-.rulesList li {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-bottom: 16px;
-    font: normal normal bold 20px/45px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453;
-}
-
-.rulesList span {
-    font: normal normal normal 15px/26px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453CC;
-    margin-bottom: 24px;
-    width: 100%;
-}
-
-.rulesList li::before {
-    content: counter(my-counter);
-    counter-increment: my-counter;
-    background: #7F3FFC;
-    border-radius: 100px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font: normal normal bold 15px/26px Samsung Sans;
-    letter-spacing: 0px;
-    color: #F2F2F2;
-    flex-shrink: 0;
-}
-
-.gamblingPicture {
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    bottom: -80px;
-}
-
-.gamblingPicture:first-child {
-    left: 0px;
-}
-
-.gamblingPicture:last-child {
-    right: 0px;
-}
-
-.gamblingPicture:first-child img {
-    object-position: right bottom;
-}
-
-.gamblingPicture:last-child img {
-    object-position: left bottom;
-}
-
-.faqBlock {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: auto;
-    margin-top: 180px;
-}
-
-.faqBlockContent {
-    margin-top: 16px;
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-}
-
-.faqQuestions {
-    margin-left: 10%;
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.questionBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.questionHeader {
-    font: normal normal bold 20px/22px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453;
-}
-
-.questionAnswer {
-    font: normal normal normal 15px/26px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453CC;
-}
-
-.faqPicture {
-    display: flex;
-    width: 50%;
-}
-
-.faqPicture img {
-    object-position: left bottom;
-}
-
-.countries {
-    margin-top: 150px;
-    background: #7F3FFC 0% 0% no-repeat padding-box;
-    padding: 40px 10%;
-    width: 100%;
-}
-
-.countries * {
-    color: #F2F2F2;
-}
-
-.countriesContent {
-    margin-top: 24px;
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    width: 75%;
-}
-
-.country {
-    display: flex;
-    padding: 17px 24px;
-    border: 2px solid #F2F2F2;
-    border-radius: 30px;
-    width: 360px;
-    justify-content: space-between;
-    align-items: center;
-    gap: 21px;
-}
-
-.countryName {
-    font: normal normal bold 18px/20px Samsung Sans;
-    letter-spacing: 0px;
-    color: #F2F2F2;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.countryName::before {
-    background-image: url("/images/icons/circle-check-white.svg");
-    background-size: 18px;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
+.casinoBg::after {
     content: "";
-    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(18, 17, 17, 0.6) 0%, rgba(18, 17, 17, 0.3) 50%, rgba(18, 17, 17, 0) 100%);
 }
 
-.countryCount {
-    background: #00C69C 0% 0% no-repeat padding-box;
-    border-radius: 13px;
-    padding: 5px 12px;
-    font: normal normal bold 13px/15px Samsung Sans;
-    letter-spacing: 0px;
-    color: #FFFFFF;
+.characters {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
-.optimoText {
+.casinoInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 130px 40px;
+    height: 410px;
+    max-width: 50%;
+}
+
+.bonusInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.bonusText {
+    text-align: left;
+    font: normal normal bold 34px/44px Samsung Sans;
+    letter-spacing: 0px;
+    color: #F2F2F2;
+    opacity: 1;
+}
+
+.feature {
+    text-align: left;
+    font: normal normal 500 15px/26px Samsung Sans;
+    letter-spacing: 0px;
+    color: #F2F2F2CC;
+    opacity: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    align-items: center;
+}
+
+.feature:before {
+    content: url(/images/icons/circle-check-white.svg);
+    height: 18px;
+    width: 18px;
+}
+
+.casinoButtons {
+    display: flex;
+    flex-direction: row;
     gap: 24px;
-    width: 80%;
-    margin: auto;
-    margin-top: 100px;
-    font: normal normal normal 15px/26px Samsung Sans;
+}
+
+.casinoButtons a {
+    padding: 15px 40px;
+    text-align: left;
+    font: normal normal 500 15px/16px Samsung Sans;
     letter-spacing: 0px;
-    color: #4B4453CC;
+    color: #F2F2F2;
+    opacity: 1;
+    border-radius: 24px;
 }
 
-.optimoText b {
-    color: #000;
+.bonusButton {
+    background-color: #7F3FFC;
 }
 
-.aboutSite {
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-}
-
-.aboutSiteContent {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 16px;
-}
-
-.aboutSiteContent {
-    font: normal normal normal 15px/26px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453CC;
-}
-
-.aboutSiteInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.aboutSiteInfoTitle {
-    font: normal normal bold 20px/22px Samsung Sans;
-    letter-spacing: 0px;
-    color: #4B4453;
+.detailsButton {
+    border: 1px solid #F2F2F266;
+    background-color: transparent;
 }
 
 @media screen and (max-width: 1440px) {

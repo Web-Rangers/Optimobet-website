@@ -468,6 +468,24 @@ function SignUp({ setCurrentPage }) {
 function Recovery({ setCurrentPage }) {
     const submitRef = useRef()
 
+    function forgotSend(e) {
+        e.preventDefault()        
+        const body = {
+            email: e.target.email.value,
+        }
+        APIRequest(
+            "/forget-password",
+            "POST",
+            JSON.stringify(body)
+        )
+        .then(res => {
+            
+        })
+        .catch(e => {
+            
+        })
+    }
+
     return (
         <div className={styles.formArea} style={{ flexDirection: "column" }}>
             <motion.div
@@ -491,7 +509,7 @@ function Recovery({ setCurrentPage }) {
                     Back to Login
                 </a>
             </motion.div>
-            <form className={styles.authForm}>
+            <form className={styles.authForm} onSubmit={forgotSend}>
                 <motion.span
                     initial={{ opacity: 0, translateY: -100 }}
                     animate={{ opacity: 1, translateY: 0 }}
@@ -514,6 +532,7 @@ function Recovery({ setCurrentPage }) {
                     required
                     placeholder="Email"
                     type="email"
+                    name="email"
                     onChange={(e) => {
                         if (e.target.validity.valid) {
                             submitRef.current.disabled = false
