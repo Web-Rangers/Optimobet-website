@@ -95,16 +95,16 @@ export default function MobileHeader() {
 
     useEffect(() => {
         if (router.asPath && (router.asPath != '/')) {
-            console.log(router.asPath, links.filter(link => router.asPath.includes(link.href))[0]?.page)
-            setMenuPage(links.filter(link => router.asPath.includes(link.href))[0]?.page)
+            // console.log(menuItems, menuItems?.filter(link => router.asPath.includes(link.url))[0])
+            // setMenuPage(menuItems?.filter(link => router.asPath.includes(link.url))[0]?.page)
         }
-    }, [router])
+        setIsMenuOpen(false)
+    }, [router,menuItems])
 
     useEffect(() => {
         APIRequest('/menu', 'GET')
             .then(res => {
-                setMenuItems(res);
-                console.log(res)
+                setMenuItems(res)
             })
             .catch(err => console.log(err))
     }, [])
@@ -175,7 +175,7 @@ export default function MobileHeader() {
                                     <div
                                         className={
                                             `${styles.pageIcon} 
-                                            ${index + 1 == menuPage && styles.activePage}`
+                                            ${((index + 1) == menuPage) && styles.activePage}`
                                             // ${(page==3 && page==menuPage) && styles.activePageFix3} 
                                             // ${(page==4 && page==menuPage) && styles.activePageFix4}`
                                         }
@@ -196,7 +196,7 @@ export default function MobileHeader() {
                         <AnimatePresence initial={false} exitBeforeEnter>
                             <motion.div
                                 className={styles.menuNavigation}
-                                key={menuPage}
+                                key={menuPage-1}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
@@ -233,29 +233,6 @@ export default function MobileHeader() {
                                                                 className={styles.queryLink}
                                                                 rel='noopener noreferrer'
                                                                 key={`b_${link.name}`}
-                                                            >
-                                                                {link.name}
-                                                            </a>
-                                                        </Link>
-                                                    )
-                                                )}
-                                            </>
-                                        )
-                                    )
-                                }{
-                                    menuItems[menuPage - 1]?.children.map(
-                                        links => (
-                                            <>
-                                                <span className={styles.sectionName} key={`b_${links.name}`}>
-                                                    {links.name}
-                                                </span>
-                                                {links.children.map(
-                                                    link => (
-                                                        <Link href={composeLink(link.url, link.type)} key={`c_${link.name}`}>
-                                                            <a
-                                                                className={styles.queryLink}
-                                                                rel='noopener noreferrer'
-                                                                key={`c_${link.name}`}
                                                             >
                                                                 {link.name}
                                                             </a>
