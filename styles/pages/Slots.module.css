@@ -32,6 +32,19 @@
     margin-left: calc(25% + 30px);
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 40px;
+    cursor: pointer;
+    border: 1px solid #4B445333;
+    border-radius: 24px;
+    width: max-content;
+    font: normal normal 500 14px/16px Samsung Sans;
+    align-self: center;
+}
+
 /* Page Content */
 
 .sliderWrap {

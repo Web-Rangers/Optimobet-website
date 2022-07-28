@@ -191,20 +191,6 @@ export default function BonusesPage({ filters }) {
     }, [])
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    loadMore();
-                }
-            }
-        )
-
-        bonuses.length > 5 && observer.observe(loadMoreRef.current);
-
-        return () => observer.disconnect();
-    }, [bonuses])
-
-    useEffect(() => {
         let mainS = { height: 500 }
         if (width <= 1440) {
             mainS = { height: 480 }
@@ -381,8 +367,11 @@ export default function BonusesPage({ filters }) {
                                     <BeatLoader color='#7F3FFC' />
                                 </div>
                         }
-                        {filteredItems?.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
-                            <BeatLoader loading={loading} color='#7F3FFC' />
+                        {filteredItems?.length > 5 && <div
+                            onClick={loadMore}
+                            className={styles.loader}
+                        >
+                            Show more
                         </div>}
                         {
                             width <= 768 &&

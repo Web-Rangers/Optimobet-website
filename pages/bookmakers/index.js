@@ -182,20 +182,6 @@ export default function BookmakersPage({ filters }) {
     }, [])
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    loadMore();
-                }
-            }
-        )
-
-        bookmakers.length > 5 && observer.observe(loadMoreRef.current);
-
-        return () => observer.disconnect();
-    }, [bookmakers])
-
-    useEffect(() => {
         if (width <= 768) {
             setSidebarShown(false);
         }
@@ -339,8 +325,11 @@ export default function BookmakersPage({ filters }) {
                                     <BeatLoader color='#7F3FFC' />
                                 </div>
                         }
-                        {filteredItems?.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
-                            <BeatLoader loading={loading} color='#7F3FFC' />
+                        {filteredItems?.length > 5 && <div
+                            onClick={loadMore}
+                            className={styles.loader}
+                        >
+                            Show more
                         </div>}
                         {
                             width <= 768 &&

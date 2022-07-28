@@ -46,7 +46,6 @@ export default function CasinosPage({ filters }) {
     const [sort, setSort] = useState('All');
     const [filteredItems, setFilteredItems] = useState(casinos);
     const [page, setPage] = useState(1);
-    const loadMoreRef = useRef(null);
     const user = useUserInfo();
     const [loading, setLoading] = useState(false);
     const { width } = useWindowSize();
@@ -211,20 +210,6 @@ export default function CasinosPage({ filters }) {
         setStyleMainSlider(mainS)
     }, [width])
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    loadMore();
-                }
-            }
-        )
-
-        casinos.length > 5 && observer.observe(loadMoreRef.current);
-
-        return () => observer.disconnect();
-    }, [casinos])
-
     return (
         <div className={styles.container}>
             <div>
@@ -381,8 +366,11 @@ export default function CasinosPage({ filters }) {
                                     <BeatLoader color='#7F3FFC' />
                                 </div>
                         }
-                        {filteredItems?.length > 5 && <div className={styles.loader} ref={loadMoreRef} >
-                            <BeatLoader loading={loading} color='#7F3FFC' />
+                        {filteredItems?.length > 5 && <div
+                            onClick={loadMore}
+                            className={styles.loader}
+                        >
+                            Show more
                         </div>}
                         {
                             width <= 768 &&

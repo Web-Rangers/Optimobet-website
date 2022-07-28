@@ -139,17 +139,9 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
         })
     }
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    setPage(++page)
-                }
-            }
-        )
-        observer.observe(loadMoreRef.current);
-        return () => observer.disconnect();
-    }, [])
+    function loadMore() {
+        setPage(++page)
+    }
 
     useEffect(() => {
         if (width <= 768) {
@@ -314,7 +306,6 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                     className={styles.slots}
                 >
                     {renderSlots(sidebarShown, page, width)}
-                    <div ref={loadMoreRef} />
                     {
                         width <= 768 &&
                         <motion.div
@@ -337,6 +328,12 @@ export default function SlotsPage({ slots, providers, sliderContent }) {
                             }
                         </motion.div>
                     }
+                </div>
+                <div
+                    onClick={loadMore}
+                    className={styles.loader}
+                >
+                    Show more
                 </div>
             </motion.div>
         </div >
