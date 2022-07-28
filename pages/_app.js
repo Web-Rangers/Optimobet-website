@@ -30,13 +30,20 @@ function MyApp({ Component, pageProps }) {
     }, [])
 
     return (
-        <CookiesProvider>
-            {withHeader && (width <= 480 ? <MobileHeader /> : <Header />)}
-            <div style={{ paddingTop: withHeader ? 86 : 0 }}>
-                <Component {...pageProps} />
-            </div>
-            {withFooter && <Footer />}
-        </CookiesProvider>
+        <>
+            <Head>
+                <title>OPTIMOBET</title>
+                <meta name="description" content="OPTIMOBET WEBSITE" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <CookiesProvider>
+                {withHeader && (width <= 480 ? <MobileHeader /> : <Header />)}
+                <div style={{ paddingTop: withHeader ? 86 : 0 }}>
+                    <Component {...pageProps} />
+                </div>
+                {withFooter && <Footer />}
+            </CookiesProvider>
+        </>
     )
 
 }

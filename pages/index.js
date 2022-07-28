@@ -109,12 +109,6 @@ export default function Home({
 
     return (
         <div className={styles.container}>
-            <Head>
-                <title>OPTIMOBET</title>
-                <meta name="description" content="OPTIMOBET WEBSITE" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <main className={styles.main}>
                 <div className={styles.mainSlider}>
                     {slides.length > 0 ?
