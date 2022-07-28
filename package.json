@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "production": "npm install && next build && next start"
+        "production": "git pull && npm install && next build && next start"
     },
     "dependencies": {
         "framer-motion": "^6.3.11",
