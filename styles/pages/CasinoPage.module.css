@@ -336,7 +336,7 @@
     padding-right: 24px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .container {
         width: 100%;
         display: flex;
