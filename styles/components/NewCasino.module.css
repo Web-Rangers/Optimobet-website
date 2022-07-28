@@ -34,6 +34,16 @@
     overflow: hidden;
 }
 
+.charactersCenter{
+    position: absolute;
+    bottom: 0;
+    right: 12%;
+    width: 76%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
 .casinoInfo {
     position: absolute;
     bottom: 0;
@@ -416,6 +426,14 @@
 
     .casinoBg::after {
         background: linear-gradient(180deg, rgba(18, 17, 17, 0.6) 0%, rgba(18, 17, 17, 0.3) 50%, rgba(18, 17, 17, 0) 100%);
+    }
+
+    .charactersCenter{
+        right: 5%;
+        width: 90%;
+    }
+    .charactersCenter img{
+        object-position: center center!important;
     }
 }
 
