@@ -218,7 +218,7 @@
         align-items: center;
         justify-content: center;
         bottom: 16px;
-        z-index: 10000;
+        /* z-index: 10000; */
         padding: 16px 70px;
         background-color: #7F3FFC;
         border-radius: 100px;
