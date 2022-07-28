@@ -234,6 +234,36 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+    .slotSlide {
+        gap: 20px;
+    }
+
+    .slotDemoBlock {
+        flex-direction: column;
+    }
+
+    .slotBlock {
+        padding: 16px;
+    }
+
+    .emptyBlocks {
+        flex-direction: column;
+    }
+
+    .emptyBlocks div {
+        min-height: 63px;
+    }
+
+    .aboutSlot {
+        flex-direction: column;
+    }
+
+    .ourScore {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .slotDemoBlock {
         flex-direction: column;

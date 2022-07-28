@@ -18,7 +18,7 @@ export default function CasinoPage({ casino }) {
 
     return (
         <>
-            {width > 480 ?
+            {width > 768 ?
                 <div className={styles.container}>
                     <div className={styles.sideCol}>
                         <div className={styles.sticky}>
