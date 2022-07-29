@@ -17,7 +17,7 @@ export default function NewCasino({
 }) {
     return (
         <a
-            href={(type == "single") && (bonus_url || bonus_link)}
+            href={(type == "single") ? (bonus_url || bonus_link) : null}
             target="_blank"
             rel="noopener noreferrer"
         >
