@@ -45,7 +45,6 @@ export default function BookmakersPage({ filters }) {
     const [filteredItems, setFilteredItems] = useState(bookmakers);
     const loadMoreRef = useRef(null);
     const user = useUserInfo()
-    const [loading, setLoading] = useState(false);
     const { width } = useWindowSize();
     const router = useRouter();
     const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
@@ -161,11 +160,9 @@ export default function BookmakersPage({ filters }) {
     }
 
     function loadMore() {
-        setLoading(true);
         APIRequest(`/bookmakers?page=${page + 1}&${queryString}`, 'GET')
             .then(res => {
                 setPage(page++);
-                setLoading(false);
                 bookmakersRef.current = [...bookmakersRef.current, ...res.data]
                 setFilteredItems(bookmakersRef.current);
             })
