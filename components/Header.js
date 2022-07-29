@@ -119,23 +119,30 @@ export default function Header() {
             {
                 <motion.div
                     className={styles.expandedMenu}
-                    animate={isMenuOpen ? { height: "auto" } : { height: 0 }}
+                    animate={isMenuOpen ? { height: "auto", overflow:"visible" } : { height: 0 }}
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                    <div className={styles.expandedMenuNav}>
+                    <motion.div 
+                        className={styles.expandedMenuNav}
+                        animate={isMenuOpen ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ delay: 0.1, duration: 0.1, ease: "easeInOut" }}
+                    >
                         {width <= 768 &&
-                            <div>
-                                <MenuLink href={"/"} name={"Home"} key={"Home"} />
-                            </div>
+                            <MenuLink href={"/"} name={"Home"} key={"Home"} />
                         }
                         {
-                            links.map(({ href, name }) => (
-                                <div onClick={() => setIsMenuOpen(!isMenuOpen)} key={name}>
-                                    <MenuLink href={href} name={name} key={name} />
-                                </div>
+                            !menuItems
+                            ? links.map((link, index) => (
+                                <MenuLink key={link.name} {...link} />
+                            ))
+                            : menuItems.map((link, index) => (
+                                <MenuDropLink
+                                    key={link.name}
+                                    {...link}
+                                />
                             ))
                         }
-                    </div>
+                    </motion.div>
                 </motion.div>
             }
             <Search setBorder={setBordered} />
@@ -160,12 +167,12 @@ function MenuLink({ href, name }) {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        const _isActive = router.pathname.split('/').includes(href.split('/')[1]);
-        if (href != "/")
-            setIsActive(_isActive);
+        if (href != "/") {
+            setIsActive(router.asPath.split('/').includes(href.split('/')[1]))
+        }
         if (href == "/" && router.asPath == "/")
             setIsActive(true);
-    }, [router.pathname])
+    }, [router.asPath])
 
     return (
         <Link href={href}>
