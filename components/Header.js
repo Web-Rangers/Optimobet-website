@@ -63,6 +63,8 @@ const types = [
 export default function Header() {
     const { width, height } = useWindowSize()
     const [bordered, setBordered] = useState(false)
+    const [borderedL, setBorderedL] = useState(false)
+    const [borderedU, setBorderedU] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [menuItems, setMenuItems] = useState();
     const user = useUserInfo();
@@ -76,7 +78,7 @@ export default function Header() {
     }, [])
 
     return (
-        <header className={`${styles.container} ${bordered && styles.bordered}`}>
+        <header className={`${styles.container} ${bordered && styles.bordered } ${borderedL && styles.bordered} ${borderedU && styles.bordered}`}>
             {width > 768 && <Link href={'/'}>
                 <a className={styles.logo}>
                     <Image
@@ -97,7 +99,7 @@ export default function Header() {
                             : menuItems.map((link, index) => (
                                 <MenuDropLink
                                     key={link.name}
-                                    onClick={() => setBordered(!bordered)}
+                                    onClick={(stateValue) => setBordered(stateValue)}
                                     {...link}
                                 />
                             ))
@@ -147,7 +149,7 @@ export default function Header() {
             }
             <Search setBorder={setBordered} />
             <div className={styles.btnsRight}>
-                <Language setBorder={setBordered} />
+                <Language setBorder={setBorderedL} />
                 {
                     !user?.first_name
                         ? <Link href="/login">
@@ -155,7 +157,7 @@ export default function Header() {
                                 Sign In
                             </a>
                         </Link>
-                        : <UserMenu user={user} setBorder={setBordered} />
+                        : <UserMenu user={user} setBorder={setBorderedU} />
                 }
             </div>
         </header>
@@ -188,6 +190,8 @@ function MenuDropLink({ name, children, type, onClick }) {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const blockRef = useRef(null);
+    const areaRef = useRef(null);
+    const nameRef = useRef(null);
     const href = getLinkByType(children[0]?.children[0]?.type); //temporary solution??? hopefully
 
     const dropdownVariants = {
@@ -207,22 +211,32 @@ function MenuDropLink({ name, children, type, onClick }) {
         }
     }
 
+    const checkClick = (e) => {
+        if ((areaRef?.current!=e.target) && (!areaRef?.current?.contains(e.target))) {
+            toggle(e)
+        }
+    }
+
     useEffect(() => {
-        const _isActive = router.pathname.split('/').includes(href.split('/')[1]);
-        if (href != "/")
-            setIsActive(_isActive);
+        if (href != "/") {
+            setIsActive(router.asPath.split('/').includes(href.split('/')[1]))
+        }
         if (href == "/" && router.asPath == "/")
             setIsActive(true);
         setIsOpen(false);
-    }, [router.pathname])
+    }, [router.asPath])
 
     function getLinkByType(type) {
         return types.find(item => item.name == type)?.href || "/";
     }
 
-    function toggle() {
+    function toggle(e) {
+        if (isOpen) {
+            ((e.target.classList[0] != styles.link) || (e.target == nameRef.current)) && onClick && onClick(false);
+        } else {
+            (e.target == nameRef.current) && onClick && onClick(true)
+        }        
         setIsOpen(!isOpen);
-        onClick && onClick();
     }
 
     function composeLink(url, type) {
@@ -233,42 +247,64 @@ function MenuDropLink({ name, children, type, onClick }) {
     return (
         <div
             className={styles.navItem}
-            onClick={toggle}
+            ref={areaRef}
         >
-            <a className={`${styles.link} ${isActive && styles.active}`}>
+            <a 
+                className={`${styles.link} ${isActive && styles.active}`} 
+                onClick={toggle} 
+                ref={nameRef}
+            >
                 {name}
             </a>
             <AnimatePresence initial={false}>
-                {isOpen && <motion.div
-                    variants={dropdownVariants}
-                    animate="open"
-                    exit="closed"
-                    className={styles.dropdown}
-                    ref={blockRef}
-                >
-                    {
-                        children.map(child => (
-                            <div className={styles.dropdownList} key={child.name} >
-                                <span className={styles.dropdownTitle} >
-                                    {child.name}
-                                </span>
-                                <div className={styles.dropdownListChildren}>
-                                    {
-                                        child.children.map(child => (
-                                            <Link href={composeLink(child.url, child.type)} key={child.name}>
-                                                <a onClick={toggle}>
-                                                    {child.name}
-                                                </a>
-                                            </Link>
-                                        ))
-                                    }
+                {isOpen && <DropdownMenu checkClick={checkClick}>
+                    <motion.div
+                        variants={dropdownVariants}
+                        animate="open"
+                        exit="closed"
+                        className={styles.dropdown}
+                        ref={blockRef}
+                    >
+                        {
+                            children.map(child => (
+                                <div className={styles.dropdownList} key={child.name} >
+                                    <span className={styles.dropdownTitle} >
+                                        {child.name}
+                                    </span>
+                                    <div className={styles.dropdownListChildren}>
+                                        {
+                                            child.children.map(child => (
+                                                <Link href={composeLink(child.url, child.type)} key={child.name}>
+                                                    <a onClick={toggle}>
+                                                        {child.name}
+                                                    </a>
+                                                </Link>
+                                            ))
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    }
-                </motion.div>}
+                            ))
+                        }
+                    </motion.div>
+                </DropdownMenu>}
             </AnimatePresence>
         </div >
+    )
+}
+
+function DropdownMenu({ children, checkClick }) {
+
+    useEffect(()=>{
+        document.addEventListener("click", checkClick)
+        return () => {
+            document.removeEventListener("click", checkClick)
+        }
+    },[])
+
+    return (
+        <>
+            {children}
+        </>
     )
 }
 
