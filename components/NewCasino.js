@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function NewCasino({ 
-    bannerStyle,
+    type="multi",
     bonus_url, 
     shared_content, 
     features, 
@@ -25,7 +25,7 @@ export default function NewCasino({
                     objectFit='cover'
                 />
             </div>
-            {bannerStyle != 2 ? 
+            {type != "single" ? 
                 <div className={styles.characters}>
                     <Image
                         //src={`${process.env.IMAGE_URL}/${image_characters}`}
@@ -46,7 +46,7 @@ export default function NewCasino({
                     />
                 </div>
             }
-            {bannerStyle != 2 && 
+            {type != "single" && 
                 <div className={styles.casinoInfo}>
                     <div className={styles.bonusInfo}>
                         <span className={styles.bonusText}>
