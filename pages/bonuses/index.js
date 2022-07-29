@@ -47,7 +47,6 @@ export default function BonusesPage({ filters }) {
     const [filteredItems, setFilteredItems] = useState(bonuses);
     const [page, setPage] = useState(1);
     const loadMoreRef = useRef(null);
-    const [loading, setLoading] = useState(false);
     const user = useUserInfo();
     const { width } = useWindowSize();
     const [styleMainSlider, setStyleMainSlider] = useState()
@@ -165,14 +164,12 @@ export default function BonusesPage({ filters }) {
     }
 
     function loadMore() {
-        setLoading(true);
         APIRequest(`/bonuses?page=${page + 1}&${queryString}`, 'GET')
             .then(res => {
                 setPage(page++);
                 let newDataF = [...res.data]
                 setFilteredItems([...bonusesRef.current, ...newDataF]);
                 bonusesRef.current = [...bonusesRef.current, ...res.data]
-                setLoading(false);
             })
     }
 

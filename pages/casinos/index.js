@@ -48,7 +48,6 @@ export default function CasinosPage({ filters }) {
     const [filteredItems, setFilteredItems] = useState(casinos);
     const [page, setPage] = useState(1);
     const user = useUserInfo();
-    const [loading, setLoading] = useState(false);
     const { width } = useWindowSize();
     const [styleMainSlider, setStyleMainSlider] = useState()
     const [newCasinos, setNewCasinos] = useState([])
@@ -165,11 +164,9 @@ export default function CasinosPage({ filters }) {
     }
 
     function loadMore() {
-        setLoading(true);
         APIRequest(`/casinos?page=${page + 1}&${queryString}`, 'GET')
             .then(res => {
                 setPage(page++);
-                setLoading(false);
                 casinosRef.current = [...casinosRef.current, ...res.data]
                 setFilteredItems(casinosRef.current);
             })
