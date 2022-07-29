@@ -95,6 +95,7 @@
     align-items: center;
     gap: 24px;
     z-index: 1;
+    text-align: center;
 }
 
 .promoGetBonus {
