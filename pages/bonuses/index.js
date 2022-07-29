@@ -53,6 +53,7 @@ export default function BonusesPage({ filters }) {
     const [newCasinos, setNewCasinos] = useState([])
     const router = useRouter();
     const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
+    const [text, setText] = useState();
 
     const controlVariants = {
         left: {
@@ -171,6 +172,11 @@ export default function BonusesPage({ filters }) {
                 setFilteredItems([...bonusesRef.current, ...newDataF]);
                 bonusesRef.current = [...bonusesRef.current, ...res.data]
             })
+        APIRequest(`/menu/${router.query.menu_id}`, 'GET')
+            .then(res => {
+                setText(res.text)
+            })
+            .catch(err => console.log(err))
     }
 
     useEffect(() => {
@@ -391,6 +397,11 @@ export default function BonusesPage({ filters }) {
                                         </span>
                                 }
                             </motion.div>
+                        }
+                    </div>
+                    <div className={styles.pageText}>
+                        {
+                            text && parse(text)
                         }
                     </div>
                 </motion.div>

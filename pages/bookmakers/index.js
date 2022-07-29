@@ -48,7 +48,7 @@ export default function BookmakersPage({ filters }) {
     const { width } = useWindowSize();
     const router = useRouter();
     const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
-
+    const [text, setText] = useState();
 
     const controlVariants = {
         left: {
@@ -174,6 +174,11 @@ export default function BookmakersPage({ filters }) {
                 setBookmakers(res.data);
                 bookmakersRef.current = res.data;
                 setFilteredItems(res.data);
+            })
+            .catch(err => console.log(err))
+        APIRequest(`/menu/${router.query.menu_id}`, 'GET')
+            .then(res => {
+                setText(res.text)
             })
             .catch(err => console.log(err))
     }, [])
@@ -349,6 +354,11 @@ export default function BookmakersPage({ filters }) {
                                         </span>
                                 }
                             </motion.div>
+                        }
+                    </div>
+                    <div className={styles.pageText}>
+                        {
+                            text && parse(text)
                         }
                     </div>
                 </motion.div>

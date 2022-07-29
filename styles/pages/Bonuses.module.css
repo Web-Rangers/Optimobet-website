@@ -133,6 +133,7 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    min-height: 100vh;
 }
 
 .mobileFilters {
@@ -277,6 +278,19 @@
 .detailsButton {
     border: 1px solid #F2F2F266;
     background-color: transparent;
+}
+
+.pageText h1,
+.pageText h2,
+.pageText h3 {
+    font: normal normal bold 28px/44px Samsung Sans;
+    color: #4B4453;
+}
+
+.pageText p,
+.pageText li {
+    font: normal normal 500 15px/26px Samsung Sans;
+    color: #4B4453CC;
 }
 
 @media screen and (max-width: 1440px) {

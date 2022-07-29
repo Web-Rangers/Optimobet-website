@@ -28,8 +28,9 @@ h5 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100px;
-    flex: 1;
+    height: fit-content;
+    /* height: 100px; */
+    /* flex: 1; */
 }
 
 @font-face {

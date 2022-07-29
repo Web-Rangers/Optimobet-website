@@ -16,6 +16,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 import Dropdown from '../../components/Dropdown';
 import { useRouter } from 'next/router';
 import NewCasino from '../../components/NewCasino';
+import parse from 'html-react-parser'
 
 const mobileFilters = [
     {
@@ -51,6 +52,7 @@ export default function CasinosPage({ filters }) {
     const { width } = useWindowSize();
     const [styleMainSlider, setStyleMainSlider] = useState()
     const [newCasinos, setNewCasinos] = useState([])
+    const [text, setText] = useState();
     const router = useRouter();
     const queryString = new URLSearchParams(router.asPath.split('?')[1]).toString();
 
@@ -173,19 +175,25 @@ export default function CasinosPage({ filters }) {
     }
 
     useEffect(() => {
-        APIRequest('/sliders?page=home')
-            .then(res => setNewCasinos(res))
-            .catch(err => console.log(err))
+        if (router.isReady) {
+            APIRequest('/sliders?page=home')
+                .then(res => setNewCasinos(res))
+                .catch(err => console.log(err))
 
-        APIRequest(`/casinos?${queryString}`, 'GET')
-            .then(res => {
-                setCasinos(res.data)
-                casinosRef.current = res.data;
-                setFilteredItems(res.data);
-            })
-            .catch(err => console.log(err))
-
-    }, [])
+            APIRequest(`/casinos?${queryString}`, 'GET')
+                .then(res => {
+                    setCasinos(res.data)
+                    casinosRef.current = res.data;
+                    setFilteredItems(res.data);
+                })
+                .catch(err => console.log(err))
+            APIRequest(`/menu/${router.query.menu_id}`, 'GET')
+                .then(res => {
+                    setText(res.text)
+                })
+                .catch(err => console.log(err))
+        }
+    }, [router.isReady])
 
     useEffect(() => {
         let mainS = { height: 500 }
@@ -391,6 +399,11 @@ export default function CasinosPage({ filters }) {
                                         </span>
                                 }
                             </motion.div>
+                        }
+                    </div>
+                    <div className={styles.pageText}>
+                        {
+                            text && parse(text)
                         }
                     </div>
                 </motion.div>
